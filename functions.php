@@ -179,3 +179,21 @@ function rt_get_tag_name( $object, $field_name, $request ) {
 	}
 	return $res;
 }
+
+add_action( 'rest_api_init', 'add_custom_fields' );
+
+function add_custom_fields() {
+	register_rest_field(
+		array('post', 'page'),
+		'custom_fields', //New Field Name in JSON RESPONSEs
+		array(
+	    'get_callback'    => 'get_custom_fields', // custom function name
+	    'update_callback' => null,
+	    'schema'          => null,
+	  )
+	);
+}
+
+function get_custom_fields($object, $field_name, $request) {
+	return get_post_meta( $object['id'] );
+}
