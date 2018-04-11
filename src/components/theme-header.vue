@@ -4,7 +4,7 @@
 
 		<div class="row">
 
-			
+
 			<div class="column large-10 medium-10 small-10">
 
 				<router-link :to="{ name: 'home'}" class="site-name"> {{ site_name }} </router-link>

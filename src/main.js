@@ -22,6 +22,8 @@ import post from './components/post.vue';
 Vue.component( 'post', post );
 import header from './components/theme-header.vue';
 Vue.component( 'theme-header', header );
+import home from './components/home.vue';
+Vue.component( 'home', home );
 import footer from './components/theme-footer.vue';
 Vue.component( 'theme-footer', footer );
 import page from './components/page.vue';
@@ -50,7 +52,7 @@ const router = new VueRouter( {
 		{ path: '/page/:name', name: 'page', component: page },
 		{ path: '/category/:name', name: 'cat', component: category },
 		{ path: '/tag/:name', name: 'tag', component: tag },
-		{ path: '/', redirect: '/blog' },
+		{ path: '/', name: 'home', component: home },
 
 	]
 } );
@@ -74,4 +76,3 @@ new App( {
 	store,
 	router
 } ).$mount( '#app' );
-
