@@ -47,7 +47,7 @@ const router = new VueRouter( {
 	mode: 'history',
 	routes: [
 
-		{ path: '/blog/:page(\\d+)?', name: 'home', component: posts },
+		{ path: '/blog/:page(\\d+)?', name: 'posts', component: posts },
 		{ path: '/blog/:name', name: 'post', component: post },
 		{ path: '/page/:name', name: 'page', component: page },
 		{ path: '/category/:name', name: 'cat', component: category },
