@@ -17,6 +17,7 @@
     "vue": "^2.2.1",
     "vue-resource": "^1.2.1",
     "vue-router": "^2.3.0",
+    "vue2-google-maps": "^0.8.11",
     "vuex": "^2.2.1"
   },
   "devDependencies": {

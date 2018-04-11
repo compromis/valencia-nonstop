@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import { HTTP as axios } from './axios/axios';
 import VueProgressiveImage from 'progressive-image/dist/vue';
+import * as VueGoogleMaps from 'vue2-google-maps';
 
 Vue.prototype.$http = axios;
 
@@ -11,6 +12,14 @@ Vue.use( VueRouter );
 Vue.use( VueProgressiveImage, {
 	removePreview: true
 } );
+Vue.use( VueRouter );
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyCHia_53O9k25YuqFb3PKkvp-XO6l5KNWY',
+    libraries: ''
+  }
+});
 
 Vue.config.debug = true;
 Vue.config.devTools = true;
