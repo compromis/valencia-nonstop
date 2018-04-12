@@ -32,7 +32,8 @@ export default {
 			hasMap: false,
 			mapCenter: { lat: 39.4751256, lng:-0.3831809 },
 			mapStyle: { styles: mapStyle },
-			pageTitle: ''
+			pageTitle: '',
+			kml: null
 		};
 	},
 
@@ -44,6 +45,7 @@ export default {
 		getPage () {
 			this.loaded = false;
 			this.hasMap = false;
+			if(this.kml) this.kml.setMap(null);
 
 			this.$http.get('wp/v2/pages', {
 				params: { slug: this.$route.params.name }
