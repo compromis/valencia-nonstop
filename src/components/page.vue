@@ -6,7 +6,6 @@
 				<div v-html="page.content.rendered"></div>
 			</div>
 			<gmap-map
-				v-show="hasMap"
 				ref="gmap"
 				:center="mapCenter"
 				:zoom="14"
@@ -29,8 +28,7 @@ export default {
 		return {
 			page: {},
 			loaded: false,
-			hasMap: false,
-			mapCenter: { lat: 39.4751256, lng:-0.3831809 },
+			mapCenter: { lat: 39.4751256, lng:-0.3831809 }, // Valencia
 			mapStyle: { styles: mapStyle },
 			pageTitle: '',
 			kml: null
@@ -44,7 +42,6 @@ export default {
 	methods: {
 		getPage () {
 			this.loaded = false;
-			this.hasMap = false;
 			if(this.kml) this.kml.setMap(null);
 
 			this.$http.get('wp/v2/pages', {
