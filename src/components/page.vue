@@ -1,80 +1,80 @@
+<template>
+	<transition name="slide-fade">
+		<div>
+			<div v-if="loaded === true">
+				<h2>{{ page.title.rendered }}</h2>
+				<div v-html="page.content.rendered"></div>
+			</div>
+			<gmap-map
+				v-show="hasMap"
+				ref="gmap"
+				:center="mapCenter"
+				:zoom="14"
+				:options="mapStyle"
+				class="main-map"
+			></gmap-map>
+		</div>
+	</transition>
+</template>
+
 <style>
 
 </style>
 
-<template>
-
-<transition name="slide-fade">
-
-	<div class="row rt-main" v-if="loaded ==='true'">
-
-		<div class="medium-12 small-12 column" >
-
-			<div class="rt-post">
-
-				<h2 class="rt-post-title"> {{ page.title.rendered }}</h2>
-
-				<div class="rt-post-content rt-content" v-html="page.content.rendered"></div>
-
-
-			</div>
-
-		</div>
-
-	</div>
-
-</transition>
-
-
-</template>
-
 <script>
+const mapStyle = require('./maps/mapstyle.json');
+
 export default {
-
-	mounted: function() {
-		this.getPage();
-	},
-
-	data() {
+	data () {
 		return {
 			page: {},
-			loaded: 'false',
+			loaded: false,
+			hasMap: false,
+			mapCenter: { lat: 39.4751256, lng:-0.3831809 },
+			mapStyle: { styles: mapStyle },
 			pageTitle: ''
 		};
 	},
+
+	mounted () {
+		this.getPage();
+	},
+
 	methods: {
-		getPage: function() {
+		getPage () {
+			this.loaded = false;
+			this.hasMap = false;
 
-			const vm = this;
-			vm.loaded = 'false';
+			this.$http.get('wp/v2/pages', {
+				params: { slug: this.$route.params.name }
+			}).then((res) => {
+				this.page = res.data[0];
+				this.loaded = true;
+				this.pageTitle = this.page.title.rendered;
+				this.$store.commit('rtChangeTitle', this.pageTitle);
 
-			vm.$http.get( 'wp/v2/pages', {
-				params: { slug: vm.$route.params.name }
-			} )
-			.then( ( res ) => {
-
-				vm.page = res.data[ 0 ];
-				vm.loaded = 'true';
-				vm.pageTitle = vm.page.title.rendered;
-				vm.$store.commit( 'rtChangeTitle', vm.pageTitle );
-
-			} )
-			.catch( ( res ) => {
-
-				//console.log( `Something went wrong : ${ res }` );
-
-			} );
-
+				if(this.page.custom_fields.hasOwnProperty('kml')) {
+					this.getMap(this.page.custom_fields.kml[0]);
+				}
+			}).catch((res) => {
+				console.log(`Something went wrong : ${ res }`);
+			});
+		},
+		getMap (url) {
+			this.hasMap = true;
+			this.$refs.gmap.$mapCreated.then(() => {
+				this.$refs.gmap.$deferredReadyPromise.then(() => {
+					this.kml = new google.maps.KmlLayer({ url });
+					this.kml.setMap(this.$refs.gmap.$mapObject);
+				});
+			});
 		}
 	},
 	watch: {
-
-		'$route'( to, from ) {
+		'$route': function (to, from) {
 			// react to route changes...
 			this.getPage();
 		}
-
 	}
-
 };
 </script>
