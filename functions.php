@@ -185,9 +185,9 @@ add_action( 'rest_api_init', 'add_custom_fields' );
 function add_custom_fields() {
 	register_rest_field(
 		array('post', 'page'),
-		'custom_fields', //New Field Name in JSON RESPONSEs
+		'custom_fields',
 		array(
-	    'get_callback'    => 'get_custom_fields', // custom function name
+	    'get_callback'    => 'get_custom_fields',
 	    'update_callback' => null,
 	    'schema'          => null,
 	  )
@@ -195,5 +195,25 @@ function add_custom_fields() {
 }
 
 function get_custom_fields($object, $field_name, $request) {
-	return get_post_meta( $object['id'] );
+	return get_post_meta($object['id']);
+}
+
+add_action( 'rest_api_init', 'add_page_children' );
+
+function add_page_children() {
+	register_rest_field(
+		array('page'),
+		'page_children',
+		array(
+	    'get_callback'    => 'get_subpages',
+	    'update_callback' => null,
+	    'schema'          => null,
+	  )
+	);
+}
+
+function get_subpages($object) {
+	$my_wp_query = new WP_Query();
+	$all_wp_pages = $my_wp_query->query(array('post_type' => 'page', 'posts_per_page' => '-1'));
+	return get_page_children($object['id'], $all_wp_pages);
 }
