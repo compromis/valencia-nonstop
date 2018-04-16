@@ -217,3 +217,27 @@ function get_subpages($object) {
 	$all_wp_pages = $my_wp_query->query(array('post_type' => 'page', 'posts_per_page' => '-1'));
 	return get_page_children($object['id'], $all_wp_pages);
 }
+
+add_action( 'rest_api_init', 'add_page_siblings' );
+
+function add_page_siblings() {
+	register_rest_field(
+		array('page'),
+		'page_sublings',
+		array(
+	    'get_callback'    => 'get_page_siblings',
+	    'update_callback' => null,
+	    'schema'          => null,
+	  )
+	);
+}
+
+function get_page_siblings($object) {
+	if($object['parent']) {
+		$my_wp_query = new WP_Query();
+		$all_wp_pages = $my_wp_query->query(array('post_type' => 'page', 'posts_per_page' => '-1'));
+		return get_page_children($object['parent'], $all_wp_pages);
+	}
+
+	return false;
+}
