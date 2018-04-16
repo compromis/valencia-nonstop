@@ -5,6 +5,12 @@
 				<h2>{{ page.title.rendered }}</h2>
 				<div v-html="page.content.rendered"></div>
 			</div>
+			<div v-if="page.page_children.length !== 0">
+				<ul>
+					<li v-for="child in page.page_children">
+						<router-link :to="'/page/' + child.post_name">{{ child.post_title }}</router-link></li>
+				</ul>
+			</div>
 			<gmap-map
 				ref="gmap"
 				:center="mapCenter"
