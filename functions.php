@@ -223,7 +223,7 @@ add_action( 'rest_api_init', 'add_page_siblings' );
 function add_page_siblings() {
 	register_rest_field(
 		array('page'),
-		'page_sublings',
+		'page_siblings',
 		array(
 	    'get_callback'    => 'get_page_siblings',
 	    'update_callback' => null,
