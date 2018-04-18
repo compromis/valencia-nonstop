@@ -41,7 +41,7 @@ export default {
 			page: {},
 			loaded: false,
 			mapCenter: { lat: 39.4751256, lng:-0.3831809 }, // Valencia
-			mapStyle: { styles: mapStyle },
+			mapStyle: { styles: mapStyle, streetViewControl: false, mapTypeControl: false, fullscreenControl: false },
 			pageTitle: '',
 			kml: null
 		};
