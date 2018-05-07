@@ -44,7 +44,7 @@ Vue.component( 'tag', tag );
 //Create main vue component
 const App = Vue.extend( {
 	template: '<div id="page" class="hfeed site"><theme-header></theme-header>' +
-			'<main><router-view></router-view></main>' +
+			'<main class="content"><router-view></router-view></main>' +
 			'<theme-footer></theme-footer></div>',
 	computed: {
 	}

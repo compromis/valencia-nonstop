@@ -1,0 +1,43 @@
+html, body { 
+  height: 100%; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $font-family-heading;
+}
+
+.map {
+  position: fixed !important;
+  top: 0;
+  left: $nav-width;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $nav-width;
+  background: $white;
+  overflow-y: scroll;
+  z-index: -1;
+}
+
+.content {
+  background: $white;
+  height: 2000px;
+  margin-top: 80vh;
+  margin-left: $nav-width + 100px;
+  margin-right: 100px;
+  padding: 2rem;
+}
+
+.admin-bar {
+  .map,
+  .menu {
+    top: 32px;
+  }
+}

@@ -22,7 +22,7 @@
 				:center="mapCenter"
 				:zoom="14"
 				:options="mapStyle"
-				class="main-map"
+				class="map"
 			></gmap-map>
 		</div>
 	</transition>
@@ -41,8 +41,17 @@ export default {
 			page: {},
 			loaded: false,
 			hasMap: false,
-			mapCenter: { lat: 39.4751256, lng:-0.3831809 }, // Valencia
-			mapStyle: { styles: mapStyle, streetViewControl: false, mapTypeControl: false, fullscreenControl: false },
+			mapCenter: { 
+				lat: 39.4751256, 
+				lng:-0.3831809 // Valencia
+			},
+			mapStyle: { 
+				styles: mapStyle, 
+				streetViewControl: false, 
+				mapTypeControl: false, 
+				fullscreenControl: false,
+				scrollwheel: false
+			},
 			pageTitle: '',
 			kml: null
 		};
