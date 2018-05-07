@@ -7,13 +7,13 @@
 			</div>
 			<div v-if="page.page_children">
 				<ul>
-					<li v-for="child in page.page_children">
+					<li v-for="child in page.page_children" :key="child.id">
 						<router-link :to="'/page/' + child.post_name">{{ child.post_title }}</router-link></li>
 				</ul>
 			</div>
 			<div v-if="page.parent">
 				<ul>
-					<li v-for="sibling in page.page_siblings">
+					<li v-for="sibling in page.page_siblings" :key="sibling.id">
 						<router-link :to="'/page/' + sibling.post_name">{{ sibling.post_title }}</router-link></li>
 				</ul>
 			</div>
@@ -40,6 +40,7 @@ export default {
 		return {
 			page: {},
 			loaded: false,
+			hasMap: false,
 			mapCenter: { lat: 39.4751256, lng:-0.3831809 }, // Valencia
 			mapStyle: { styles: mapStyle, streetViewControl: false, mapTypeControl: false, fullscreenControl: false },
 			pageTitle: '',

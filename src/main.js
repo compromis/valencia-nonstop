@@ -14,12 +14,12 @@ Vue.use( VueProgressiveImage, {
 } );
 Vue.use( VueRouter );
 
-Vue.use(VueGoogleMaps, {
-  load: {
-    key: 'AIzaSyCHia_53O9k25YuqFb3PKkvp-XO6l5KNWY',
-    libraries: ''
-  }
-});
+Vue.use( VueGoogleMaps, {
+	load: {
+		key: 'AIzaSyCHia_53O9k25YuqFb3PKkvp-XO6l5KNWY',
+		libraries: ''
+	}
+} );
 
 Vue.config.debug = true;
 Vue.config.devTools = true;
