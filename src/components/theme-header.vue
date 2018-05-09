@@ -1,5 +1,11 @@
 <template>
 	<nav class="nav-menu">
+		<div class="brand d-none d-lg-flex">
+			<div class="brand-share">Facebook Twitter</div>
+			<div class="brand-logo">
+				<img src="https://compromis.net/wp-content/themes/Compromis/images/logo-compromis-retina.png" alt="Compromís" />
+			</div>
+		</div>
 		<div class="header">
 			<router-link :to="{ name: 'frontpage' }" class="site-name">{{ site_name }}</router-link>
 		</div>

@@ -35,7 +35,36 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     right: 0;
     height: $header-height;
-  } 
+  }
+
+  .brand {
+    position: fixed;
+    top: 0;
+    left: $nav-width-desktop;
+    right: 0;
+    height: $header-height;
+    background: $brand-gradient;
+    align-items: center;
+    box-shadow: $big-shadow;
+
+    .brand-share {
+      margin-right: auto;
+      margin-left: 1.5rem;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      background: $white;
+      width: 200px;
+      height: $header-height;
+      padding: 0 1rem;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .content {
@@ -83,6 +112,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+
+    .header {
+      width: $nav-width-desktop;
+    } 
   }
 
   .content {
@@ -100,7 +133,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .admin-bar {
-    .header {
+    .header,
+    .brand {
       top: 32px;
     }
   
