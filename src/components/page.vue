@@ -1,6 +1,6 @@
 <template>
 	<transition name="slide-fade">
-		<div>
+		<div :class="{ 'page container': true, 'has-map': hasMap }">
 			<div v-if="loaded === true">
 				<h2>{{ page.title.rendered }}</h2>
 				<div v-html="page.content.rendered"></div>
@@ -76,6 +76,8 @@ export default {
 
 				if(this.page.custom_fields.hasOwnProperty('kml')) {
 					this.getMap(this.page.custom_fields.kml[0]);
+				} else {
+					this.hasMap = false;
 				}
 			}).catch((res) => {
 				console.log(`Something went wrong : ${ res }`);
