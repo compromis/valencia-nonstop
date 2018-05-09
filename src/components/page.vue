@@ -1,6 +1,7 @@
 <template>
 	<transition name="slide-fade">
 		<div :class="{ 'page container': true, 'has-map': hasMap }">
+			<div class="band"></div>
 			<div v-if="loaded === true">
 				<h2>{{ page.title.rendered }}</h2>
 				<div v-html="page.content.rendered"></div>
@@ -45,8 +46,8 @@ export default {
 			loaded: false,
 			hasMap: false,
 			mapCenter: { 
-				lat: 39.4751256, 
-				lng:-0.3831809 // Valencia
+				lat: 39.4650884, 
+				lng: -0.3711834 // Valencia
 			},
 			mapStyle: { 
 				styles: mapStyle, 
@@ -90,7 +91,7 @@ export default {
 			this.hasMap = true;
 			this.$refs.gmap.$mapCreated.then(() => {
 				this.$refs.gmap.$deferredReadyPromise.then(() => {
-					this.kml = new google.maps.KmlLayer({ url });
+					this.kml = new google.maps.KmlLayer({ url, preserveViewport: true });
 					this.kml.setMap(this.$refs.gmap.$mapObject);
 				});
 			});
