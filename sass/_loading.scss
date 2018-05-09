@@ -1,0 +1,37 @@
+.filler {
+	display: block;
+	height: 1rem;
+	animation-duration: 1.5s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-name: placeHolder;
+	background: $gray-200;
+	background: linear-gradient(to right, $gray-200 8%, darken($gray-200, 5%) 18%, $gray-200 33%);
+	background-size: 1200px 100px;
+	position: relative;
+}
+
+.heading {
+	margin-bottom: 1rem;
+
+	.filler {
+			display: inline-block;
+			width: 80%;
+			height: 2rem;
+			position: relative;
+			top: 4px;
+	}
+}
+.subheading {
+	margin-bottom: 1rem;
+
+	.filler {
+			margin-bottom: 0.5rem;
+	}
+}
+
+@keyframes placeHolder {
+	0% { background-position: -600px 0; }
+	100% { background-position: 600px 0; }
+}
