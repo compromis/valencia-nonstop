@@ -1,22 +1,25 @@
 <template>
-	<nav class="nav-menu">
+	<div>
 		<div class="brand d-none d-lg-flex">
 			<div class="brand-share">Facebook Twitter</div>
 			<div class="brand-logo">
 				<img src="https://compromis.net/wp-content/themes/Compromis/images/logo-compromis-retina.png" alt="Compromís" />
 			</div>
 		</div>
-		<div class="header">
-			<router-link :to="{ name: 'frontpage' }" class="site-name">{{ site_name }}</router-link>
-		</div>
-		<div class="menu">
-			<ul>
-				<li v-for="item in menus" v-if="item.type != 'custom'" :class="item.classes" :key="item.url">
-					<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}"> {{ item.title }} </router-link>
-				</li>
-			</ul>
-		</div>
-	</nav>
+
+		<nav class="nav-menu">
+			<div class="header">
+				<router-link :to="{ name: 'frontpage' }" class="site-name">{{ site_name }}</router-link>
+			</div>
+			<div class="menu">
+				<ul>
+					<li v-for="item in menus" v-if="item.type != 'custom'" :class="item.classes" :key="item.url">
+						<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}"> {{ item.title }} </router-link>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</div>
 </template>
 
 <script>
