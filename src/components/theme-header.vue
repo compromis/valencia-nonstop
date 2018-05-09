@@ -1,7 +1,7 @@
 <template>
 	<nav class="nav-menu">
 		<div class="header">
-			<router-link :to="{ name: 'home' }" class="site-name">{{ site_name }}</router-link>
+			<router-link :to="{ name: 'frontpage' }" class="site-name">{{ site_name }}</router-link>
 		</div>
 		<div class="menu">
 			<ul>

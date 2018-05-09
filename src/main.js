@@ -31,8 +31,8 @@ import post from './components/post.vue';
 Vue.component( 'post', post );
 import header from './components/theme-header.vue';
 Vue.component( 'theme-header', header );
-import home from './components/home.vue';
-Vue.component( 'home', home );
+import frontpage from './components/frontpage.vue';
+Vue.component( 'frontpage', frontpage );
 import footer from './components/theme-footer.vue';
 Vue.component( 'theme-footer', footer );
 import page from './components/page.vue';
@@ -43,10 +43,21 @@ import tag from './components/tag.vue';
 Vue.component( 'tag', tag );
 //Create main vue component
 const App = Vue.extend( {
-	template: '<div id="page" class="hfeed site"><theme-header></theme-header>' +
+	template: '<div id="page" :class="[template, \'hfeed site\']"><theme-header></theme-header>' +
 			'<main class="content"><router-view></router-view></main>' +
 			'<theme-footer></theme-footer></div>',
-	computed: {
+	data() {
+		return {
+			template: ''
+		};
+	},
+	watch: {
+		'$route': function( to, from ) {
+			this.template = to.name;
+		}
+	},
+	mounted() {
+		this.template = this.$route.name;
 	}
 } );
 
@@ -61,7 +72,7 @@ const router = new VueRouter( {
 		{ path: '/page/:name', name: 'page', component: page },
 		{ path: '/category/:name', name: 'cat', component: category },
 		{ path: '/tag/:name', name: 'tag', component: tag },
-		{ path: '/', name: 'home', component: home },
+		{ path: '/', name: 'frontpage', component: frontpage },
 
 	],
 	scrollBehavior( to, from, savedPosition ) {

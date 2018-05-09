@@ -1,35 +1,33 @@
 <template>
-	<transition name="slide-fade">
-		<div :class="{ 'page container': true, 'has-map': hasMap }">
-			<div class="band"></div>
-			<div v-if="loaded === true">
-				<h2>{{ page.title.rendered }}</h2>
-				<div v-html="page.content.rendered"></div>
-				<div v-if="page.page_children">
-					<ul>
-						<li v-for="child in page.page_children" :key="child.id">
-							<router-link :to="'/page/' + child.post_name">{{ child.post_title }}</router-link></li>
-					</ul>
-				</div>
-				<div v-if="page.parent">
-					<ul>
-						<li v-for="sibling in page.page_siblings" :key="sibling.id">
-							<router-link :to="'/page/' + sibling.post_name">{{ sibling.post_title }}</router-link></li>
-					</ul>
-				</div>
+	<div :class="{ 'page container': true, 'has-map': hasMap }">
+		<div class="band"></div>
+		<div v-if="loaded === true">
+			<h2>{{ page.title.rendered }}</h2>
+			<div v-html="page.content.rendered"></div>
+			<div v-if="page.page_children">
+				<ul>
+					<li v-for="child in page.page_children" :key="child.id">
+						<router-link :to="'/page/' + child.post_name">{{ child.post_title }}</router-link></li>
+				</ul>
 			</div>
-			<div v-else>
-					<page-loading />
+			<div v-if="page.parent">
+				<ul>
+					<li v-for="sibling in page.page_siblings" :key="sibling.id">
+						<router-link :to="'/page/' + sibling.post_name">{{ sibling.post_title }}</router-link></li>
+				</ul>
 			</div>
-			<gmap-map
-				ref="gmap"
-				:center="mapCenter"
-				:zoom="14"
-				:options="mapStyle"
-				class="map"
-			></gmap-map>
 		</div>
-	</transition>
+		<div v-else>
+				<page-loading />
+		</div>
+		<gmap-map
+			ref="gmap"
+			:center="mapCenter"
+			:zoom="14"
+			:options="mapStyle"
+			class="map"
+		></gmap-map>
+	</div>
 </template>
 
 <script>

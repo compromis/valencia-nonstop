@@ -1,11 +1,11 @@
 <template>
-	<div>dsd
+	<div>
 		<gmap-map
 			ref="map"
-		  :center="{lat: 39.4751256, lng:-0.3831809}"
+		  :center="{ lat: 39.4650884, lng: -0.3711834 }"
 		  :zoom="14"
 			:options="mapStyle"
-			class="main-map"
+			class="map"
 		></gmap-map>
 	</div>
 </template>
@@ -18,13 +18,19 @@
 const mapStyle = require('./maps/mapstyle.json');
 
 export default {
-	name: 'home',
+	name: 'frontpage',
 
 	data() {
 		return {
 			map: null,
 			mapLoaded: false,
-			mapStyle: { styles: mapStyle }
+			mapStyle: { 
+				styles: mapStyle, 
+				streetViewControl: false, 
+				mapTypeControl: false, 
+				fullscreenControl: false,
+				scrollwheel: false
+			}
 		}
 	},
 
