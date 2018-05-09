@@ -1,8 +1,9 @@
 .frontpage {
 	.nav-menu {
 		position: static;
-		max-width: 900px;
-		margin: $header-height + 100px auto;
+		width: auto;
+		margin: 1.5rem;
+		margin-top: $header-height + 20px;
 	}
 
 	.content {
@@ -11,5 +12,24 @@
 
 	.brand {
 		left: 0;
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.frontpage {
+		.nav-menu {
+			width: 100%;
+			max-width: 900px;
+			margin: $header-height + 100px auto 0 auto;			
+		}
+
+		.menu {
+			position: static;
+			width: 100%;
+
+			ul {
+				flex-direction: row;
+			}
+		}
 	}
 }

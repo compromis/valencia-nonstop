@@ -111,11 +111,23 @@ h1, h2, h3, h4, h5, h6 {
     width: $nav-width-desktop;
     right: auto;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: hidden;
     overflow-x: hidden;
 
     .header {
       position: static;
+      height: auto;
+    }
+
+    .menu {
+      position: fixed;
+      top: $logo-height-desktop;
+      left: 0;
+      bottom: 0;
+      width: $nav-width-desktop;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      border-top: 2px $gray-100 solid;
     }
   }
 

@@ -1,0 +1,43 @@
+.menu {
+	padding-top: 0.75rem;
+	ul {
+		display: flex;
+	}
+
+	ul,
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+		display: block;
+		background: $gray-200;
+		padding: 2rem;
+		border-radius: $border-radius;
+		margin: 0.75rem 1.5rem;
+		font-family: $font-family-heading;
+		font-size: 1.25rem;
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.header {
+		.site-name {
+			display: block;
+			text-indent: -9999px;
+			background-image: url('images/logo.png');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 60%;
+			height: $logo-height-desktop;
+		}
+	}
+
+	.menu {
+		ul {
+			flex-direction: column;
+		}
+	}
+}
