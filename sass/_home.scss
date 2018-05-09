@@ -2,8 +2,33 @@
 	.nav-menu {
 		position: static;
 		width: auto;
+		height: auto;
 		margin: 1.5rem;
-		margin-top: $header-height + 20px;
+		margin-top: $header-height + 40px;
+		overflow-x: hidden;
+
+		.menu {
+			position: static;
+			width: 100%;
+			padding-top: 0;
+	
+			ul {
+				height: auto;
+				flex-direction: column;
+				margin: 0.5rem;
+			}
+
+			li {
+				width: 100%;
+				margin: 0;
+				padding: 0.5rem;
+			}
+
+			a {
+				margin: 0;
+				width: 100%;
+			}
+		}	
 	}
 
 	.content {
@@ -20,15 +45,17 @@
 		.nav-menu {
 			width: 100%;
 			max-width: 900px;
-			margin: $header-height + 100px auto 0 auto;			
-		}
+			margin: $header-height + 100px auto 0 auto;
+			
+			.menu {
+				ul {
+					flex-direction: row;
+					flex-wrap: wrap;
+				}
 
-		.menu {
-			position: static;
-			width: 100%;
-
-			ul {
-				flex-direction: row;
+				li {
+					width: 33.333%;
+				}
 			}
 		}
 	}

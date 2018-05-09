@@ -1,22 +1,25 @@
 .menu {
-	padding-top: 0.75rem;
-	ul {
-		display: flex;
-	}
-
 	ul,
 	li {
+		display: flex;
 		list-style: none;
 		margin: 0;
 		padding: 0;
+		align-items: center;
+	}
+
+	ul {
+		height: $nav-height-mobile;
+		margin-left: 0.25rem;
+		margin-right: 0.25rem;
 	}
 
 	a {
 		display: block;
 		background: $gray-200;
-		padding: 2rem;
+		padding: 1rem;
 		border-radius: $border-radius;
-		margin: 0.75rem 1.5rem;
+		margin: 0 0.75rem;
 		font-family: $font-family-heading;
 		font-size: 1.25rem;
 	}
@@ -36,8 +39,21 @@
 	}
 
 	.menu {
+		padding-top: 0.75rem;
+
 		ul {
 			flex-direction: column;
+			margin: 0;
+		}
+
+		li {
+			width: 100%;
+			margin: 2.35rem;
+		}
+
+		a {
+			width: 100%;
+			margin: 0 0.75rem;
 		}
 	}
 }
