@@ -63,7 +63,14 @@ const router = new VueRouter( {
 		{ path: '/tag/:name', name: 'tag', component: tag },
 		{ path: '/', name: 'home', component: home },
 
-	]
+	],
+	scrollBehavior( to, from, savedPosition ) {
+		if ( savedPosition ) {
+			return savedPosition;
+		}
+
+		return { x: 0, y: 0 };
+	}
 } );
 
 //Define vuex store
