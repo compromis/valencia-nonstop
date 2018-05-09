@@ -4,18 +4,21 @@
 			<div v-if="loaded === true">
 				<h2>{{ page.title.rendered }}</h2>
 				<div v-html="page.content.rendered"></div>
+				<div v-if="page.page_children">
+					<ul>
+						<li v-for="child in page.page_children" :key="child.id">
+							<router-link :to="'/page/' + child.post_name">{{ child.post_title }}</router-link></li>
+					</ul>
+				</div>
+				<div v-if="page.parent">
+					<ul>
+						<li v-for="sibling in page.page_siblings" :key="sibling.id">
+							<router-link :to="'/page/' + sibling.post_name">{{ sibling.post_title }}</router-link></li>
+					</ul>
+				</div>
 			</div>
-			<div v-if="page.page_children">
-				<ul>
-					<li v-for="child in page.page_children" :key="child.id">
-						<router-link :to="'/page/' + child.post_name">{{ child.post_title }}</router-link></li>
-				</ul>
-			</div>
-			<div v-if="page.parent">
-				<ul>
-					<li v-for="sibling in page.page_siblings" :key="sibling.id">
-						<router-link :to="'/page/' + sibling.post_name">{{ sibling.post_title }}</router-link></li>
-				</ul>
+			<div v-else>
+					<page-loading />
 			</div>
 			<gmap-map
 				ref="gmap"
@@ -28,14 +31,14 @@
 	</transition>
 </template>
 
-<style>
-
-</style>
-
 <script>
+import PageLoading from './partials/page-loading.vue';
 const mapStyle = require('./maps/mapstyle.json');
 
 export default {
+	components: {
+		PageLoading
+	},
 	data () {
 		return {
 			page: {},
