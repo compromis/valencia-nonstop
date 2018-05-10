@@ -35,25 +35,6 @@
 	ul {
 		height: $nav-height-mobile;
 	}
-
-	a {
-		display: block;
-		background: $gray-100;
-		padding: 1rem;
-		border-radius: $border-radius;
-		font-family: $font-family-heading;
-		font-size: 1.25rem;
-		border: 3px $gray-300 solid;
-		transition: 0.25s ease-in-out;
-
-		&:hover {
-			background: $gray-200;
-			border: 3px $gray-500 solid;
-			text-decoration: none;
-			transform: translateY(-2px);
-			box-shadow: $raised-shadow;
-		}
-	}
 }
 
 .brand {

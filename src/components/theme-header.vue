@@ -13,7 +13,7 @@
 			</div>
 			<div class="menu">
 				<ul>
-					<li v-for="item in menus" v-if="item.type != 'custom'" :class="item.classes" :key="item.url">
+					<li v-for="item in menus" v-if="item.type != 'custom'" :class="[ item.classes, 'category' ]" :key="item.url">
 						<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}"> {{ item.title }} </router-link>
 					</li>
 				</ul>
