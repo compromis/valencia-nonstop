@@ -1,15 +1,16 @@
 // Load plugins
-var gulp			= require( 'gulp' );
+var gulp = require( 'gulp' );
 
-var sass			= require( 'gulp-sass' );
-var autoprefixer	= require( 'gulp-autoprefixer' ); // Concatenates JS files
-var combineMq		= require( 'gulp-combine-mq' ); // Combine media queries
+var sass = require( 'gulp-sass' );
+var autoprefixer = require( 'gulp-autoprefixer' ); // Concatenates JS files
+var combineMq = require( 'gulp-combine-mq' ); // Combine media queries
+var cssmin = require('gulp-cssnano'); // Minify CSS
 
 // Plugin to Notify after task completed
-var notify			= require( 'gulp-notify' ); // Notify after completing tasks
+var notify = require( 'gulp-notify' ); // Notify after completing tasks
 
 // Plugins to watch tasks
-var watch			= require( 'gulp-watch' );
+var watch = require( 'gulp-watch' );
 
 // Browsers you care about for autoprefixing.
 var autoprefixer_browsers = ['last 2 versions', 'ie 9', 'ios 6', 'android 4'];
@@ -24,6 +25,7 @@ gulp.task( 'sass', function() {
 	.pipe( autoprefixer( autoprefixer_browsers ) )
 	.pipe( sass.sync().on( 'error', sass.logError ) )
 	.pipe( combineMq() )
+	.pipe( cssmin() )
 	.pipe( gulp.dest( '.' ) )
 	.pipe( notify( {
 		message: 'TASK: "sass" Completed!',
