@@ -5,6 +5,7 @@
 		height: auto;
 		margin: 1.5rem;
 		margin-top: $header-height + 40px;
+		border-radius: $rounder-border-radius;
 		overflow-x: hidden;
 
 		.menu {
@@ -57,6 +58,10 @@
 					width: 33.333%;
 				}
 			}
+		}
+
+		.map {
+			left: 0;
 		}
 	}
 }

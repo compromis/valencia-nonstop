@@ -15,59 +15,6 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1;
 }
 
-.nav-menu {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: $nav-height-mobile;
-  background: $white;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  z-index: 10;
-  box-shadow: $big-shadow;
-
-  .header {
-    background: $white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: $header-height;
-  }
-}
-
-.brand {
-  position: fixed;
-  top: 0;
-  left: $nav-width-desktop;
-  right: 0;
-  height: $header-height;
-  background: $brand-gradient;
-  align-items: center;
-  box-shadow: $big-shadow;
-  z-index: 5;
-
-  .brand-share {
-    margin-right: auto;
-    margin-left: 1.5rem;
-  }
-
-  .brand-logo {
-    display: flex;
-    align-items: center;
-    background: $white;
-    width: 200px;
-    height: $header-height;
-    padding: 0 1rem;
-
-    img {
-      width: 100%;
-    }
-  }
-}
-
 .content {
   position: relative;
   z-index: 1;
@@ -104,31 +51,6 @@ h1, h2, h3, h4, h5, h6 {
 
   .frontpage .map {
     left: 0;
-  }
-
-  .nav-menu {
-    top: 0;
-    width: $nav-width-desktop;
-    right: auto;
-    height: 100%;
-    overflow-y: hidden;
-    overflow-x: hidden;
-
-    .header {
-      position: static;
-      height: auto;
-    }
-
-    .menu {
-      position: fixed;
-      top: $logo-height-desktop;
-      left: 0;
-      bottom: 0;
-      width: $nav-width-desktop;
-      overflow-x: hidden;
-      overflow-y: scroll;
-      border-top: 2px $gray-100 solid;
-    }
   }
 
   .content {
