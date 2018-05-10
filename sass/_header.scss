@@ -26,25 +26,32 @@
 	li {
 		display: flex;
 		list-style: none;
-		margin: 0;
+		margin: 0 0.5rem;
 		padding: 0;
 		align-items: center;
 	}
 
 	ul {
 		height: $nav-height-mobile;
-		margin-left: 0.25rem;
-		margin-right: 0.25rem;
 	}
 
 	a {
 		display: block;
-		background: $gray-200;
+		background: $gray-100;
 		padding: 1rem;
 		border-radius: $border-radius;
-		margin: 0 0.75rem;
 		font-family: $font-family-heading;
 		font-size: 1.25rem;
+		border: 3px $gray-300 solid;
+		transition: 0.25s ease-in-out;
+
+		&:hover {
+			background: $gray-200;
+			border: 3px $gray-500 solid;
+			text-decoration: none;
+			transform: translateY(-2px);
+			box-shadow: $raised-shadow;
+		}
 	}
 }
 
@@ -57,7 +64,7 @@
   background: $brand-gradient;
   align-items: center;
   box-shadow: $big-shadow;
-  z-index: 5;
+	z-index: 5;
 
   .brand-share {
     margin-right: auto;
@@ -107,29 +114,25 @@
       top: $logo-height-desktop;
       left: 0;
       bottom: 0;
-      width: $nav-width-desktop;
+			width: $nav-width-desktop;
       overflow-x: hidden;
       overflow-y: scroll;
-      border-top: 2px $gray-100 solid;
+			border-top: 2px $gray-100 solid;
+			
+			ul {
+				flex-direction: column;
+				margin: 0.5rem 1rem;
+				height: auto;
+			}
+	
+			li {
+				width: 100%;
+				margin: 0.5rem;
+			}
+	
+			a {
+				width: 100%;
+			}
     }
   }
-
-	.menu {
-		padding-top: 0.75rem;
-
-		ul {
-			flex-direction: column;
-			margin: 0;
-		}
-
-		li {
-			width: 100%;
-			margin: 2.35rem;
-		}
-
-		a {
-			width: 100%;
-			margin: 0 0.75rem;
-		}
-	}
 }
