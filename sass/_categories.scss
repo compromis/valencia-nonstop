@@ -1,5 +1,5 @@
 .category {
-	a {
+	a.category-button {
 		display: block;
 		background: $gray-100;
 		padding: 1rem;
@@ -19,6 +19,31 @@
 
 		&.router-link-active {
 			background: red;
+		}
+	}
+
+	&-sostenibilitat {
+		a.category-button {
+			border-color: lighten($green, 20%);
+			background: lighten($green, 45%);
+			color: $green;
+
+			&:hover {
+				border-color: $green;
+				background: lighten($green, 30%);
+				color: darken($green, 10%);
+			}
+
+			&.router-link-active {
+				background: $green;
+				color: $white;
+				border-color: $green;
+			}
+		}
+		
+		.band {
+			background: $green;
+			background: $green-gradient;
 		}
 	}
 }
