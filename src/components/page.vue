@@ -12,7 +12,7 @@
 			</div>
 			<div v-if="page.parent" class="subcategories">
 				<ul>
-					<li v-for="sibling in page.page_siblings" :key="sibling.id" :class="['category', 'category-' + child.post_name]">
+					<li v-for="sibling in page.page_siblings" :key="sibling.id" :class="['category', 'category-' + sibling.post_name]">
 						<router-link :to="'/page/' + sibling.post_name" class="category-button">{{ sibling.post_title }}</router-link></li>
 				</ul>
 			</div>
