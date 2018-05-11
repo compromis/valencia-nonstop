@@ -1,7 +1,7 @@
 <template>
 	<div class="posts">
 		<div v-if="loaded === 'true'" >
-			<div v-for="post in posts" :key="post.slug" class="container">
+			<div v-for="post in posts" :key="post.slug" class="post-container container">
 				<div class="post">
 					<div class="band"></div>
 					<h2 class="post-title"><router-link :to="{ name: 'post', params: { name:post.slug }}"> {{ post.title.rendered }} </router-link> </h2>
@@ -24,13 +24,19 @@
 					<a href=""  v-if="showNext" v-on:click.prevent="rtShowNext()"> següent &GT; </a>
 			</div>
 		</div>
+		<div v-else>
+				<posts-loading />
+		</div>
 	</div>
 </template>
 
 <script>
-const mapStyle = require('./maps/mapstyle.json');
+import PostsLoading from './partials/posts-loading.vue';
 
 export default {
+	components: {
+		PostsLoading
+	},
 	mounted() {
 		const vm = this;
 		if ( vm.$route.params.page ) {

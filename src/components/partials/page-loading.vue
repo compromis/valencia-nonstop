@@ -1,5 +1,5 @@
 <template>
-	<div class="page-loading">
+	<div class="loading">
 		<div class="heading">
 			<span class="filler"></span>
 		</div>
