@@ -21,29 +21,30 @@
 			background: red;
 		}
 	}
+}
 
-	&-sostenibilitat {
+@each $category, $color in $categories {
+	.category-#{$category} {
 		a.category-button {
-			border-color: lighten($green, 20%);
-			background: lighten($green, 45%);
-			color: $green;
+			border-color: lighten($color, 20%);
+			background: lighten($color, 45%);
+			color: $color;
 
 			&:hover {
-				border-color: $green;
-				background: lighten($green, 30%);
-				color: darken($green, 10%);
+				border-color: $color;
+				background: lighten($color, 30%);
+				color: darken($color, 10%);
 			}
 
 			&.router-link-active {
-				background: $green;
+				background: $color;
 				color: $white;
-				border-color: $green;
+				border-color: $color;
 			}
 		}
 		
 		.band {
-			background: $green;
-			background: $green-gradient;
+			background: $color;
 		}
-	}
+	}	
 }

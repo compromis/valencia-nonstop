@@ -38,3 +38,8 @@ $rounder-border-radius: $border-radius + 0.25rem;
 $brand-gradient: linear-gradient(135deg, $gradient-from 0%, $gradient-to 100%);
 $orange-gradient: linear-gradient(135deg, #fb8261 0%, #ffc960 100%);
 $green-gradient: linear-gradient(135deg, #A8B75B 0%, #739C53 100%);
+
+$categories: (
+	'sostenibilitat': $green,
+	'jazz': $orange
+);
