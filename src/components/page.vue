@@ -21,6 +21,7 @@
 				<page-loading />
 		</div>
 		<gmap-map
+			v-show="hasMap"
 			ref="gmap"
 			:center="mapCenter"
 			:zoom="14"

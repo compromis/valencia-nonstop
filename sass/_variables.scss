@@ -29,8 +29,8 @@ $font-family-heading: 'Multicolore', sans-serif;
 
 /* Semantic colors */
 $body-bg:    $white;
-$link-color: $primary;
 $primary:    $orange;
+$link-color: $primary;
 $secondary:  $gray-600;
 
 /* Shadows */
@@ -51,7 +51,7 @@ $green-gradient: linear-gradient(135deg, #A8B75B 0%, #739C53 100%);
 /* Categories */
 $categories: (
 	'sostenibilitat': $green,
-	'jazz': $orange
+	'jazz': $yellow
 );
 
 /* Dimensions */

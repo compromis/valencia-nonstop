@@ -7,15 +7,6 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: $font-family-heading;
 }
 
-.map {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
 .content {
   position: relative;
   z-index: 1;
@@ -39,10 +30,6 @@ h1, h2, h3, h4, h5, h6 {
   .header {
     top: $wp-admin-nav-height-mobile;
   }
-}
-
-.gm-bundled-control {
-  z-index: 100;
 }
 
 @include media-breakpoint-up(lg) {

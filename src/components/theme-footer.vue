@@ -1,25 +1,32 @@
 <template>
-
+	<div>
+		<gmap-map
+			ref="map"
+		  :center="mapCenter"
+		  :zoom="14"
+			:options="mapStyle"
+			class="map map-background"
+		></gmap-map>
+	</div>
 </template>
 
 <script>
+const mapStyle = require('./maps/mapstyle.json');
 
 export default {
-
-	mounted: function() {
-
-	},
 	data() {
 		return {
-
-		};
-	},
-	methods: {
-
+			mapCenter: { 
+				lat: 39.4650884, 
+				lng: -0.3711834 // Valencia
+			},
+			mapStyle: { 
+				styles: mapStyle, 
+				disableDefaultUI: true,
+				scrollwheel: false,
+				draggable: false
+			}
+		}
 	}
 };
 </script>
-
-<style>
-
-</style>
