@@ -1,44 +1,28 @@
-// Load plugins
-var gulp = require( 'gulp' );
+var gulp = require( 'gulp' ),
+		path = require('path'),
+		sass = require( 'gulp-sass' ),
+		autoprefixer = require( 'gulp-autoprefixer' ),
+		combineMq = require( 'gulp-combine-mq' ),
+		cssmin = require( 'gulp-cssnano' ),
+		notify = require( 'gulp-notify' ),
+		watch = require( 'gulp-watch' ),
+		autoprefixer_browsers = ['last 2 versions', 'ie 9', 'ios 6', 'android 4'];
 
-var sass = require( 'gulp-sass' );
-var autoprefixer = require( 'gulp-autoprefixer' ); // Concatenates JS files
-var combineMq = require( 'gulp-combine-mq' ); // Combine media queries
-var cssmin = require('gulp-cssnano'); // Minify CSS
-
-// Plugin to Notify after task completed
-var notify = require( 'gulp-notify' ); // Notify after completing tasks
-
-// Plugins to watch tasks
-var watch = require( 'gulp-watch' );
-
-// Browsers you care about for autoprefixing.
-var autoprefixer_browsers = ['last 2 versions', 'ie 9', 'ios 6', 'android 4'];
-
-
-var gulp = require('gulp');
-var path = require('path');
-
-// Styles
-gulp.task( 'sass', function() {
-  return gulp.src( './sass/*.scss' )
-	.pipe( autoprefixer( autoprefixer_browsers ) )
-	.pipe( sass.sync().on( 'error', sass.logError ) )
-	.pipe( combineMq() )
-	.pipe( cssmin() )
-	.pipe( gulp.dest( '.' ) )
-	.pipe( notify( {
-		message: 'TASK: "sass" Completed!',
-		onLast : true
-	} ) );
-} );
-
-
-// Watch tasks
-gulp.task( 'watch', function() {
-	gulp.watch( './sass/**/*.{scss,sass}', ['sass'] );
-} );
-//Copy
-
+gulp.task('sass', function () {
+	return gulp.src('./sass/**/*.scss')
+		.pipe( sass.sync().on('error', sass.logError) )
+		.pipe( autoprefixer( autoprefixer_browsers ) )
+		.pipe( combineMq() )
+		.pipe( cssmin() )
+		.pipe( gulp.dest('.') )
+		.pipe( notify( {
+			message: 'TASK: "sass" Completed!',
+			onLast : true
+		} ) );
+});
+ 
+gulp.task('watch', function () {
+  gulp.watch('./sass/**/*.scss', ['sass']);
+});
 
 gulp.task( 'default', ['watch'] );
