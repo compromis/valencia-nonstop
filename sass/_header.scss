@@ -38,33 +38,53 @@
 }
 
 .brand {
-  position: fixed;
-  top: 0;
-  left: $nav-width-desktop;
-  right: 0;
-  height: $header-height;
-  background: $brand-gradient;
-  align-items: center;
-  box-shadow: $big-shadow;
-	z-index: 5;
-
   .brand-share {
-    margin-right: auto;
-    margin-left: 1.5rem;
+    position: fixed;
+    top: 0;
+    left: $nav-width-desktop;
+    height: $header-height;
+    z-index: 30;  
+    display: flex;
+    align-items: flex-end;
+    height: $header-height;
+    padding-left: 1.5rem;
   }
 
   .brand-logo {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: $header-height;
+    z-index: 30;  
     display: flex;
     align-items: center;
     background: $white;
     width: 200px;
     height: $header-height;
     padding: 0 1rem;
+    box-shadow: $big-shadow;
 
     img {
       width: 100%;
     }
   }
+
+  &:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: $brand-gradient;
+    z-index: 20;
+  }
+}
+
+.admin-bar .brand-logo,
+.admin-bar .brand-share,
+.admin-bar .brand:before {
+  top: $wp-admin-nav-height-mobile;
 }
 
 @include media-breakpoint-up(lg) {
@@ -116,5 +136,11 @@
 				width: 100%;
 			}
     }
+  }
+
+  .admin-bar .brand-logo,
+  .admin-bar .brand-share,
+  .admin-bar .brand:before {
+    top: $wp-admin-nav-height-desktop;
   }
 }

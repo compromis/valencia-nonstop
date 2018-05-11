@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .map {
   position: fixed !important;
-  top: $header-height;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .admin-bar {
   .header {
-    top: 46px;
+    top: $wp-admin-nav-height-mobile;
   }
 }
 
@@ -67,12 +67,9 @@ h1, h2, h3, h4, h5, h6 {
   .admin-bar {
     .header,
     .brand,
-    .nav-menu {
-      top: 32px;
-    }
-  
+    .nav-menu,
     .map {
-      top: $header-height + 32px;
+      top: $wp-admin-nav-height-desktop;
     }
   }
 }

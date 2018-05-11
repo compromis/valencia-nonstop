@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<div class="brand d-none d-lg-flex">
-			<div class="brand-share">Facebook Twitter</div>
+			<transition name="fade">
+				<div class="brand-share" v-show="show_share_buttons">Facebook Twitter</div>
+			</transition>
 			<div class="brand-logo">
 				<img src="https://compromis.net/wp-content/themes/Compromis/images/logo-compromis-retina.png" alt="Compromís" />
 			</div>
@@ -34,10 +36,11 @@ export default {
 		return {
 			menus: [],
 			site_name: rtwp.site_name,
+			show_share_buttons: true
 		};
 	},
 	methods: {
-		getMenu: function() {
+		getMenu() {
 			const vm = this;
 			vm.$http.get( 'wp-api-menus/v2/menu-locations/primary-menu' )
 			.then( ( res ) => {
@@ -47,10 +50,21 @@ export default {
 				//console.log( `Something went wrong : ${ res }` );
 			} );
 		},
-		getUrlName: function( url ) {
+
+		getUrlName( url ) {
 			const array = url.split( '/' );
 			return array[ array.length - 2 ];
+		},
+
+		handleScroll() {
+			this.show_share_buttons = window.scrollY < 50;
 		}
+	},
+	created() {
+		window.addEventListener('scroll', this.handleScroll);
+	},
+	destroyed() {
+		window.removeEventListener('scroll', this.handleScroll);
 	}
 };
 </script>

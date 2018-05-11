@@ -1,3 +1,4 @@
+/* Colors */
 $blue:       #007bff;
 $indigo:     #6610f2;
 $purple:     #6f42c1;
@@ -8,6 +9,8 @@ $yellow:     #ffc107;
 $green:      #87B446;
 $teal:       #20c997;
 $cyan:       #17a2b8;
+
+/* Grays */
 $gray-100:   #f8f9fa;
 $gray-200:   #e9ecef;
 $gray-300:   #dee2e6;
@@ -19,27 +22,42 @@ $gray-800:   #343a40;
 $gray-900:   #212529;
 $black:      #000;
 $white:      #fff;
-$primary:    $orange;
-$secondary:  $gray-600;
-$gradient-from: #D4432F;
-$gradient-to: #E28333;
-$body-bg:    $white;
-$link-color: $primary;
+
+/* Typography */
 $font-family-sans-serif: 'Compromis', sans-serif;
 $font-family-heading: 'Multicolore', sans-serif;
-$nav-width-desktop: 350px;
-$nav-height-mobile: 100px;
-$logo-height-desktop: 400px;
-$header-height: 50px;
+
+/* Semantic colors */
+$body-bg:    $white;
+$link-color: $primary;
+$primary:    $orange;
+$secondary:  $gray-600;
+
+/* Shadows */
 $big-shadow: 0 0 35px rgba(50,50,93,.1), 0 0 15px rgba(0,0,0,.07);
 $raised-shadow: 0 7px 14px -3px rgba(50,50,93,.1), 0 3px 6px -3px rgba(0,0,0,.08);
+
+/* Border radii */
 $border-radius: 0.5rem;
 $rounder-border-radius: $border-radius + 0.25rem;
+
+/* Gradients */
+$gradient-from: #D4432F;
+$gradient-to: #E28333;
 $brand-gradient: linear-gradient(135deg, $gradient-from 0%, $gradient-to 100%);
 $orange-gradient: linear-gradient(135deg, #fb8261 0%, #ffc960 100%);
 $green-gradient: linear-gradient(135deg, #A8B75B 0%, #739C53 100%);
 
+/* Categories */
 $categories: (
 	'sostenibilitat': $green,
 	'jazz': $orange
 );
+
+/* Dimensions */
+$nav-width-desktop: 350px;
+$nav-height-mobile: 100px;
+$wp-admin-nav-height-desktop: 32px;
+$wp-admin-nav-height-mobile: 46px;
+$logo-height-desktop: 400px;
+$header-height: 50px;
