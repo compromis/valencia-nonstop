@@ -16,6 +16,9 @@
 					<li v-for="item in menus" v-if="item.type != 'custom'" :class="[ item.classes, 'category' ]" :key="item.url">
 						<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}" class="category-button"> {{ item.title }} </router-link>
 					</li>
+					<li v-else :class="[ item.classes, 'category' ]" :key="item.url">
+						<router-link :to="item.url" class="category-button"> {{ item.title }} </router-link>
+					</li>
 				</ul>
 			</div>
 		</nav>
@@ -51,8 +54,3 @@ export default {
 	}
 };
 </script>
-
-<style>
-
-
-</style>
