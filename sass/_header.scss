@@ -34,7 +34,11 @@
 
 	ul {
 		height: $nav-height-mobile;
-	}
+  }
+  
+  li:last-child {
+    padding-right: 1rem;
+  }
 }
 
 .brand {
@@ -141,7 +145,11 @@
 	
 			li {
 				width: 100%;
-				margin: 0.5rem;
+        margin: 0.5rem;
+        
+        &:last-child {
+          padding-right: 0;
+        }
 			}
 	
 			a {

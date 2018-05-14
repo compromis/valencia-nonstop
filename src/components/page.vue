@@ -3,18 +3,20 @@
 		<div class="band"></div>
 		<div v-if="loaded === true">
 			<h2>{{ page.title.rendered }}</h2>
-			<div v-if="page.parent" class="subcategories siblings">
-				<ul>
-					<li v-for="sibling in page.page_siblings" :key="sibling.id" :class="['category', 'category-' + sibling.post_name]">
-						<router-link :to="'/page/' + sibling.post_name" class="category-button">{{ sibling.post_title }}</router-link></li>
-				</ul>
-			</div>
-			<div v-html="page.content.rendered" class="page-content"></div>
-			<div v-if="page.page_children" class="subcategories">
-				<ul>
-					<li v-for="child in page.page_children" :key="child.id" :class="['category', 'category-' + child.post_name]">
-						<router-link :to="'/page/' + child.post_name" class="category-button">{{ child.post_title }}</router-link></li>
-				</ul>
+			<div class="page-content-wrapper">
+				<div v-html="page.content.rendered" class="page-content"></div>
+				<div v-if="page.parent" class="subcategories siblings">
+					<ul>
+						<li v-for="sibling in page.page_siblings" :key="sibling.id" :class="['category', 'category-' + sibling.post_name]">
+							<router-link :to="'/page/' + sibling.post_name" class="category-button">{{ sibling.post_title }}</router-link></li>
+					</ul>
+				</div>
+				<div v-if="page.page_children" class="subcategories children">
+					<ul>
+						<li v-for="child in page.page_children" :key="child.id" :class="['category', 'category-' + child.post_name]">
+							<router-link :to="'/page/' + child.post_name" class="category-button">{{ child.post_title }}</router-link></li>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<div v-else>

@@ -21,4 +21,20 @@
 	.page.has-map {
 		margin-top: 80vh;
 	}
-}
+
+	.page-content-wrapper {
+		display: flex;
+		flex-direction: column;
+	
+		.siblings {
+			order: 1;
+		}
+	
+		.page-content {
+			order: 2;
+		}
+	
+		.children {
+			order: 3;
+		}
+	}}
