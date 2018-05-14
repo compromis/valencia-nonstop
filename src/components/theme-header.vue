@@ -5,7 +5,9 @@
 				<div class="brand-share" v-show="show_share_buttons">Facebook Twitter</div>
 			</transition>
 			<div class="brand-logo">
-				<img src="https://compromis.net/wp-content/themes/Compromis/images/logo-compromis-retina.png" alt="Compromís" />
+				<a href="https://compromis.net" target="_blank" rel="noopener">
+					<img src="https://compromis.net/wp-content/themes/Compromis/images/logo-compromis-retina.png" alt="Compromís" />
+				</a>
 			</div>
 		</div>
 
