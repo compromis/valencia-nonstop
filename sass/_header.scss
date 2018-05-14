@@ -39,6 +39,10 @@
   li:last-child {
     padding-right: 1rem;
   }
+
+  &-scrolled {
+    border-top: 1px $gray-300 solid;
+  }
 }
 
 .brand {

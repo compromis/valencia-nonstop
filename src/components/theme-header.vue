@@ -17,7 +17,7 @@
 			<div class="header">
 				<router-link :to="{ name: 'frontpage' }" class="site-name">{{ site_name }}</router-link>
 			</div>
-			<div class="menu">
+			<div :class="{ 'menu': true, 'menu-scrolled': menu_scrolled }" @scroll="handleMenuScroll">
 				<ul>
 					<li v-for="item in menus" v-if="item.type != 'custom'" :class="[ item.classes, 'category' ]" :key="item.url">
 						<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}" class="category-button"> {{ item.title }} </router-link>
@@ -45,7 +45,8 @@ export default {
 		return {
 			menus: [],
 			site_name: rtwp.site_name,
-			show_share_buttons: true
+			show_share_buttons: true,
+			menu_scrolled: false
 		};
 	},
 	methods: {
@@ -67,6 +68,10 @@ export default {
 
 		handleScroll() {
 			this.show_share_buttons = window.scrollY < 50;
+		},
+
+		handleMenuScroll(e) {
+			this.menu_scrolled = e.target.scrollTop > 0;
 		}
 	},
 	created() {
