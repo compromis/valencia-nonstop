@@ -86,6 +86,13 @@
   }
 }
 
+.share-buttons-facebook,
+.share-buttons-twitter {
+  height: 28px;
+  border: none;
+  overflow: hidden;
+}
+
 .admin-bar .brand-logo,
 .admin-bar .brand-share,
 .admin-bar .brand:before {

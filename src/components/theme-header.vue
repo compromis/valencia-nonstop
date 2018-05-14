@@ -2,7 +2,9 @@
 	<div>
 		<div class="brand d-none d-lg-flex">
 			<transition name="fade">
-				<div class="brand-share" v-show="show_share_buttons">Facebook Twitter</div>
+				<div class="brand-share" v-show="show_share_buttons">
+					<share-buttons />
+				</div>
 			</transition>
 			<div class="brand-logo">
 				<a href="https://compromis.net" target="_blank" rel="noopener">
@@ -30,7 +32,12 @@
 </template>
 
 <script>
+import ShareButtons from './partials/share-buttons.vue';
+
 export default {
+	components: {
+		ShareButtons
+	},
 	mounted: function() {
 		this.getMenu();
 	},
