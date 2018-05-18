@@ -34,6 +34,7 @@
 			<div class="map-decoration map-bird"></div>
 			<div class="map-decoration map-micalet"></div>
 			<div class="map-decoration map-palmtree"></div>
+			<div class="map-decoration map-wave"></div>
 		</div>
 	</div>
 </template>

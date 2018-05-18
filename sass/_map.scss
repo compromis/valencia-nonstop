@@ -31,6 +31,21 @@
       background-position: -27px -155px;
       background-size: 123%;
       transform: scale(0.75) rotate(18deg);
+      transition: transform 0.5s ease-in-out;
+
+      &:hover {
+        transform: scale(0.75) rotate(0deg);
+      }
+    }
+
+    .map-palmtree {
+      bottom: -50px;
+      left: $nav-width-desktop + -100px;
+      height: 266px;
+      width: 290px;
+      background-image: url('images/icons/icon-palmtree.svg');
+      background-position: -28px -96px;
+      background-size: 123%;
     }
 
     .map-micalet {
@@ -43,14 +58,14 @@
       background-size: 161%;
     }
 
-    .map-palmtree {
-      bottom: -50px;
-      left: $nav-width-desktop + -100px;
-      height: 266px;
-      width: 290px;
-      background-image: url('images/icons/icon-palmtree.svg');
-      background-position: -28px -96px;
-      background-size: 123%;
+    .map-wave {
+      top: 22px;
+      right: -22px;
+      height: 302px;
+      width: 89px;
+      background-image: url('images/icons/icon-wave.svg');
+      background-position: -107px -55px;
+      background-size: 327%;
     }
   }
 
@@ -62,5 +77,11 @@
     .map-palmtree {
       left: -80px;
     }
+  }
+}
+
+@media (max-height: 800px) {
+  .map-wave {
+    display: none;
   }
 }

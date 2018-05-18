@@ -44,11 +44,14 @@
 @include media-breakpoint-up(lg) {
 	.frontpage {
 		.nav-menu {
+			display: flex;
 			width: 100%;
 			max-width: 900px;
 			margin: $header-height + 100px auto 0 auto;
 			
 			.menu {
+				overflow-y:hidden;
+
 				ul {
 					flex-direction: row;
 					flex-wrap: wrap;
@@ -59,8 +62,14 @@
 				}
 			}
 
-			.site-name {
-				background-size: 30%;
+			.header {
+				width: 300px;
+				background-color: $gray-100;
+
+				.site-name {
+					background-size: 100%;
+					background-position: center 2rem;
+				}
 			}
 		}
 
