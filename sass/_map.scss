@@ -14,3 +14,53 @@
 .map-background {
   opacity: 0.5;
 }
+
+@include media-breakpoint-up(lg) {
+  .map-decorations {
+    .map-decoration {
+      position: fixed;
+      z-index: -1;
+    }
+
+    .map-bird {
+      top: 130px;
+      left: $nav-width-desktop + -150px;
+      height: 200px;
+      width: 290px;
+      background-image: url('images/icons/icon-bird-positive.svg');
+      background-position: -27px -155px;
+      background-size: 123%;
+      transform: scale(0.75) rotate(18deg);
+    }
+
+    .map-micalet {
+      bottom: -90px;
+      right: -116px;
+      height: 358px;
+      width: 207px;
+      background-image: url('images/icons/icon-micalet.svg');
+      background-position: -102px -53px;
+      background-size: 161%;
+    }
+
+    .map-palmtree {
+      bottom: -50px;
+      left: $nav-width-desktop + -100px;
+      height: 266px;
+      width: 290px;
+      background-image: url('images/icons/icon-palmtree.svg');
+      background-position: -28px -96px;
+      background-size: 123%;
+    }
+  }
+
+  .frontpage {
+    .map-bird {
+      left: -80px;
+    }
+
+    .map-palmtree {
+      left: -80px;
+    }
+  }
+}

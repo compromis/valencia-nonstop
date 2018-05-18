@@ -121,12 +121,12 @@
 			height: auto;
 			
 			.site-name {
-				display: block;
-				text-indent: -9999px;
-				background-image: url('images/logo.png');
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size: 60%;
+        display: block;
+        text-indent: -9999px;
+        background-image: url('images/logo.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
 				height: $logo-height-desktop;
 			}	
     }

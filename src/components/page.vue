@@ -27,14 +27,20 @@
 			ref="gmap"
 			:center="mapCenter"
 			:zoom="14"
-			:options="mapStyle"
+			:options="mapOptions"
 			class="map"
 		></gmap-map>
+		<div class="map-decorations">
+			<div class="map-decoration map-bird"></div>
+			<div class="map-decoration map-micalet"></div>
+			<div class="map-decoration map-palmtree"></div>
+		</div>
 	</div>
 </template>
 
 <script>
 import PageLoading from './partials/page-loading.vue';
+import * as VueGoogleMaps from 'vue2-google-maps'
 const mapStyle = require('./maps/mapstyle.json');
 
 export default {
@@ -51,7 +57,7 @@ export default {
 				lat: 39.4650884, 
 				lng: -0.3711834 // Valencia
 			},
-			mapStyle: { 
+			mapOptions: { 
 				styles: mapStyle, 
 				streetViewControl: false, 
 				mapTypeControl: false, 
@@ -65,6 +71,15 @@ export default {
 
 	mounted () {
 		this.getPage();
+
+		VueGoogleMaps.loaded.then(() => {
+        this.mapOptions = {
+          zoomControl: true,
+          zoomControlOptions: {
+              position: google.maps.ControlPosition.RIGHT_CENTER
+          }
+        }
+      });
 	},
 
 	methods: {
