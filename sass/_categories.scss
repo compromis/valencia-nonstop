@@ -2,10 +2,11 @@
 	a.category-button {
 		display: block;
 		background: $gray-100;
-		padding: 1rem;
+		padding: 0.5rem 1rem;
 		border-radius: $border-radius;
 		font-family: $font-family-heading;
-		font-size: 1.25rem;
+		font-size: 1.5rem;
+		text-transform: uppercase;
 		color: $gray-600;
 		border: 3px $gray-300 solid;
 		transition: 0.25s ease-in-out;

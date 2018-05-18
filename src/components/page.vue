@@ -2,7 +2,7 @@
 	<div :class="[{ 'page container': true, 'has-map': hasMap }, pageClass]">
 		<div class="band"></div>
 		<div v-if="loaded === true">
-			<h2>{{ page.title.rendered }}</h2>
+			<h2 class="page-title">{{ page.title.rendered }}</h2>
 			<div class="page-content-wrapper">
 				<div v-html="page.content.rendered" class="page-content"></div>
 				<div v-if="page.parent" class="subcategories siblings">
