@@ -12,6 +12,7 @@
 			position: static;
 			width: 100%;
 			padding-top: 0;
+			border-top: 0;
 	
 			ul {
 				height: auto;
@@ -59,6 +60,10 @@
 
 				li {
 					width: 33.333%;
+
+					&:last-child {
+						padding-right: 0.5rem;
+					}
 				}
 			}
 
