@@ -1,4 +1,4 @@
-.nav-menu {
+.header-wrapper {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -29,6 +29,10 @@
       margin-left: 1rem;
       font-size: 1.5rem;
     }
+
+    .secondary-menu {
+      display: none;
+    }
   }
 }
 
@@ -48,10 +52,6 @@
   
   li:last-child {
     padding-right: 1rem;
-  }
-
-  &-scrolled {
-    border-top: 1px $gray-300 solid;
   }
 }
 
@@ -103,14 +103,17 @@
   overflow: hidden;
 }
 
-.admin-bar .brand-logo,
-.admin-bar .brand-share,
-.admin-bar .brand:before {
-  top: $wp-admin-nav-height-mobile;
+.admin-bar {
+  .brand-logo,
+  .brand-share,
+  .brand:before,
+  .header {
+    top: $wp-admin-nav-height-mobile;
+  }
 }
 
 @include media-breakpoint-up(lg) {
-  .nav-menu {
+  .header-wrapper {
     top: 0;
     width: $nav-width-desktop;
     right: auto;
@@ -122,6 +125,7 @@
       position: static;
       height: auto;
       box-shadow: none;
+      flex-direction: column;
 			
 			.site-name {
         display: block;
@@ -131,9 +135,48 @@
         background-position: center;
         background-size: 65%;
         width: 100%;
-        height: $logo-height-desktop;
+        height: $logo-height-desktop - 30;
         margin-left: 0;
-			}	
+      }
+      
+      .secondary-menu {
+        display: block;
+        height: 30px;
+        width: 100%;
+        padding: 0 1rem;
+        border-top: 1px $gray-200 solid;
+
+        ul {
+          height: 30px;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          padding: 0;
+          margin: 0;
+        }
+
+        li {
+          list-style: none;
+        }
+
+        a {
+          color: $gray-600;
+          border: 1px transparent solid;
+
+          &:hover {
+            color: $link-color;
+          }
+
+          &:active {
+            border: 1px $gray-700 solid;
+            text-decoration: none;
+          }
+
+          &.router-link-active {
+            font-weight: bold;
+          }
+        }
+      }
     }
 
     .menu {
@@ -144,7 +187,7 @@
 			width: $nav-width-desktop;
       overflow-x: hidden;
       overflow-y: scroll;
-			border-top: 3cpx $gray-100 solid;
+			border-top: 2px $gray-200 solid;
 			
 			ul {
 				flex-direction: column;
@@ -201,10 +244,16 @@
       z-index: 20;
     }
   }
+  
+  .admin-bar {
+    .brand-logo,
+    .brand-share,
+    .brand:before {
+      top: $wp-admin-nav-height-desktop;
+    }
 
-  .admin-bar .brand-logo,
-  .admin-bar .brand-share,
-  .admin-bar .brand:before {
-    top: $wp-admin-nav-height-desktop;
+    .menu {
+      top: $logo-height-desktop + $wp-admin-nav-height-desktop;
+    }
   }
 }

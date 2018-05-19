@@ -13,13 +13,23 @@
 			</div>
 		</div>
 
-		<nav class="nav-menu">
+		<nav class="header-wrapper">
 			<div class="header">
 				<router-link :to="{ name: 'frontpage' }" class="site-name">VLC, el canvi no para</router-link>
+				<div class="secondary-menu">
+					<ul>
+						<li v-for="item in secondary_menu" v-if="item.type != 'custom'" :class="item.classes" :key="item.url">
+							<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}"> {{ item.title }} </router-link>
+						</li>
+						<li v-else :class="item.classes" :key="item.url">
+							<router-link :to="item.url"> {{ item.title }} </router-link>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div :class="{ 'menu': true, 'menu-scrolled': menu_scrolled }" @scroll="handleMenuScroll">
+			<div class="menu">
 				<ul>
-					<li v-for="item in menus" v-if="item.type != 'custom'" :class="[ item.classes, 'category' ]" :key="item.url">
+					<li v-for="item in primary_menu" v-if="item.type != 'custom'" :class="[ item.classes, 'category' ]" :key="item.url">
 						<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}" class="category-button"> {{ item.title }} </router-link>
 					</li>
 					<li v-else :class="[ item.classes, 'category' ]" :key="item.url">
@@ -39,26 +49,30 @@ export default {
 		ShareButtons
 	},
 	mounted: function() {
-		this.getMenu();
+		this.getMenu('primary-menu');
+		this.getMenu('secondary-menu');
 	},
 	data() {
 		return {
-			menus: [],
+			primary_menu: [],
+			secondary_menu: [],
 			site_name: rtwp.site_name,
-			show_share_buttons: true,
-			menu_scrolled: false
+			show_share_buttons: true
 		};
 	},
 	methods: {
-		getMenu() {
-			const vm = this;
-			vm.$http.get( '/wp-json/wp-api-menus/v2/menu-locations/primary-menu' )
-			.then( ( res ) => {
-				vm.menus = res.data;
-			} )
-			.catch( ( res ) => {
-				//console.log( `Something went wrong : ${ res }` );
-			} );
+		getMenu(menu_location) {
+			this.$http.get( '/wp-json/wp-api-menus/v2/menu-locations/' + menu_location )
+				.then( ( res ) => {
+					if(menu_location == 'primary-menu') {
+						this.primary_menu = res.data;
+					} else {
+						this.secondary_menu = res.data;
+					}
+				} )
+				.catch( ( res ) => {
+					//console.log( `Something went wrong : ${ res }` );
+				} );
 		},
 
 		getUrlName( url ) {
@@ -68,10 +82,6 @@ export default {
 
 		handleScroll() {
 			this.show_share_buttons = window.scrollY < 50;
-		},
-
-		handleMenuScroll(e) {
-			this.menu_scrolled = e.target.scrollTop > 0;
 		}
 	},
 	created() {

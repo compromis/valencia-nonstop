@@ -51,9 +51,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .admin-bar {
+    .header-wrapper,
     .header,
     .brand,
-    .nav-menu,
     .map {
       top: $wp-admin-nav-height-desktop;
     }

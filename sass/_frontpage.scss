@@ -1,5 +1,5 @@
 .frontpage {
-	.nav-menu {
+	.header-wrapper {
 		position: static;
 		width: auto;
 		height: auto;
@@ -43,10 +43,10 @@
 
 @include media-breakpoint-up(lg) {
 	.frontpage {
-		.nav-menu {
+		.header-wrapper {
 			display: flex;
 			width: 100%;
-			max-width: 900px;
+			max-width: 1000px;
 			margin: $header-height + 100px auto 0 auto;
 			
 			.menu {
@@ -63,13 +63,15 @@
 			}
 
 			.header {
-				width: 300px;
+				width: 250px;
+				flex-shrink: 0;
 				background-color: $gray-100;
 				border-right: 1px $gray-200 solid;
 
 				.site-name {
-					background-size: 100%;
-					background-position: center 2rem;
+					background-size: 110%;
+					background-position: center 1rem;
+					height: 420px;
 				}
 			}
 		}
