@@ -20,18 +20,59 @@
     left: 0;
     right: 0;
     height: $header-height;
-    background: $white;
+    background: $orange;
+    background: $brand-gradient;
     box-shadow: $big-shadow;
+
+    .hamburger {
+      margin-left: 1rem;
+      padding: 0;
+      border: 0;
+    }
 
     .site-name {
       font-family: $font-family-heading;
       text-transform: uppercase;
       margin-left: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.4rem; 
+      color: $white;
     }
 
     .secondary-menu {
       display: none;
+
+      &.secondary-menu-visible {
+        display: block !important;
+        position: fixed;
+        top: $nav-height-mobile + 1px;
+        left: 0;
+        right: 0;
+        background: $black;
+        background: rgba(0, 0, 0, 0.5);
+
+        ul {
+          margin: 2rem;
+          padding: 0;
+          text-align: center;
+        }
+
+        li {
+          list-style: none;
+          border-bottom: 2px $gray-500 solid;
+          border-bottom: 2px rgba(255, 255, 255, 0.25) solid;
+
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+
+        a {
+          display: block;
+          color: $white;
+          font-size: 1.5rem;
+          padding: 0.75rem;
+        }
+      }
     }
   }
 }
@@ -79,6 +120,7 @@
     display: flex;
     align-items: center;
     background: $white;
+    border-left: 1px $gray-300 solid;
     width: 63px;
     height: $header-height;
     padding: 0 1rem;
@@ -124,10 +166,15 @@
     .header {
       position: static;
       height: auto;
+      background: $white;
       box-shadow: none;
       flex-direction: column;
-			
-			.site-name {
+
+      .hamburger {
+        display: none;
+      }
+
+      .site-name {
         display: block;
         text-indent: -9999px;
         background-image: url('images/logo.svg');
@@ -218,6 +265,7 @@
     &-logo {
       width: 190px;
       box-shadow: $big-shadow;
+      border-left: 0;
 
       a {
         width: 100%;
