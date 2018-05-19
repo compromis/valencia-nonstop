@@ -15,7 +15,7 @@
 
 		<nav class="header-wrapper">
 			<div class="header navbar-dark">
-				<button class="navbar-toggler hamburger" @click="toggleSecondaryMenu()" type="button" aria-controls="navbarNavAltMarkup" :aria-expanded="false" aria-label="Mostra el menú">
+				<button class="navbar-toggler hamburger" @click="toggleSecondaryMenu()" type="button" aria-controls="navbarNavAltMarkup" :aria-expanded="secondary_menu_visible" aria-label="Mostra el menú">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<router-link :to="{ name: 'frontpage' }" class="site-name">VLC, el canvi no para</router-link>
@@ -31,6 +31,7 @@
 				</div>
 			</div>
 			<div class="menu">
+				<div class="secondary-logo d-lg-none"></div>
 				<ul>
 					<li v-for="item in primary_menu" v-if="item.type != 'custom'" :class="[ item.classes, 'category' ]" :key="item.url">
 						<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}" class="category-button"> {{ item.title }} </router-link>
