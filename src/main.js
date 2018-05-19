@@ -27,6 +27,8 @@ Vue.config.devTools = true;
 //Import all vue components
 import posts from './components/posts.vue';
 Vue.component( 'posts', posts );
+import events from './components/events.vue';
+Vue.component( 'events', events );
 import post from './components/post.vue';
 Vue.component( 'post', post );
 import header from './components/theme-header.vue';
@@ -67,8 +69,10 @@ const router = new VueRouter( {
 	mode: 'history',
 	routes: [
 
-		{ path: '/articles/:page(\\d+)?', name: 'posts', component: posts },
-		{ path: '/articles/:name', name: 'post', component: post },
+		{ path: '/noticies/:page(\\d+)?', name: 'articles', component: posts },
+		{ path: '/noticies/:name', name: 'article', component: post, props: { remote: true } },
+		{ path: '/agenda/:page(\\d+)?', name: 'events', component: events },
+		{ path: '/agenda/:name', name: 'event', component: post },
 		{ path: '/page/:name', name: 'page', component: page },
 		{ path: '/category/:name', name: 'cat', component: category },
 		{ path: '/tag/:name', name: 'tag', component: tag },

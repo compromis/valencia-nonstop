@@ -88,7 +88,7 @@ export default {
 			this.loaded = false;
 			if(this.kml) this.kml.setMap(null);
 
-			this.$http.get('wp/v2/pages', {
+			this.$http.get('/wp-json/wp/v2/pages', {
 				params: { slug: this.$route.params.name }
 			}).then((res) => {
 				this.page = res.data[0];

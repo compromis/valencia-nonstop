@@ -4,7 +4,7 @@
 			<div class="post-container container" >
 				<div class="band"></div>
 				<h2> {{ post.title.rendered }}</h2>
-				<div class="progressive full">
+				<div class="progressive full" v-if="post.hasOwnProperty('featured_image_surc') && post.featured_image_src['full'][0]">
 					<img class="lazy"
 						v-progressive="post.featured_image_src['full'][0]" 
 						:data-srcset="post.featured_image_src['srcset']" 
@@ -38,7 +38,9 @@ export default {
 	mounted: function() {
 		this.getPost();
 	},
-
+	props: {
+		remote: Boolean
+	},
 	data() {
 		return {
 			base_path: rtwp.base_path,
@@ -47,11 +49,11 @@ export default {
 			pageTitle: ''
 		};
 	},
-
 	methods: {
 		getPost: function() {
 			const vm = this;
-			vm.$http.get( 'wp/v2/posts', {
+			const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/posts' : '/wp-json/wp/v2/posts';
+			vm.$http.get( url, {
 				params: { slug: vm.$route.params.name }
 			} )
 			.then( ( res ) => {

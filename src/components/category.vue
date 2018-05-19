@@ -52,7 +52,7 @@ export default {
 		getPosts: function( catId ) {
 			const vm = this;
 			vm.loaded = 'false';
-			vm.$http.get( 'wp/v2/posts', {
+			vm.$http.get( '/wp-json/wp/v2/posts', {
 				params: { categories: catId }
 			} )
 			.then( ( res ) => {
@@ -69,7 +69,7 @@ export default {
 			const vm = this;
 			vm.catName = name;
 			vm.loaded = 'false';
-			vm.$http.get( 'wp/v2/categories/?slug=' + name )
+			vm.$http.get( '/wp-json/wp/v2/categories/?slug=' + name )
 			.then( ( res ) => {
 				res = res.data[ 0 ];
 				vm.totalCount = ( res.data );

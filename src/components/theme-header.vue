@@ -52,7 +52,7 @@ export default {
 	methods: {
 		getMenu() {
 			const vm = this;
-			vm.$http.get( 'wp-api-menus/v2/menu-locations/primary-menu' )
+			vm.$http.get( '/wp-json/wp-api-menus/v2/menu-locations/primary-menu' )
 			.then( ( res ) => {
 				vm.menus = res.data;
 			} )

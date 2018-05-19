@@ -4,7 +4,7 @@
 			<div v-for="post in posts" :key="post.slug" class="post-container container">
 				<div class="post">
 					<div class="band"></div>
-					<h2 class="post-title"><router-link :to="{ name: 'article', params: { name: post.slug, remote: true }}"><span v-html="post.title.rendered"></span></router-link> </h2>
+					<h2 class="post-title"><router-link :to="{ name: 'event', params: { name:post.slug }}"><span v-html="post.title.rendered"></span></router-link> </h2>
 					<div class="meta">
 						<span class="posted-on">
 							Posted On
@@ -64,7 +64,7 @@ export default {
 	methods: {
 		getPosts( pageNumber = 1 ) {
 			const vm = this;
-			const url = 'https://valencia.compromis.net/wp-json/wp/v2/posts';
+			const url = '/wp-json/wp/v2/posts';
 			vm.loaded = 'false';
 			vm.$http.get( url, {
 				params: { per_page: vm.postPerPage, page: pageNumber }
@@ -90,14 +90,14 @@ export default {
 			const vm = this;
 			if ( vm.currentPage < vm.totalPages ) {
 				vm.currentPage = vm.currentPage + 1;
-				vm.$router.push( { 'name': 'articles', params: { 'page': vm.currentPage } } );
+				vm.$router.push( { 'name': 'events', params: { 'page': vm.currentPage } } );
 			}
 		},
 		rtShowPrev( event ) {
 			const vm = this;
 			if ( vm.currentPage != 1 ) {
 				vm.currentPage = vm.currentPage - 1;
-				vm.$router.push( { 'name': 'articles', params: { 'page': vm.currentPage } } );
+				vm.$router.push( { 'name': 'events', params: { 'page': vm.currentPage } } );
 			}
 		},
 		formatDate( value ) {

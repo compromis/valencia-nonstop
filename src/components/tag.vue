@@ -74,7 +74,7 @@ export default {
 
 			const vm = this;
 			vm.loaded = 'false';
-			vm.$http.get( 'wp/v2/posts', {
+			vm.$http.get( '/wp-json/wp/v2/posts', {
 				params: { tags: tagId }
 			} )
 				.then( ( res ) => {
@@ -97,7 +97,7 @@ export default {
 			const vm = this;
 			vm.tagName = name;
 			vm.loaded = 'false';
-			vm.$http.get( 'wp/v2/tags/?slug=' + name )
+			vm.$http.get( '/wp-json/wp/v2/tags/?slug=' + name )
 				.then( ( res ) => {
 
 					res = res.data[ 0 ];
