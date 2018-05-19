@@ -5,7 +5,7 @@
 }
 
 .page.has-map {
-	margin-top: 60vh;
+	margin-top: 65vh;
 }
 
 .band {
@@ -21,7 +21,7 @@
 
 @include media-breakpoint-up(lg) {
 	.band {
-		margin: -2rem -2rem 2rem -2rem;
+		margin: -1.5rem -2rem 1.5rem -2rem;
 	}
 
 	.page.has-map {
