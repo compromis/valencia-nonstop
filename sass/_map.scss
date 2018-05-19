@@ -19,6 +19,7 @@
   .map-decoration {
     position: fixed;
     z-index: -1;
+    transition: transform 0.5s ease-in-out;
   }
 
   .map-bird {
@@ -31,11 +32,6 @@
     background-position: -27px -155px;
     background-size: 123%;
     transform: scale(0.75) rotate(18deg);
-    transition: transform 0.5s ease-in-out;
-
-    &:hover {
-      transform: scale(0.75) rotate(0deg);
-    }
   }
 
   .map-palmtree {
@@ -82,21 +78,37 @@
   .map-decorations {
     .map-bird {
       display: block;
+
+      &:hover {
+        transform: scale(0.75) rotate(0deg);
+      }
     }
 
     .map-palmtree {
       bottom: -50px;
       left: $nav-width-desktop + -100px;
       transform: scale(1);
+
+      &:hover {
+        transform: translateY(-20px) rotate(2deg);
+      }
     }
 
     .map-micalet {
       bottom: -90px;
       transform: scale(1);
+
+      &:hover {
+        transform: translateY(-20px) rotate(-2deg);
+      }
     }
 
     .map-wave {
       display: block;
+
+      &:hover {
+        transform: translateY(10px);
+      }
     }
   }
 
@@ -116,7 +128,9 @@
 }
 
 @media (max-height: 800px) {
-  .map-wave {
-    display: none;
+  .map-decorations {
+    .map-wave {
+      display: none;
+    }
   }
 }
