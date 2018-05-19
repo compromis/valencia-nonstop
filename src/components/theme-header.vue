@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="brand d-none d-lg-flex">
+		<div class="brand">
 			<transition name="fade">
 				<div class="brand-share" v-show="show_share_buttons">
 					<share-buttons />
@@ -15,7 +15,7 @@
 
 		<nav class="nav-menu">
 			<div class="header">
-				<router-link :to="{ name: 'frontpage' }" class="site-name">{{ site_name }}</router-link>
+				<router-link :to="{ name: 'frontpage' }" class="site-name">VLC, el canvi no para</router-link>
 			</div>
 			<div :class="{ 'menu': true, 'menu-scrolled': menu_scrolled }" @scroll="handleMenuScroll">
 				<ul>

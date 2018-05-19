@@ -13,12 +13,22 @@
   box-shadow: $big-shadow;
 
   .header {
-    background: $white;
+    display: flex;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: $header-height;
+    background: $white;
+    box-shadow: $big-shadow;
+
+    .site-name {
+      font-family: $font-family-heading;
+      text-transform: uppercase;
+      margin-left: 1rem;
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -46,19 +56,21 @@
 }
 
 .brand {
-  .brand-share {
+  display: flex;
+
+  &-share {
+    display: none;
     position: fixed;
     top: 0;
     left: $nav-width-desktop;
     height: $header-height;
     z-index: 30;  
-    display: flex;
     align-items: flex-end;
     height: $header-height;
     padding-left: 1.5rem;
   }
 
-  .brand-logo {
+  &-logo {
     position: fixed;
     top: 0;
     right: 0;
@@ -67,30 +79,20 @@
     display: flex;
     align-items: center;
     background: $white;
-    width: 190px;
+    width: 63px;
     height: $header-height;
     padding: 0 1rem;
-    box-shadow: $big-shadow;
     transition: 0.15s ease-in-out;
 
+    a {
+      display: block;
+      overflow: hidden;
+      width: 35px;
+    }
+
     img {
-      width: 100%;
+      height: calc(#{$header-height} - 1rem);
     }
-
-    &:hover {
-      box-shadow: $raised-shadow;
-    }
-  }
-
-  &:before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 10px;
-    background: $brand-gradient;
-    z-index: 20;
   }
 }
 
@@ -118,7 +120,8 @@
 
     .header {
       position: static;
-			height: auto;
+      height: auto;
+      box-shadow: none;
 			
 			.site-name {
         display: block;
@@ -127,7 +130,9 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: 65%;
-				height: $logo-height-desktop;
+        width: 100%;
+        height: $logo-height-desktop;
+        margin-left: 0;
 			}	
     }
 
@@ -159,6 +164,41 @@
 			a {
 				width: 100%;
 			}
+    }
+  }
+
+  .brand {
+    &-share {
+      display: flex;
+    }
+
+    &-logo {
+      width: 190px;
+      box-shadow: $big-shadow;
+
+      a {
+        width: 100%;
+      }
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+
+      &:hover {
+        box-shadow: $raised-shadow;
+      }
+    }
+
+    &:before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: $brand-gradient;
+      z-index: 20;
     }
   }
 
