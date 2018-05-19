@@ -82,7 +82,11 @@ export default {
 
 		getUrlName( url ) {
 			const array = url.split( '/' );
-			return array[ array.length - 2 ];
+			// Deal with trailing slashes
+			if(url.substring(url.length - 1) == '/') {
+				return array[ array.length - 2 ];
+			}
+			return array[ array.length - 1 ];
 		},
 
 		handleScroll() {
