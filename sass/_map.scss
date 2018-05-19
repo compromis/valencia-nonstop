@@ -15,67 +15,102 @@
   opacity: 0.5;
 }
 
+.map-decorations {
+  .map-decoration {
+    position: fixed;
+    z-index: -1;
+  }
+
+  .map-bird {
+    display: none;
+    top: 130px;
+    left: $nav-width-desktop + -150px;
+    height: 200px;
+    width: 290px;
+    background-image: url('images/icons/icon-bird-positive.svg');
+    background-position: -27px -155px;
+    background-size: 123%;
+    transform: scale(0.75) rotate(18deg);
+    transition: transform 0.5s ease-in-out;
+
+    &:hover {
+      transform: scale(0.75) rotate(0deg);
+    }
+  }
+
+  .map-palmtree {
+    bottom: 30px;
+    left: -100px;
+    height: 266px;
+    width: 290px;
+    background-image: url('images/icons/icon-palmtree.svg');
+    background-position: -28px -96px;
+    background-size: 123%;
+    transform: scale(0.5);
+  }
+
+  .map-micalet {
+    bottom: -10px;
+    right: -116px;
+    height: 358px;
+    width: 207px;
+    background-image: url('images/icons/icon-micalet.svg');
+    background-position: -102px -53px;
+    background-size: 161%;
+    transform: scale(0.5);
+  }
+
+  .map-wave {
+    display: none;
+    top: 22px;
+    right: -22px;
+    height: 302px;
+    width: 89px;
+    background-image: url('images/icons/icon-wave.svg');
+    background-position: -107px -55px;
+    background-size: 327%;
+  }
+}
+
+.frontpage {
+  .map-decorations {
+    display: none;
+  }
+}
+
 @include media-breakpoint-up(lg) {
   .map-decorations {
-    .map-decoration {
-      position: fixed;
-      z-index: -1;
-    }
-
     .map-bird {
-      top: 130px;
-      left: $nav-width-desktop + -150px;
-      height: 200px;
-      width: 290px;
-      background-image: url('images/icons/icon-bird-positive.svg');
-      background-position: -27px -155px;
-      background-size: 123%;
-      transform: scale(0.75) rotate(18deg);
-      transition: transform 0.5s ease-in-out;
-
-      &:hover {
-        transform: scale(0.75) rotate(0deg);
-      }
+      display: block;
     }
 
     .map-palmtree {
       bottom: -50px;
       left: $nav-width-desktop + -100px;
-      height: 266px;
-      width: 290px;
-      background-image: url('images/icons/icon-palmtree.svg');
-      background-position: -28px -96px;
-      background-size: 123%;
+      transform: scale(1);
     }
 
     .map-micalet {
       bottom: -90px;
-      right: -116px;
-      height: 358px;
-      width: 207px;
-      background-image: url('images/icons/icon-micalet.svg');
-      background-position: -102px -53px;
-      background-size: 161%;
+      transform: scale(1);
     }
 
     .map-wave {
-      top: 22px;
-      right: -22px;
-      height: 302px;
-      width: 89px;
-      background-image: url('images/icons/icon-wave.svg');
-      background-position: -107px -55px;
-      background-size: 327%;
+      display: block;
     }
   }
 
   .frontpage {
-    .map-bird {
-      left: -150px;
-    }
+    .map-decorations {
+      display: block;
 
-    .map-palmtree {
-      left: -80px;
+      .map-bird {
+        left: -150px;
+      }
+    
+      .map-palmtree {
+        left: -80px;
+      }
     }
   }
 }
