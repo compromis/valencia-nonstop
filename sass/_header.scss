@@ -40,38 +40,38 @@
 
     .secondary-menu {
       display: none;
+      position: fixed;
+      top: $nav-height-mobile + 1px;
+      left: 0;
+      right: 0;
+      background: $black;
+      background: rgba(0, 0, 0, 0.5);
+
+      ul {
+        margin: 2rem;
+        padding: 0;
+        text-align: center;
+      }
+
+      li {
+        list-style: none;
+        border-bottom: 2px $gray-500 solid;
+        border-bottom: 2px rgba(255, 255, 255, 0.25) solid;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+
+      a {
+        display: block;
+        color: $white;
+        font-size: 1.5rem;
+        padding: 0.75rem;
+      }
 
       &.secondary-menu-visible {
-        display: block !important;
-        position: fixed;
-        top: $nav-height-mobile + 1px;
-        left: 0;
-        right: 0;
-        background: $black;
-        background: rgba(0, 0, 0, 0.5);
-
-        ul {
-          margin: 2rem;
-          padding: 0;
-          text-align: center;
-        }
-
-        li {
-          list-style: none;
-          border-bottom: 2px $gray-500 solid;
-          border-bottom: 2px rgba(255, 255, 255, 0.25) solid;
-
-          &:last-child {
-            border-bottom: 0;
-          }
-        }
-
-        a {
-          display: block;
-          color: $white;
-          font-size: 1.5rem;
-          padding: 0.75rem;
-        }
+        display: block;
       }
     }
   }
@@ -192,6 +192,8 @@
         width: 100%;
         padding: 0 1rem;
         border-top: 1px $gray-200 solid;
+        position: static;
+        background: transparent;
 
         ul {
           height: 30px;
@@ -207,21 +209,26 @@
         }
 
         a {
+          font-size: 1rem;
           color: $gray-600;
-          border: 1px transparent solid;
+          padding: 2px 4px;
 
           &:hover {
             color: $link-color;
           }
 
           &:active {
-            border: 1px $gray-700 solid;
+            background: $gray-200;
             text-decoration: none;
           }
 
           &.router-link-active {
             font-weight: bold;
           }
+        }
+
+        &.secondary-menu-visible {
+          display: block !important;
         }
       }
     }
