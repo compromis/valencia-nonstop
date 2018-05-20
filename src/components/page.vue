@@ -67,7 +67,8 @@ export default {
 				draggable: true
 			},
 			pageTitle: '',
-			kml: null
+			kml: [],
+			children: null
 		};
 	},
 
@@ -84,7 +85,11 @@ export default {
 	methods: {
 		getPage () {
 			this.loaded = false;
-			if(this.kml) this.kml.setMap(null);
+			if(this.kml.length !== 0){
+				this.kml.forEach((element) => {
+					element.setMap(null);
+				});
+			}
 
 			this.$http.get('/wp-json/wp/v2/pages', {
 				params: { slug: this.$route.params.name }
@@ -113,8 +118,14 @@ export default {
 
 			this.$refs.gmap.$mapCreated.then(() => {
 				this.$refs.gmap.$deferredReadyPromise.then(() => {
-					this.kml = new google.maps.KmlLayer({ url, preserveViewport: true });
-					this.kml.setMap(this.$refs.gmap.$mapObject);
+					const maps = url.split(',');
+					maps.forEach((kmlAddress) => {
+						this.kml.push(new google.maps.KmlLayer({ 
+							url: kmlAddress, 
+							preserveViewport: true,
+							map: this.$refs.gmap.$mapObject
+						}));
+					});
 				});
 			});
 		}
