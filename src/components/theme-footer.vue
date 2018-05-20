@@ -7,7 +7,7 @@
 			:options="mapStyle"
 			class="map map-background map-default"
 		></gmap-map>
-		<div class="map-decorations">
+		<div class="map-decorations map-default">
 			<div class="map-decoration map-bird"></div>
 			<div class="map-decoration map-micalet"></div>
 			<div class="map-decoration map-palmtree"></div>
