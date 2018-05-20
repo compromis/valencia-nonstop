@@ -23,12 +23,11 @@
 				<page-loading />
 		</div>
 		<gmap-map
-			v-show="hasMap"
 			ref="gmap"
 			:center="mapCenter"
 			:zoom="14"
 			:options="mapOptions"
-			class="map"
+			:class="{ 'map': true, 'map-background': !hasMap }"
 		></gmap-map>
 		<div class="map-decorations">
 			<div class="map-decoration map-bird"></div>
@@ -63,7 +62,9 @@ export default {
 				streetViewControl: false, 
 				mapTypeControl: false, 
 				fullscreenControl: false,
-				scrollwheel: false
+				scrollwheel: false,
+				disableDefaultUI: false,
+				draggable: true
 			},
 			pageTitle: '',
 			kml: null
@@ -74,13 +75,10 @@ export default {
 		this.getPage();
 
 		VueGoogleMaps.loaded.then(() => {
-        this.mapOptions = {
-          zoomControl: true,
-          zoomControlOptions: {
-              position: google.maps.ControlPosition.RIGHT_CENTER
-          }
-        }
-      });
+			this.mapOptions.zoomControlOptions = {
+				position: google.maps.ControlPosition.RIGHT_CENTER
+			};
+		});
 	},
 
 	methods: {
@@ -101,6 +99,8 @@ export default {
 					this.getMap(this.page.custom_fields.kml[0]);
 				} else {
 					this.hasMap = false;
+					this.mapOptions.disableDefaultUI = true;
+					this.mapOptions.draggable = false;
 				}
 			}).catch((res) => {
 				console.log(`Something went wrong : ${ res }`);
@@ -108,6 +108,9 @@ export default {
 		},
 		getMap (url) {
 			this.hasMap = true;
+			this.mapOptions.disableDefaultUI = false;
+			this.mapOptions.draggable = true;
+
 			this.$refs.gmap.$mapCreated.then(() => {
 				this.$refs.gmap.$deferredReadyPromise.then(() => {
 					this.kml = new google.maps.KmlLayer({ url, preserveViewport: true });

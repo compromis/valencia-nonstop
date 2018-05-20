@@ -5,7 +5,7 @@
 		  :center="mapCenter"
 		  :zoom="14"
 			:options="mapStyle"
-			class="map map-background"
+			class="map map-background map-default"
 		></gmap-map>
 		<div class="map-decorations">
 			<div class="map-decoration map-bird"></div>
