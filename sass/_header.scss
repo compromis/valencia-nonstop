@@ -10,7 +10,7 @@
 	overflow-y: hidden;
 	-webkit-overflow-scrolling: touch;
   z-index: 10;
-  box-shadow: $big-shadow;
+  box-shadow: $default-shadow;
 }
 
 .top-nav {
@@ -21,10 +21,10 @@
   left: 0;
   right: 0;
   z-index: 15;
-  height: top-nav-height-mobile;
+  height: $top-nav-height-mobile;
   background: $orange;
   background: $brand-gradient;
-  box-shadow: $big-shadow;
+  box-shadow: $default-shadow;
 
   .hamburger {
     margin-left: 1rem;
@@ -43,7 +43,7 @@
   .secondary-menu {
     display: none;
     position: fixed;
-    top: top-nav-height-mobile;
+    top: $top-nav-height-mobile;
     left: 0;
     right: 0;
     background: $black;
@@ -279,7 +279,7 @@
 
     &-logo {
       width: 190px;
-      box-shadow: $big-shadow;
+      box-shadow: $default-shadow;
       border-left: 0;
 
       a {
@@ -292,7 +292,7 @@
       }
 
       &:hover {
-        box-shadow: $raised-shadow;
+        box-shadow: $big-shadow;
       }
     }
 
