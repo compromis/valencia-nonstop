@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 .content {
   position: relative;
   z-index: 1;
-  margin-top: $header-height + 40px;
+  margin-top: $top-nav-height-mobile + 40px;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: $nav-height-mobile + 40px;
@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-bar {
-  .header {
+  .top-nav {
     top: $wp-admin-nav-height-mobile;
   }
 }
@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .content {
-    margin-top: $header-height + 80px;
+    margin-top: $top-nav-height-mobile + 80px;
     margin-left: $nav-width-desktop + 80px;
     margin-right: 80px;
     margin-bottom: 80px;
@@ -51,8 +51,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .admin-bar {
-    .header-wrapper,
-    .header,
+    .sidebar,
+    .top-nav,
     .brand,
     .map {
       top: $wp-admin-nav-height-desktop;

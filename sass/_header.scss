@@ -1,4 +1,4 @@
-.header-wrapper {
+.sidebar {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -11,68 +11,69 @@
 	-webkit-overflow-scrolling: touch;
   z-index: 10;
   box-shadow: $big-shadow;
+}
 
-  .header {
-    display: flex;
-    align-items: center;
+.top-nav {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  height: top-nav-height-mobile;
+  background: $orange;
+  background: $brand-gradient;
+  box-shadow: $big-shadow;
+
+  .hamburger {
+    margin-left: 1rem;
+    padding: 0;
+    border: 0;
+  }
+
+  .site-name {
+    font-family: $font-family-heading;
+    text-transform: uppercase;
+    margin-left: 1rem;
+    font-size: 1.4rem; 
+    color: $white;
+  }
+
+  .secondary-menu {
+    display: none;
     position: fixed;
-    top: 0;
+    top: top-nav-height-mobile;
     left: 0;
     right: 0;
-    height: $header-height;
-    background: $orange;
-    background: $brand-gradient;
-    box-shadow: $big-shadow;
+    background: $black;
+    background: rgba(0, 0, 0, 0.5);
 
-    .hamburger {
-      margin-left: 1rem;
+    ul {
+      margin: 2rem;
       padding: 0;
-      border: 0;
+      text-align: center;
     }
 
-    .site-name {
-      font-family: $font-family-heading;
-      text-transform: uppercase;
-      margin-left: 1rem;
-      font-size: 1.4rem; 
+    li {
+      list-style: none;
+      border-bottom: 2px $gray-500 solid;
+      border-bottom: 2px rgba(255, 255, 255, 0.25) solid;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    a {
+      display: block;
       color: $white;
+      font-size: 1.5rem;
+      padding: 0.75rem;
     }
 
-    .secondary-menu {
-      display: none;
-      position: fixed;
-      top: $header-height;
-      left: 0;
-      right: 0;
-      background: $black;
-      background: rgba(0, 0, 0, 0.5);
-
-      ul {
-        margin: 2rem;
-        padding: 0;
-        text-align: center;
-      }
-
-      li {
-        list-style: none;
-        border-bottom: 2px $gray-500 solid;
-        border-bottom: 2px rgba(255, 255, 255, 0.25) solid;
-
-        &:last-child {
-          border-bottom: 0;
-        }
-      }
-
-      a {
-        display: block;
-        color: $white;
-        font-size: 1.5rem;
-        padding: 0.75rem;
-      }
-
-      &.secondary-menu-visible {
-        display: block;
-      }
+    &.secondary-menu-visible {
+      display: block;
     }
   }
 }
@@ -104,10 +105,10 @@
     position: fixed;
     top: 0;
     left: $nav-width-desktop;
-    height: $header-height;
+    height: $top-nav-height-mobile;
     z-index: 30;  
     align-items: flex-end;
-    height: $header-height;
+    height: $top-nav-height-mobile;
     padding-left: 1.5rem;
   }
 
@@ -115,14 +116,13 @@
     position: fixed;
     top: 0;
     right: 0;
-    height: $header-height;
+    height: $top-nav-height-mobile;
     z-index: 30;  
     display: flex;
     align-items: center;
     background: $white;
-    border-left: 1px $gray-300 solid;
     width: 63px;
-    height: $header-height;
+    height: $top-nav-height-mobile;
     padding: 0 1rem;
     transition: 0.15s ease-in-out;
 
@@ -133,7 +133,7 @@
     }
 
     img {
-      height: calc(#{$header-height} - 1rem);
+      height: $top-nav-height-mobile - 16px;
     }
   }
 }
@@ -149,17 +149,17 @@
   .brand-logo,
   .brand-share,
   .brand:before,
-  .header {
+  .top-nav {
     top: $wp-admin-nav-height-mobile;
   }
 
   .secondary-menu {
-    top: $wp-admin-nav-height-mobile + $header-height;
+    top: $wp-admin-nav-height-mobile + $top-nav-height-mobile;
   }
 }
 
 @include media-breakpoint-up(lg) {
-  .header-wrapper {
+  .sidebar {
     top: 0;
     width: $nav-width-desktop;
     right: auto;
@@ -167,79 +167,9 @@
     overflow-y: hidden;
     overflow-x: hidden;
 
-    .header {
-      position: static;
-      height: auto;
-      background: $white;
-      box-shadow: none;
-      flex-direction: column;
-
-      .hamburger {
-        display: none;
-      }
-
-      .site-name {
-        display: block;
-        text-indent: -9999px;
-        background-image: url('images/logo.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 65%;
-        width: 100%;
-        height: $logo-height-desktop - 40;
-        margin-left: 0;
-      }
-      
-      .secondary-menu {
-        display: block;
-        height: 2.5rem;
-        width: 100%;
-        padding: 0 1rem;
-        border-top: 1px $gray-200 solid;
-        position: static;
-        background: transparent;
-
-        ul {
-          height: 2.5rem;
-          display: flex;
-          justify-content: space-evenly;
-          align-items: center;
-          padding: 0;
-          margin: 0;
-        }
-
-        li {
-          list-style: none;
-        }
-
-        a {
-          font-size: 1rem;
-          color: $gray-600;
-          padding: 2px 4px;
-
-          &:hover {
-            color: $link-color;
-          }
-
-          &:active {
-            background: $gray-200;
-            text-decoration: none;
-          }
-
-          &.router-link-active {
-            font-weight: bold;
-          }
-        }
-
-        &.secondary-menu-visible {
-          display: block !important;
-        }
-      }
-    }
-
     .menu {
       position: fixed;
-      top: $logo-height-desktop;
+      top: $top-nav-height-desktop;
       left: 0;
       bottom: 0;
 			width: $nav-width-desktop;
@@ -265,6 +195,80 @@
 			a {
 				width: 100%;
 			}
+    }
+  }
+
+  .top-nav {
+    position: fixed;
+    z-index: 15;
+    left: 0;
+    top: 0;
+    height: $top-nav-height-desktop;
+    width: $nav-width-desktop;
+    background: $white;
+    box-shadow: none;
+    flex-direction: column;
+
+    .hamburger {
+      display: none;
+    }
+
+    .site-name {
+      display: block;
+      text-indent: -9999px;
+      background-image: url('images/logo.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 65%;
+      width: 100%;
+      height: $top-nav-height-desktop - 40;
+      margin-left: 0;
+    }
+    
+    .secondary-menu {
+      display: block;
+      height: 2.5rem;
+      width: 100%;
+      padding: 0 1rem;
+      border-top: 1px $gray-200 solid;
+      position: static;
+      background: transparent;
+
+      ul {
+        height: 2.5rem;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        font-size: 1rem;
+        color: $gray-600;
+        padding: 2px 4px;
+
+        &:hover {
+          color: $link-color;
+        }
+
+        &:active {
+          background: $gray-200;
+          text-decoration: none;
+        }
+
+        &.router-link-active {
+          font-weight: bold;
+        }
+      }
+
+      &.secondary-menu-visible {
+        display: block !important;
+      }
     }
   }
 
@@ -312,7 +316,7 @@
     }
 
     .menu {
-      top: $logo-height-desktop + $wp-admin-nav-height-desktop;
+      top: $top-nav-height-desktop + $wp-admin-nav-height-desktop;
     }
   }
 }

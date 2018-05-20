@@ -1,10 +1,10 @@
 .frontpage {
-	.header-wrapper {
+	.sidebar {
 		position: static;
 		width: auto;
 		height: auto;
 		margin: 1.5rem;
-		margin-top: $header-height + 40px;
+		margin-top: $top-nav-height-mobile + 40px;
 		border-radius: $rounder-border-radius;
 		overflow-x: hidden;
 
@@ -53,11 +53,11 @@
 
 @include media-breakpoint-up(lg) {
 	.frontpage {
-		.header-wrapper {
+		.sidebar {
 			display: flex;
 			width: 100%;
 			max-width: 1000px;
-			margin: $header-height + 100px auto 0 auto;
+			margin: $top-nav-height-mobile + 100px auto 0 auto;
 			
 			.menu {
 				overflow-y:hidden;
@@ -75,18 +75,20 @@
 					}
 				}
 			}
+		}
 
-			.header {
-				width: 250px;
-				flex-shrink: 0;
-				background-color: $gray-100;
-				border-right: 1px $gray-200 solid;
+		.top-nav {
+			position: static;
+			width: 250px;
+			height: auto;
+			flex-shrink: 0;
+			background-color: $gray-100;
+			border-right: 1px $gray-200 solid;
 
-				.site-name {
-					background-size: 110%;
-					background-position: center 1rem;
-					height: 420px;
-				}
+			.site-name {
+				background-size: 110%;
+				background-position: center 1rem;
+				height: 420px;
 			}
 		}
 

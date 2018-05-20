@@ -13,23 +13,10 @@
 			</div>
 		</div>
 
-		<nav class="header-wrapper">
-			<div class="header navbar-dark">
-				<button class="navbar-toggler hamburger" @click="toggleSecondaryMenu()" type="button" aria-controls="navbarNavAltMarkup" :aria-expanded="secondary_menu_visible" aria-label="Mostra el menú">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<router-link :to="{ name: 'frontpage' }" class="site-name">VLC, el canvi no para</router-link>
-				<div :class="{ 'secondary-menu': true, 'secondary-menu-visible': secondary_menu_visible }">
-					<ul @click="toggleSecondaryMenu()">
-						<li v-for="item in secondary_menu" v-if="item.type != 'custom'" :class="item.classes" :key="item.url">
-							<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}"> {{ item.title }} </router-link>
-						</li>
-						<li v-else :class="item.classes" :key="item.url">
-							<router-link :to="item.url"> {{ item.title }} </router-link>
-						</li>
-					</ul>
-				</div>
-			</div>
+		<top-nav v-if="$route.name != 'frontpage'" :secondary-menu="secondary_menu" />
+
+		<nav class="sidebar">
+			<top-nav v-if="$route.name == 'frontpage'" :secondary-menu="secondary_menu" />
 			<div class="menu">
 				<div class="secondary-logo d-lg-none"></div>
 				<ul>
@@ -47,10 +34,12 @@
 
 <script>
 import ShareButtons from './partials/share-buttons.vue';
+import TopNav from './partials/top-nav.vue';
 
 export default {
 	components: {
-		ShareButtons
+		ShareButtons,
+		TopNav
 	},
 	mounted: function() {
 		this.getMenu('primary-menu');
@@ -61,8 +50,7 @@ export default {
 			primary_menu: [],
 			secondary_menu: [],
 			site_name: rtwp.site_name,
-			show_share_buttons: true,
-			secondary_menu_visible: false
+			show_share_buttons: true
 		};
 	},
 	methods: {
@@ -91,10 +79,6 @@ export default {
 
 		handleScroll() {
 			this.show_share_buttons = window.scrollY < 50;
-		},
-
-		toggleSecondaryMenu() {
-			this.secondary_menu_visible = !this.secondary_menu_visible;
 		}
 	},
 	created() {
