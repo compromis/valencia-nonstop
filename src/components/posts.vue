@@ -7,7 +7,6 @@
 					<h2 class="post-title"><router-link :to="{ name: 'article', params: { name: post.slug, remote: true }}"><span v-html="post.title.rendered"></span></router-link> </h2>
 					<div class="meta">
 						<span class="posted-on">
-							Posted On
 							<span class="date" v-text="formatDate( post )">
 							</span>
 						</span>
@@ -104,16 +103,16 @@ export default {
 			value = value.date;
 			if ( value ) {
 				const date = new Date( value );
-				const monthNames = [ "January", "February", "March",
-					"April", "May", "June", "July",
-					"August", "September", "October",
-					"November", "December" ];
+				const monthNames = [ "gener", "febrer", "març",
+					"abril", "maig", "juny", "juliol",
+					"agost", "setembre", "octubre",
+					"novembre", "desembre" ];
 
 				const day = date.getDate();
 				const monthIndex = date.getMonth();
 				const year = date.getFullYear();
 
-				return monthNames[ monthIndex ] + ',' + day + ' ' + year;
+				return day + ' ' + monthNames[ monthIndex ] + ' ' + year;
 			}
 		}
 	},

@@ -104,16 +104,16 @@ export default {
 			value = value.date;
 			if ( value ) {
 				const date = new Date( value );
-				const monthNames = [ "January", "February", "March",
-					"April", "May", "June", "July",
-					"August", "September", "October",
-					"November", "December" ];
+				const monthNames = [ "gener", "febrer", "març",
+					"abril", "maig", "juny", "juliol",
+					"agost", "setembre", "octubre",
+					"novembre", "desembre" ];
 
 				const day = date.getDate();
 				const monthIndex = date.getMonth();
 				const year = date.getFullYear();
 
-				return monthNames[ monthIndex ] + ',' + day + ' ' + year;
+				return day + ' ' + monthNames[ monthIndex ] + ' ' + year;
 			}
 		}
 	},
