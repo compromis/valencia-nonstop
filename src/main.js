@@ -74,6 +74,7 @@ const router = new VueRouter( {
 		{ path: '/agenda/:page(\\d+)?', name: 'events', component: events },
 		{ path: '/agenda/:name', name: 'event', component: post },
 		{ path: '/page/:name', name: 'page', component: page },
+		{ path: '/page/:parent/:name', name: 'page', component: page },
 		{ path: '/category/:name', name: 'cat', component: category },
 		{ path: '/tag/:name', name: 'tag', component: tag },
 		{ path: '/', name: 'frontpage', component: frontpage },

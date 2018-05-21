@@ -208,10 +208,33 @@ function add_page_siblings() {
 }
 
 function get_page_siblings($object) {
-	if($object['parent']) {
+	if(isset($object['parent']) && $object['parent']) {
 		$my_wp_query = new WP_Query();
 		$all_wp_pages = $my_wp_query->query(array('post_type' => 'page', 'posts_per_page' => '-1'));
 		return get_page_children($object['parent'], $all_wp_pages);
+	}
+
+	return false;
+}
+
+add_action( 'rest_api_init', 'add_page_parent_slug' );
+
+function add_page_parent_slug() {
+	register_rest_field(
+		'page',
+		'parent_slug',
+		array(
+	    'get_callback'    => 'get_parent_slug',
+	    'update_callback' => null,
+	    'schema'          => null,
+	  )
+	);
+}
+
+function get_parent_slug($object) {
+	if(isset($object['parent']) && $object['parent']) {
+		$page = get_post($object['parent']);
+		return $page->post_name;
 	}
 
 	return false;

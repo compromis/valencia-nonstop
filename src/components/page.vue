@@ -8,13 +8,13 @@
 				<div v-if="page.parent" class="subcategories siblings">
 					<ul>
 						<li v-for="sibling in page.page_siblings" :key="sibling.id" :class="['category', 'category-' + sibling.post_name]">
-							<router-link :to="'/page/' + sibling.post_name" class="category-button">{{ sibling.post_title }}</router-link></li>
+							<router-link :to="'/page/' + page.parent_slug + '/' + sibling.post_name" class="category-button">{{ sibling.post_title }}</router-link></li>
 					</ul>
 				</div>
 				<div v-if="page.page_children" class="subcategories children">
 					<ul>
 						<li v-for="child in page.page_children" :key="child.id" :class="['category', 'category-' + child.post_name]">
-							<router-link :to="'/page/' + child.post_name" class="category-button">{{ child.post_title }}</router-link></li>
+							<router-link :to="'/page/' + page.slug + '/' + child.post_name" class="category-button">{{ child.post_title }}</router-link></li>
 					</ul>
 				</div>
 			</div>
