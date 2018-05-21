@@ -2,16 +2,18 @@
 	<div :class="[{ 'page container': true, 'has-map': hasMap }, pageClass]">
 		<div class="band"></div>
 		<div v-if="loaded === true">
+			<span class="page-parent" v-if="page.parent">
+			<router-link :to="'/page/' + page.parent_info.slug">{{ page.parent_info.title }}</router-link></span>
 			<h2 class="page-title">{{ page.title.rendered }}</h2>
 			<div class="page-content-wrapper">
 				<div v-html="page.content.rendered" class="page-content"></div>
 				<div v-if="page.parent" class="subcategories siblings">
 					<ul>
 						<li v-for="sibling in page.page_siblings" :key="sibling.id" :class="['category', 'category-' + sibling.post_name]">
-							<router-link :to="'/page/' + page.parent_slug + '/' + sibling.post_name" class="category-button">{{ sibling.post_title }}</router-link></li>
+							<router-link :to="'/page/' + page.parent_info.slug + '/' + sibling.post_name" class="category-button">{{ sibling.post_title }}</router-link></li>
 					</ul>
 				</div>
-				<div v-if="page.page_children" class="subcategories children">
+				<div v-if="page.page_children.length > 0" class="subcategories children">
 					<ul>
 						<li v-for="child in page.page_children" :key="child.id" :class="['category', 'category-' + child.post_name]">
 							<router-link :to="'/page/' + page.slug + '/' + child.post_name" class="category-button">{{ child.post_title }}</router-link></li>

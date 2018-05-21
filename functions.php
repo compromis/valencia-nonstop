@@ -222,7 +222,7 @@ add_action( 'rest_api_init', 'add_page_parent_slug' );
 function add_page_parent_slug() {
 	register_rest_field(
 		'page',
-		'parent_slug',
+		'parent_info',
 		array(
 	    'get_callback'    => 'get_parent_slug',
 	    'update_callback' => null,
@@ -234,7 +234,7 @@ function add_page_parent_slug() {
 function get_parent_slug($object) {
 	if(isset($object['parent']) && $object['parent']) {
 		$page = get_post($object['parent']);
-		return $page->post_name;
+		return array('slug' => $page->post_name, 'title' => $page->post_title);
 	}
 
 	return false;
