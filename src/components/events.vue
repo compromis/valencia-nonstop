@@ -18,11 +18,12 @@
 					<div class="post-excerpt post-content" v-html="post.excerpt.rendered" > </div>
 				</div>
 			</div>
-			<div class="posts-navigation">
-					<a href=""  v-if="showPrev" v-on:click.prevent="rtShowPrev()"> &LT; anterior  </a>
-					<a > {{ currentPage }} / {{ totalPages }} </a>
-					<a href=""  v-if="showNext" v-on:click.prevent="rtShowNext()"> següent &GT; </a>
-			</div>
+			<nav aria-label="Navegació">
+				<ul class="pagination">
+					<li><a href="#" v-if="showPrev" v-on:click.prevent="rtShowPrev()" class="btn btn-outline-primary btn-lg">&LT; Anterior</a></li>
+					<li><a href="#" v-if="showNext" v-on:click.prevent="rtShowNext()" class="btn btn-outline-primary btn-lg">Següent &GT;</a></li>
+				</ul>
+			</nav>
 		</div>
 		<div v-else>
 				<posts-loading />
@@ -51,8 +52,8 @@ export default {
 			currentPage: '',
 			prevPage: '',
 			nextPage: '',
-			showNext: 'true',
-			showPrev: 'true',
+			showNext: true,
+			showPrev: true,
 			postCollection: '',
 			postPerPage: '10',
 			totalPages: '',
@@ -74,9 +75,13 @@ export default {
 				vm.totalPages = res.headers[ 'x-wp-totalpages' ];
 				if ( pageNumber <= parseInt( vm.totalPages ) ) {
 					vm.currentPage = parseInt( pageNumber );
+					vm.showPrev = (pageNumber == 1) ? false : true;
+					vm.showNext = (pageNumber == vm.totalPages) ? false : true;
 				} else {
 					vm.$router.push( { 'name': 'posts' } );
 					vm.currentPage = 1;
+					vm.showPrev = false;
+					vm.showNext = true;
 				}
 				vm.loaded = 'true';
 				vm.pageTitle = 'Notícies';
