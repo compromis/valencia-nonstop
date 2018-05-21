@@ -4,7 +4,7 @@
 		<div v-if="loaded === true">
 			<span class="page-parent" v-if="page.parent">
 			<router-link :to="'/page/' + page.parent_info.slug">{{ page.parent_info.title }}</router-link></span>
-			<h2 class="page-title">{{ page.title.rendered }}</h2>
+			<h2 class="page-title" v-html="page.title.rendered"></h2>
 			<div class="page-content-wrapper">
 				<div v-html="page.content.rendered" class="page-content"></div>
 				<div v-if="page.parent" class="subcategories siblings">

@@ -96,6 +96,40 @@
 	}
 }
 
+.post-full {
+	.post-title {
+		font-size: 3rem;
+		line-height: 1;
+	}
+
+	.post-image {
+		border-radius: $border-radius;
+		margin: 1rem 0;
+	}
+
+	.post-content {
+		line-height: 2;
+	}
+
+	.tag-list,
+	.cat-list {
+		a {
+			font-size: 1.25rem;
+			background: $gray-200;
+			padding: 0.25rem 1rem;
+			margin-right: 0.5rem;
+			border-radius: 3rem;
+
+			&:hover {
+				background: $primary;
+				background: $brand-gradient;
+				color: $white;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
 @include media-breakpoint-up(lg) {
 	.post-summary {
 		flex-direction: row;
