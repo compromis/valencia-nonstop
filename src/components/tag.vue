@@ -1,133 +1,105 @@
-<style>
-
-</style>
-
 <template>
-
-	<transition name="slide-fade">
-
-		<div class="row rt-main" v-if="loaded === 'true'" >
-
-			<div class="medium-12 small-12 column" v-for="post in posts" :key="post.slug">
-
-				<div class="rt-post">
-
-					<h2 class="rt-post-title"><router-link :to="{ name: 'post', params: { name:post.slug }}"> {{ post.title.rendered }} </router-link> </h2>
-
-					<div class="rt-meta">
-						<span class="posted-on">
-							Posted On
-							<span class="date" v-text="formatDate( post )">
-							</span>
-						</span>
+	<div class="posts">
+		<div v-if="loaded === 'true'" >
+			<div v-for="post in posts" :key="post.slug" class="post-container container">
+				<div class="post">
+					<div class="band"></div>
+					<div class="post-summary">
+						<div class="post-thumbnail progressive full" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['full'][0]">
+							<img class="lazy" v-progressive="post.featured_image_src['full'][0]" :data-srcset="post.featured_image_src['srcset']" :src="post.featured_image_src['full'][0]" />
+						</div>
+						<div class="post-summary-content">
+							<h2 class="post-title"><router-link :to="{ name: 'article', params: { name: post.slug, remote: true }}"><span v-html="post.title.rendered"></span></router-link> </h2>
+							<div class="post-meta">
+								<span class="posted-on">
+									<span class="date" v-text="formatDate( post )">
+									</span>
+								</span>
+							</div>
+							<div class="post-excerpt post-content" v-html="post.excerpt.rendered"></div>
+							<div class="post-read-more">
+								<router-link :to="{ name: 'article', params: { name: post.slug, remote: true }}">+ Més info</router-link>
+							</div>
+						</div>
 					</div>
-
-					<div class="progressive full" v-if="post.featured_image_src['full'][0]">
-
-						<img class="lazy" v-progressive="post.featured_image_src['full'][0]" :data-srcset="post.featured_image_src['srcset']" :src="post.featured_image_src['full'][0]" />
-
-					</div>
-
-					<div class="rt-post-excerpt rt-content" v-html="post.excerpt.rendered" > </div>
-
 				</div>
-
 			</div>
-
 		</div>
-
-	</transition>
-
+		<div v-else>
+				<posts-loading />
+		</div>
+	</div>
 </template>
-
 <script>
+import PostsLoading from './partials/posts-loading.vue';
+
 export default {
-
+	components: {
+		PostsLoading
+	},
 	mounted: function() {
-
 		const vm = this;
-
 		if ( vm.$route.params.name ) {
-
 			vm.getTagId( vm.$route.params.name );
-
 		}
-
 	},
 	data() {
-
 		return {
-
 			posts: {},
 			loaded: 'false',
 			pageTitle: '',
 			totalCount: '',
-			tagName: ''
-
+			catName: ''
 		};
-
 	},
 
 	methods: {
-
 		getPosts: function( tagId ) {
-
 			const vm = this;
 			vm.loaded = 'false';
-			vm.$http.get( '/wp-json/wp/v2/posts', {
+			vm.$http.get( 'https://valencia.compromis.net/wp-json/wp/v2/posts', {
 				params: { tags: tagId }
 			} )
-				.then( ( res ) => {
-
-					vm.posts = res.data;
-
-					vm.loaded = 'true';
-
-					vm.pageTitle = 'Tag' + ' - ' + vm.tagName;
-
-					vm.$store.commit( 'rtChangeTitle', vm.pageTitle );
-
-				} )
-				.catch( ( res ) => {
-					//console.log( `Something went wrong : ${ res }` );
-				} );
-
+			.then( ( res ) => {
+				vm.posts = res.data;
+				vm.loaded = 'true';
+				vm.pageTitle = 'Etiqueta' + ' - ' + vm.tagName;
+				vm.$store.commit( 'rtChangeTitle', vm.pageTitle );
+			} )
+			.catch( ( res ) => {
+				//console.log( `Something went wrong : ${ res }` );
+			} );
 		},
 		getTagId: function( name ) {
 			const vm = this;
 			vm.tagName = name;
 			vm.loaded = 'false';
-			vm.$http.get( '/wp-json/wp/v2/tags/?slug=' + name )
-				.then( ( res ) => {
-
-					res = res.data[ 0 ];
-					vm.totalCount = ( res.data );
-					vm.getPosts( res.id );
-
-				} )
-				.catch( ( res ) => {
-					//console.log( `Something went wrong : ${ res }` );
-				} );
+			vm.$http.get( 'https://valencia.compromis.net/wp-json/wp/v2/tags/?slug=' + name )
+			.then( ( res ) => {
+				res = res.data[ 0 ];
+				vm.totalCount = ( res.data );
+				vm.getPosts( res.id );
+			} )
+			.catch( ( res ) => {
+				//console.log( `Something went wrong : ${ res }` );
+			} );
 		},
-		formatDate: function( value ) {
-
+		formatDate( value ) {
 			value = value.date;
 			if ( value ) {
 				const date = new Date( value );
-				const monthNames = [ "January", "February", "March",
-					"April", "May", "June", "July",
-					"August", "September", "October",
-					"November", "December" ];
+				const monthNames = [ "gener", "febrer", "març",
+					"abril", "maig", "juny", "juliol",
+					"agost", "setembre", "octubre",
+					"novembre", "desembre" ];
 
 				const day = date.getDate();
 				const monthIndex = date.getMonth();
 				const year = date.getFullYear();
 
-				return monthNames[ monthIndex ] + ',' + day + ' ' + year;
+				return day + ' ' + monthNames[ monthIndex ] + ' ' + year;
 			}
-
 		}
 	}
-
 };
 </script>

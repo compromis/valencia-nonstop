@@ -4,18 +4,24 @@
 			<div v-for="post in posts" :key="post.slug" class="post-container container">
 				<div class="post">
 					<div class="band"></div>
-					<h2 class="post-title"><router-link :to="{ name: 'post', params: { name:post.slug }}"> {{ post.title.rendered }} </router-link> </h2>
-					<div class="meta">
-						<span class="posted-on">
-							Publicat el
-							<span class="date" v-text="formatDate( post )"></span>
-						</span>
+					<div class="post-summary">
+						<div class="post-thumbnail progressive full" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['full'][0]">
+							<img class="lazy" v-progressive="post.featured_image_src['full'][0]" :data-srcset="post.featured_image_src['srcset']" :src="post.featured_image_src['full'][0]" />
+						</div>
+						<div class="post-summary-content">
+							<h2 class="post-title"><router-link :to="{ name: 'article', params: { name: post.slug, remote: true }}"><span v-html="post.title.rendered"></span></router-link> </h2>
+							<div class="post-meta">
+								<span class="posted-on">
+									<span class="date" v-text="formatDate( post )">
+									</span>
+								</span>
+							</div>
+							<div class="post-excerpt post-content" v-html="post.excerpt.rendered"></div>
+							<div class="post-read-more">
+								<router-link :to="{ name: 'article', params: { name: post.slug, remote: true }}">+ Més info</router-link>
+							</div>
+						</div>
 					</div>
-
-					<div class="progressive full" v-if="post.featured_image_src['full'][0]">
-						<img class="lazy" v-progressive="post.featured_image_src['full'][0]" :data-srcset="post.featured_image_src['srcset']" :src="post.featured_image_src['full'][0]" />
-					</div>
-					<div class="post-excerpt post-content" v-html="post.excerpt.rendered"></div>
 				</div>
 			</div>
 		</div>
@@ -52,7 +58,7 @@ export default {
 		getPosts: function( catId ) {
 			const vm = this;
 			vm.loaded = 'false';
-			vm.$http.get( '/wp-json/wp/v2/posts', {
+			vm.$http.get( 'https://valencia.compromis.net/wp-json/wp/v2/posts', {
 				params: { categories: catId }
 			} )
 			.then( ( res ) => {
@@ -69,7 +75,7 @@ export default {
 			const vm = this;
 			vm.catName = name;
 			vm.loaded = 'false';
-			vm.$http.get( '/wp-json/wp/v2/categories/?slug=' + name )
+			vm.$http.get( 'https://valencia.compromis.net/wp-json/wp/v2/categories/?slug=' + name )
 			.then( ( res ) => {
 				res = res.data[ 0 ];
 				vm.totalCount = ( res.data );
@@ -79,18 +85,20 @@ export default {
 				//console.log( `Something went wrong : ${ res }` );
 			} );
 		},
-		formatDate: function( value ) {
+		formatDate( value ) {
 			value = value.date;
 			if ( value ) {
 				const date = new Date( value );
-				const monthNames = [ "Gener", "Febrer", "Març",
-					"Abril", "Maig", "Juny", "Juliol",
-					"Agost", "Setembrr", "Octubre",
-					"Novembre", "Desembre" ];
+				const monthNames = [ "gener", "febrer", "març",
+					"abril", "maig", "juny", "juliol",
+					"agost", "setembre", "octubre",
+					"novembre", "desembre" ];
+
 				const day = date.getDate();
 				const monthIndex = date.getMonth();
 				const year = date.getFullYear();
-				return monthNames[ monthIndex ] + ',' + day + ' ' + year;
+
+				return day + ' ' + monthNames[ monthIndex ] + ' ' + year;
 			}
 		}
 	}
