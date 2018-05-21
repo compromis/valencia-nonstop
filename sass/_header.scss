@@ -5,6 +5,7 @@
   right: 0;
   width: 100%;
   height: $nav-height-mobile;
+  height: calc($nav-height-mobile + env(safe-area-inset-bottom));
   background: $white;
   overflow-x: scroll;
 	overflow-y: hidden;
