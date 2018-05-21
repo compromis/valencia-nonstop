@@ -4,7 +4,7 @@
 			<div class="band"></div>
 			<div class="post-summary loading">
 				<div class="post-thumbnail">
-					<span class="filler thumbnail-filler"></span>
+					<span class="filler"></span>
 				</div>
 				<div class="post-summary-content">
 					<div class="subheading">
