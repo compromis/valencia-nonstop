@@ -47,13 +47,13 @@ function rt_theme_setup() {
 function rt_custom_rewrite_rule() {
 	global $wp_rewrite;
 	$wp_rewrite->front               = $wp_rewrite->root;
-	$wp_rewrite->set_permalink_structure( 'blog/%postname%/' );
+	$wp_rewrite->set_permalink_structure( 'agenda/%postname%/' );
 	$wp_rewrite->page_structure      = $wp_rewrite->root . 'page/%pagename%/';
 	$wp_rewrite->author_base         = 'author';
 	$wp_rewrite->author_structure    = '/' . $wp_rewrite->author_base . '/%author%';
 	$wp_rewrite->set_category_base( 'category' );
 	$wp_rewrite->set_tag_base( 'tag' );
-	$wp_rewrite->add_rule( '^blog$', 'index.php', 'top' );
+	$wp_rewrite->add_rule( '^agenda$', 'index.php', 'top' );
 }
 add_action( 'init', 'rt_custom_rewrite_rule' );
 
@@ -61,7 +61,7 @@ add_action( 'init', 'rt_custom_rewrite_rule' );
 add_action( 'permalink_structure_changed', 'rt_forcee_perma_struct', 10, 2 );
 
 function rt_forcee_perma_struct( $old, $new ) {
-	update_option( 'permalink_structure', 'blog/%postname%' );
+	update_option( 'permalink_structure', 'agenda/%postname%' );
 }
 // Polyfill for wp_title()
 add_filter( 'wp_title','rt_vue_title', 10, 3 );
@@ -239,3 +239,10 @@ function get_parent_slug($object) {
 
 	return false;
 }
+
+function my_acf_google_map_api( $api ){
+	$api['key'] = 'AIzaSyCHia_53O9k25YuqFb3PKkvp-XO6l5KNWY';
+	return $api;
+}
+
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
