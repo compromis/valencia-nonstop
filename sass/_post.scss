@@ -1,4 +1,110 @@
+.post-summary {
+	display: flex;
+	flex-direction: column;
+
+	&-content {
+		width: 100%;
+	}
+
+	.post-title {
+		line-height: 1;
+		
+		a {
+			display: block;
+			color: transparent;
+			background: $primary;
+			background: $brand-gradient;
+			background-clip: text;
+			-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+		}
+	}
+
+	.post-thumbnail {
+		margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+		border-bottom: 10px $secondary solid;
+	}
+
+	.post-excerpt {
+		display: none;
+	}
+
+	&-content {
+		display: flex;
+		flex-direction: column;
+
+		.post-meta {
+			color: $gray-600;
+			order: -1;
+		}
+
+		.post-read-more {
+			text-align: right;
+			margin: 0 -2rem -1.5rem 0;
+
+			a {
+				display: inline-block;
+				background: $gray-300;
+				color: $gray-700;
+				font-family: $font-family-heading;
+				text-transform: uppercase;
+				padding: 0.5rem 1rem;
+				border-radius: $border-radius 0 0 0;
+
+				&:hover {
+					background: $primary;
+					background: $brand-gradient;
+					color: $white;
+					text-decoration: none;
+				}
+
+				&:active {
+					outline: 2px $orange solid;
+				}
+			}
+		}
+	}
+}
+
 .post-container {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
+}
+
+.posts .band {
+	display: none;
+}
+
+@include media-breakpoint-up(lg) {
+	.post-summary {
+		flex-direction: row;
+		align-items: flex-start;
+
+		.post-title {
+			line-height: 1.25;
+		}
+
+		.post-thumbnail {
+			width: 300px;
+			max-height: 350px;
+			overflow: hidden;
+			flex-shrink: 0;
+			margin: 0 1.5rem 0 -0.5rem;
+			border-radius: $border-radius;
+			border-bottom: 0;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.post-excerpt {
+			display: block;
+			color: $gray-600;
+		}
+	}
+
+	.posts .band {
+		display: block;
+	}
 }
