@@ -1,14 +1,15 @@
 /* Colors */
-$blue:       #1380B4;
-$indigo:     #6610f2;
-$purple:     #5B5896;
-$pink:       #e83e8c;
-$red:        #dc3545;
-$orange:     #da6c38;
-$yellow:     #ffc107;
-$green:      #87B446;
-$teal:       #20c997;
-$cyan:       #17a2b8;
+$blue:       #1E88E5;
+$indigo:     #3949AB;
+$purple:     #5E35B1;
+$pink:       #D81B60;
+$red:        #E53935;
+$orange:     #F4511E;
+$yellow:     #FFB300;
+$brown:      #6D4C41;
+$green:      #43A047;
+$teal:       #00897B;
+$cyan:       #00ACC1;
 
 /* Grays */
 $gray-100:   #f8f9fa;
@@ -49,8 +50,16 @@ $brand-gradient: linear-gradient(135deg, $gradient-from 0%, $gradient-to 100%);
 
 /* Categories */
 $categories: (
-	'sostenibilitat': $green,
-	'jazz': $yellow
+	'urbanisme': 'red',
+	'educacio': 'purple',
+	'benestar': 'indigo',
+	'cultura': 'blue',
+	'mobilitat': 'cyan',
+	'medi-ambient': 'teal',
+	'neteja': 'green',
+	'participacio': 'amber',
+	'economia': 'orange',
+	'patrimoni': 'deep-orange'
 );
 
 /* Dimensions */

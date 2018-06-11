@@ -11,7 +11,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		color: $gray-600;
-		border: 3px $gray-300 solid;
+		border: 2px $gray-300 solid;
 		transition: all 0.25s ease-in-out, padding 1ms;
 	
 		&:hover {
@@ -42,27 +42,27 @@
 @each $category, $color in $categories {
 	.category-#{$category} {
 		a.category-button {
-			border-color: lighten($color, 20%);
-			background: lighten($color, 45%);
-			color: $color;
+			border-color: material-color($color, '50');
+			background: material-color($color, '50');
+			color: material-color($color, '600');
 
 			&:hover {
-				border-color: $color;
-				background: lighten($color, 30%);
-				color: darken($color, 10%);
+				border-color: material-color($color, '600');
+				background: material-color($color, '100');
+				color: material-color($color, '700');
 			}
 
 			&.router-link-active {
-				background: $color;
+				background: material-color($color, '500');
 				color: $white;
-				border-color: $color;
+				border-color: material-color($color, '500');
 			}
 		}
 	}
 	
 	.page-#{$category} {
 		.band {
-			background: $color;
+			background: material-color($color, '500');
 		}
 	}	
 }
