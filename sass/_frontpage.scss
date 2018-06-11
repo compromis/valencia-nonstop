@@ -68,12 +68,16 @@
 				}
 
 				li {
-					width: 33.333%;
+					width: 50%;
 
 					&:last-child {
 						padding-right: 0.5rem;
 					}
 				}
+			}
+
+			.category-button {
+				padding: 1rem;
 			}
 		}
 

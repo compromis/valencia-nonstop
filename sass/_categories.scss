@@ -12,7 +12,7 @@
 		text-overflow: ellipsis;
 		color: $gray-600;
 		border: 3px $gray-300 solid;
-		transition: 0.25s ease-in-out;
+		transition: all 0.25s ease-in-out, padding 1ms;
 	
 		&:hover {
 			background: $gray-200;
