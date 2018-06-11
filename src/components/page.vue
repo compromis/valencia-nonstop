@@ -100,7 +100,11 @@ export default {
 				this.loaded = true;
 				this.pageTitle = this.page.title.rendered;
 				this.$store.commit('rtChangeTitle', this.pageTitle);
-				this.pageClass = 'page-' + this.page.slug;
+				if(this.page.parent) {
+					this.pageClass = 'page-' + this.page.slug + ' page-' + this.page.parent_info.slug + ' category-' + this.page.parent_info.slug;
+				} else {
+					this.pageClass = 'page-' + this.page.slug + ' category-' + this.page.slug;
+				}
 
 				if(this.page.custom_fields.hasOwnProperty('kml')) {
 					this.getMap(this.page.custom_fields.kml[0]);
