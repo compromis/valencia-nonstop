@@ -1,18 +1,18 @@
 .category {
 	a.category-button {
 		display: block;
+		position: relative;
 		background: $gray-100;
 		padding: 0.5rem 1rem;
 		border-radius: $border-radius;
 		font-family: $font-family-heading;
 		font-size: 1.5rem;
+		line-height: 1.25;
 		text-transform: uppercase;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
 		color: $gray-600;
 		border: 2px $gray-300 solid;
-		transition: all 0.25s ease-in-out, padding 1ms;
+		transition: all 0.25s ease-in-out, padding 1ms, font-size 1ms;
+		overflow: hidden;
 	
 		&:hover {
 			background: $gray-200;
@@ -36,6 +36,19 @@
 				box-shadow: none;
 			}
 		}
+	}
+
+	&-vlc {
+		display: block;
+		font-size: 1.5rem;
+		opacity: 0.5;
+	}
+
+	&-icon {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 30%;
 	}
 }
 
@@ -62,7 +75,7 @@
 	
 	.page-#{$category} {
 		.band {
-			background: colors($color, '500');
+			background: colors($color, '300');
 		}
 	}	
 }

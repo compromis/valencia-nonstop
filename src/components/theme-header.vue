@@ -19,14 +19,7 @@
 			<top-nav v-if="$route.name == 'frontpage'" :secondary-menu="secondary_menu" />
 			<div class="menu">
 				<div class="secondary-logo d-lg-none"></div>
-				<ul>
-					<li v-for="item in primary_menu" v-if="item.type != 'custom'" :class="[ item.classes, 'category' ]" :key="item.url">
-						<router-link :to="{ name: 'page', params: { name: getUrlName( item.url ) }}" class="category-button"> {{ item.title }} </router-link>
-					</li>
-					<li v-else :class="[ item.classes, 'category' ]" :key="item.url">
-						<router-link :to="item.url" class="category-button"> {{ item.title }} </router-link>
-					</li>
-				</ul>
+				<primary-menu :primary-menu="primary_menu" />
 			</div>
 		</nav>
 	</div>
@@ -35,11 +28,13 @@
 <script>
 import ShareButtons from './partials/share-buttons.vue';
 import TopNav from './partials/top-nav.vue';
+import PrimaryMenu from './partials/primary-menu.vue';
 
 export default {
 	components: {
 		ShareButtons,
-		TopNav
+		TopNav,
+		PrimaryMenu
 	},
 	mounted: function() {
 		this.getMenu('primary-menu');

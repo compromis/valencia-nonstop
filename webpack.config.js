@@ -15,6 +15,7 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+            loader: "vue-svg-inline-loader"
           }
           // other vue-loader options go here
         }

@@ -42,6 +42,10 @@
 		}	
 	}
 
+  .category a.category-button {
+    font-size: 2rem;
+  }
+
 	.content {
 		position: static;
 	}
@@ -74,10 +78,6 @@
 						padding-right: 0.5rem;
 					}
 				}
-			}
-
-			.category-button {
-				padding: 1rem;
 			}
 		}
 
