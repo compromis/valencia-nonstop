@@ -42,27 +42,27 @@
 @each $category, $color in $categories {
 	.category-#{$category} {
 		a.category-button {
-			border-color: material-color($color, '50');
-			background: material-color($color, '50');
-			color: material-color($color, '600');
+			border-color: colors($color, '100');
+			background: colors($color, '100');
+			color: colors($color, '400');
 
 			&:hover {
-				border-color: material-color($color, '600');
-				background: material-color($color, '100');
-				color: material-color($color, '700');
+				border-color: colors($color, '400');
+				background: colors($color, '200');
+				color: colors($color, '500');
 			}
 
 			&.router-link-active {
-				background: material-color($color, '500');
+				background: colors($color, '300');
 				color: $white;
-				border-color: material-color($color, '500');
+				border-color: colors($color, '300');
 			}
 		}
 	}
 	
 	.page-#{$category} {
 		.band {
-			background: material-color($color, '500');
+			background: colors($color, '500');
 		}
 	}	
 }
