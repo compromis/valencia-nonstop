@@ -24,6 +24,7 @@
     position: fixed;
     z-index: -1;
     transition: transform 0.5s ease-in-out;
+    overflow: hidden;
   }
 
   .map-bird {
@@ -32,10 +33,14 @@
     left: $nav-width-desktop + -150px;
     height: 200px;
     width: 290px;
-    background-image: url('images/icons/icon-bird-positive.svg');
-    background-position: -27px -155px;
-    background-size: 123%;
     transform: scale(0.75) rotate(18deg);
+
+    svg {
+      position: relative;
+      top: -150px;
+      width: 347px;
+      left: -21px;
+    }
   }
 
   .map-palmtree {
@@ -43,10 +48,14 @@
     left: -100px;
     height: 266px;
     width: 290px;
-    background-image: url('images/icons/icon-palmtree.svg');
-    background-position: -28px -96px;
-    background-size: 123%;
     transform: scale(0.5);
+
+    svg {
+      position: relative;
+      top: -92px;
+      left: -24px;
+      width: 349px;
+    }
   }
 
   .map-micalet {
@@ -54,10 +63,14 @@
     right: -116px;
     height: 358px;
     width: 207px;
-    background-image: url('images/icons/icon-micalet.svg');
-    background-position: -102px -53px;
-    background-size: 161%;
     transform: scale(0.5);
+
+    svg {
+      position: relative;
+      left: -100px;
+      width: 330px;
+      top: -52px;
+    }
   }
 
   .map-wave {
@@ -66,9 +79,13 @@
     right: -22px;
     height: 302px;
     width: 89px;
-    background-image: url('images/icons/icon-wave.svg');
-    background-position: -107px -55px;
-    background-size: 327%;
+
+    svg {
+      position: relative;
+      width: 291px;
+      left: -107px;
+      top: -56px;
+    }
   }
 }
 

@@ -12,13 +12,14 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-            loader: "vue-svg-inline-loader"
-          }
-          // other vue-loader options go here
-        }
+        use: [
+          "vue-loader",
+          {
+              loader: "vue-svg-inline-loader",
+              options: { /* ... */ }
+          },
+          // ...
+        ]
       },
       {
         test: /\.js$/,

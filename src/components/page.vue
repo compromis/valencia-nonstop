@@ -32,10 +32,18 @@
 			:class="{ 'map': true, 'map-background': !hasMap }"
 		></gmap-map>
 		<div class="map-decorations">
-			<div class="map-decoration map-bird"></div>
-			<div class="map-decoration map-micalet"></div>
-			<div class="map-decoration map-palmtree"></div>
-			<div class="map-decoration map-wave"></div>
+			<div class="map-decoration map-bird">
+				<img class="bird" svg-inline src="../../images/icons/icon-bird-positive.svg" alt="Icona d'un pardal" />
+			</div>
+			<div class="map-decoration map-micalet">
+				<img class="micalet" svg-inline src="../../images/icons/icon-micalet.svg" alt="Icona del micalet" />
+			</div>
+			<div class="map-decoration map-palmtree">
+				<img class="palmtree" svg-inline src="../../images/icons/icon-palmtree.svg" alt="Icona d'una palmera" />
+			</div>
+			<div class="map-decoration map-wave">
+				<img class="wave" svg-inline src="../../images/icons/icon-wave.svg" alt="Icona d'una ona" />
+			</div>
 		</div>
 	</div>
 </template>

@@ -1,0 +1,104 @@
+.palmtree {
+	.st0 { fill:#EBB35A; }
+	.st1 { fill:#4D7F45; }
+	.st2 { display:none; }
+	.st5 { display:inline; fill:#76B72D; }
+	.st6 { display:inline; fill:#F7A707; }
+	.st7 { display:inline; }
+	.st9 { fill:#76B72D; }
+	.st10 { fill:#F7A707; }
+}
+
+.router-link-active .palmtree {
+	.st0 { fill:#ECBE9D; }
+	.st1 { fill: #C7D396; }
+	.st5 { display:inline; fill: #C7D396; }
+	.st6 { display:inline; fill:#ECBE9D; }
+	.st9 { fill: #C7D396; }
+	.st10 { fill:#ECBE9D; }
+}
+
+.tower {
+	.st0 { fill:#0F7CBC; }
+	.st1 { fill:#53A0D8; }
+	.st2 { display:none; }
+	.st3 { display: inline; fill:#2582C4; }
+	.st7 { display: inline; }
+	.st8 { fill:#2582C4; }
+}
+
+.router-link-active .tower {
+	.st0 { fill:#A7CFE1; }
+	.st1 { fill:#4A9ED7; }
+	.st3 { display: inline; fill:#A7CFE1; }
+	.st8 { fill:#4A9ED7; }
+}
+
+.micalet {
+	.st0 { fill:#EBB35A; }
+	.st1 { fill:#E09251; }
+	.st2 { display:none; }
+	.st4 { display: inline; fill:#F08058; }
+	.st6 { display: inline; fill:#F7A707; }
+	.st7 { display: inline; }
+	.st10 { fill:#F7A707; }
+	.st11 { fill:#F08058; }
+}
+
+.router-link-active .micalet {
+	.st0 { fill:#ECBE9D; }
+	.st1 { fill:#DE7326; }
+	.st4 { display: inline; fill:#DE7326; }
+	.st6 { display: inline; fill:#ECBE9D; }
+	.st10 { fill:#ECBE9D; }
+	.st11 { fill:#DE7326; }
+}
+
+.wave {
+	.st0{fill:#53A0D8;}
+	.st1{display:none;}
+	.st2{display:inline;fill:#2582C4;}
+	.st3{display:inline;fill:#F08058;}
+	.st4{display:inline;fill:#76B72D;}
+	.st5{display:inline;fill:#F7A707;}
+	.st6{display:inline;}
+	.st7{fill:#2582C4;}
+	.st8{fill:#76B72D;}
+	.st9{fill:#F7A707;}
+	.st10{fill:#F08058;}
+}
+
+.bird {
+	.st0{fill:#DD4B27;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#FBCB50;}
+	.st3{display:none;}
+	.st4{display:inline;fill:#2582C4;}
+	.st5{display:inline;fill:#F08058;}
+	.st6{display:inline;fill:#76B72D;}
+	.st7{display:inline;fill:#F7A707;}
+	.st8{display:inline;}
+	.st9{fill:#2582C4;}
+	.st10{fill:#76B72D;}
+	.st11{fill:#F7A707;}
+	.st12{fill:#F08058;}
+}
+
+.category-icon {
+	position: absolute;
+	right: -10px;
+	bottom: -23px;
+	width: 130px;
+}
+
+.category-icon.category-barris {
+	right: 8px;
+	bottom: -10px;
+	width: 90px;
+}
+
+.frontpage .category-icon.category-barris {
+	right: 5px;
+	bottom: -23px;
+	width: 115px;
+}
