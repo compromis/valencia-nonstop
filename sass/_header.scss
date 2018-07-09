@@ -102,10 +102,13 @@
   }
 
   .category a.category-button {
-    font-size: 1.75rem;
-    padding: 1rem;
+    width: 210px;
+    font-size: 1.15rem;
+    padding: 0.5rem 1rem;
+    line-height: 1;
     padding-right: 5rem;
     border: 0;
+    height: 80px;
   }
 }
 
@@ -208,7 +211,17 @@
 	
 			a {
 				width: 100%;
-			}
+      }
+      
+      .category a.category-button {
+        width: 100%;
+        font-size: 1.75rem;
+        line-height: 1.25;
+        padding: 1rem;
+        padding-right: 5rem;
+        border: 0;
+        height: auto;
+      }
     }
   }
 

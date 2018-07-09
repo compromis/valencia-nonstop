@@ -88,17 +88,36 @@
 	position: absolute;
 	right: -10px;
 	bottom: -23px;
+	width: 100px;
+}
+
+.frontpage .category-icon {
 	width: 130px;
 }
 
 .category-icon.category-barris {
 	right: 8px;
-	bottom: -10px;
-	width: 90px;
+	bottom: -5px;
+	width: 70px;
 }
 
 .frontpage .category-icon.category-barris {
 	right: 5px;
-	bottom: -23px;
-	width: 115px;
+	bottom: -20px;
+	width: 100px;
+}
+
+@include media-breakpoint-up(lg) {
+	.category-icon {
+		width: 130px;
+	}
+
+	.category-icon.category-barris {
+		bottom: -10px;
+		width: 90px;
+	}
+
+	.frontpage .category-icon.category-barris {
+		bottom: -10px;
+	}
 }

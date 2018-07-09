@@ -10,7 +10,11 @@
 		line-height: 1.25;
 		text-transform: uppercase;
 		color: $gray-600;
-		transition: all 0.25s ease-in-out, padding 1ms, font-size 1ms;
+		transition: 
+			background 0.25s ease-in-out, 
+			box-shadow 0.25s ease-in-out, 
+			transform 0.25s ease-in-out,
+			color 0.25s ease-in-out,;
 		overflow: hidden;
 	
 		&:hover {
@@ -38,7 +42,7 @@
 
 	&-vlc {
 		display: block;
-		font-size: 1.5rem;
+		font-size: 1rem;
 		opacity: 0.5;
 	}
 }
@@ -96,6 +100,12 @@
 }
 
 @include media-breakpoint-up(lg) {
+	.category {
+		&-vlc {
+			font-size: 1.5rem;
+		}
+	}
+	
 	.subcategories {
 		ul {
 			margin: 0;
