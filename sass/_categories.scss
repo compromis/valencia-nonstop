@@ -10,16 +10,14 @@
 		line-height: 1.25;
 		text-transform: uppercase;
 		color: $gray-600;
-		border: 2px $gray-300 solid;
 		transition: all 0.25s ease-in-out, padding 1ms, font-size 1ms;
 		overflow: hidden;
 	
 		&:hover {
 			background: $gray-200;
-			border-color: $gray-500;
 			text-decoration: none;
 			transform: translateY(-2px);
-			box-shadow: $raised-shadow;
+			box-shadow: inset 0 0 0 3px $gray-200, $raised-shadow;
 		}
 
 		&:active {
@@ -60,9 +58,9 @@
 			color: colors($color, '400');
 
 			&:hover {
-				border-color: colors($color, '400');
 				background: colors($color, '200');
 				color: colors($color, '500');
+				box-shadow: inset 0 0 0 3px colors($color, '400'), $raised-shadow;
 			}
 
 			&.router-link-active {
