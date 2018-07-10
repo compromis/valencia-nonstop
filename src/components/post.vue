@@ -54,7 +54,7 @@ import * as VueGoogleMaps from 'vue2-google-maps';
 const mapStyle = require('./maps/events-mapstyle.json');
 
 export default {
-	component: {
+	components: {
 		PageLoading
 	},
 	mounted: function() {
