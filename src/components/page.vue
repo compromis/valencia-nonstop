@@ -50,8 +50,8 @@
 
 <script>
 import PageLoading from './partials/page-loading.vue';
-import * as VueGoogleMaps from 'vue2-google-maps'
-const mapStyle = require('./maps/mapstyle.json');
+import * as VueGoogleMaps from 'vue2-google-maps';
+const mapStyle = require('./maps/pages-mapstyle.json');
 
 export default {
 	components: {

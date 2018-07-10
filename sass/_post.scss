@@ -28,6 +28,25 @@
 		overflow: hidden;
 	}
 
+	.post-map {
+		width: 100%;
+		height: 200px;
+	}
+
+	.post-fields {
+		ul {
+			padding: 0;
+			margin: 1rem 0;
+			border-top: 1px $gray-200 solid;
+		}
+
+		li {
+			list-style: none;
+			border-bottom: 1px $gray-200 solid;
+			padding: 0.5rem 0;
+		}
+	}
+
 	.post-excerpt {
 		display: none;
 	}

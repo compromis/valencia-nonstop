@@ -25,7 +25,7 @@
 </template>
 
 <script>
-const mapStyle = require('./maps/mapstyle.json');
+const mapStyle = require('./maps/pages-mapstyle.json');
 
 export default {
 	data() {

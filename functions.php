@@ -170,7 +170,9 @@ function add_custom_fields() {
 }
 
 function get_custom_fields($object, $field_name, $request) {
-	return get_post_meta($object['id']);
+	$wp_custom_fields = get_post_meta($object['id']);
+	$acf_custom_fields = get_fields($object['id']);
+	return (object) array_merge((array) $wp_custom_fields, (array) $acf_custom_fields);;
 }
 
 add_action( 'rest_api_init', 'add_page_children' );
