@@ -140,7 +140,7 @@
     width: calc(63px + env(safe-area-inset-right));
     height: $top-nav-height-mobile;
     padding: 0 1rem;
-    padding-right: env(safe-area-inset-right);
+    padding-right: calc(1rem + env(safe-area-inset-right));
     transition: 0.15s ease-in-out;
 
     a {
