@@ -1,8 +1,8 @@
 <template>
 	<div class="post">
-		<div v-if="loaded === 'true'">
-			<div class="post-container container post-full" >
-				<div class="band"></div>
+		<div class="post-container container post-full">
+			<div class="band"></div>
+			<div v-if="loaded === 'true'">
 				<h2 class="post-title" v-html="post.title.rendered"></h2>
 				<div class="post-image progressive full" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['full'][0]">
 					<img class="lazy"
@@ -41,9 +41,9 @@
 					<router-link v-for="x in post.tag_name" :to="{ name: (remote) ? 'tag' : 'event-tag', params: { name: x.slug } }" :key="x.id">{{ x.name }}</router-link>
 				</div>
 			</div>
-		</div>
-		<div v-else>
-				<page-loading />
+			<div v-else>
+					<page-loading />
+			</div>
 		</div>
 	</div>
 </template>
