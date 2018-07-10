@@ -74,7 +74,8 @@ export default {
 				fullscreenControl: false,
 				scrollwheel: false,
 				disableDefaultUI: false,
-				draggable: true
+				draggable: true,
+				gestureHandling: 'greedy'
 			},
 			pageTitle: '',
 			kml: [],
