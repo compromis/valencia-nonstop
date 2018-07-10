@@ -12,8 +12,9 @@
 					/>
 				</div>
 
-				<div class="post-thumbnail" v-if="post.custom_fields.venue">
+				<div class="post-thumbnail" v-if="!remote">
 					<gmap-map
+						v-if="post.custom_fields.venue"
 						:center="{ lat: parseFloat(post.custom_fields.venue.lat), lng: parseFloat(post.custom_fields.venue.lng) }"
 						:zoom="16"
 						:options="mapOptions"
@@ -33,11 +34,11 @@
 
 				<div class="post-content" v-html="post.content.rendered"></div>
 				<div class="cat-list">
-					<router-link v-for="x in post.cat_name" :to="{ name: 'cat', params: { name:x.slug } }" :key="x.id">{{ x.name }}</router-link>
+					<router-link v-for="x in post.cat_name" :to="{ name: (remote) ? 'cat' : 'event-cat', params: { name: x.slug } }" :key="x.id">{{ x.name }}</router-link>
 				</div>
 
 				<div class="tag-list">
-					<router-link v-for="x in post.tag_name" :to="{ name: 'tag', params: { name:x.slug } }" :key="x.id">{{ x.name }}</router-link>
+					<router-link v-for="x in post.tag_name" :to="{ name: (remote) ? 'tag' : 'event-tag', params: { name: x.slug } }" :key="x.id">{{ x.name }}</router-link>
 				</div>
 			</div>
 		</div>

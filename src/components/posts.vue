@@ -2,27 +2,7 @@
 	<div class="posts">
 		<div v-if="loaded === 'true'" >
 			<div v-for="post in posts" :key="post.slug" class="post-container container">
-				<div class="post">
-					<div class="band"></div>
-					<div class="post-summary">
-						<div class="post-thumbnail progressive full" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['full'][0]">
-							<img class="lazy" v-progressive="post.featured_image_src['full'][0]" :data-srcset="post.featured_image_src['srcset']" :src="post.featured_image_src['full'][0]" />
-						</div>
-						<div class="post-summary-content">
-							<h2 class="post-title"><router-link :to="{ name: 'article', params: { name: post.slug, remote: true }}"><span v-html="post.title.rendered"></span></router-link> </h2>
-							<div class="post-meta">
-								<span class="posted-on">
-									<span class="date" v-text="formatDate( post )">
-									</span>
-								</span>
-							</div>
-							<div class="post-excerpt post-content" v-html="post.excerpt.rendered"></div>
-							<div class="post-read-more">
-								<router-link :to="{ name: 'article', params: { name: post.slug, remote: true }}">Llegeix més</router-link>
-							</div>
-						</div>
-					</div>
-				</div>
+				<post-summary :post="post" :remote="true" />
 			</div>
 			<nav aria-label="Navegació">
 				<ul class="pagination">
@@ -39,10 +19,12 @@
 
 <script>
 import PostsLoading from './partials/posts-loading.vue';
+import PostSummary from './partials/post-summary.vue';
 
 export default {
 	components: {
-		PostsLoading
+		PostsLoading,
+		PostSummary
 	},
 	mounted() {
 		const vm = this;
@@ -109,22 +91,6 @@ export default {
 			if ( vm.currentPage != 1 ) {
 				vm.currentPage = vm.currentPage - 1;
 				vm.$router.push( { 'name': 'articles', params: { 'page': vm.currentPage } } );
-			}
-		},
-		formatDate( value ) {
-			value = value.date;
-			if ( value ) {
-				const date = new Date( value );
-				const monthNames = [ "gener", "febrer", "març",
-					"abril", "maig", "juny", "juliol",
-					"agost", "setembre", "octubre",
-					"novembre", "desembre" ];
-
-				const day = date.getDate();
-				const monthIndex = date.getMonth();
-				const year = date.getFullYear();
-
-				return day + ' ' + monthNames[ monthIndex ] + ' ' + year;
 			}
 		}
 	},

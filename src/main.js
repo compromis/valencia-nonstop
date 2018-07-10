@@ -75,8 +75,10 @@ const router = new VueRouter( {
 		{ path: '/agenda/:name', name: 'event', component: post },
 		{ path: '/page/:name', name: 'page', component: page },
 		{ path: '/page/:parent/:name', name: 'subpage', component: page },
-		{ path: '/category/:name', name: 'cat', component: category },
-		{ path: '/tag/:name', name: 'tag', component: tag },
+		{ path: '/category/:name', name: 'cat', component: category, props: { remote: true } },
+		{ path: '/tag/:name', name: 'tag', component: tag, props: { remote: true } },
+		{ path: '/event-category/:name', name: 'event-cat', component: category, props: { remote: false } },
+		{ path: '/event-tag/:name', name: 'event-tag', component: tag, props: { remote: false } },
 		{ path: '/', name: 'frontpage', component: frontpage },
 
 	],

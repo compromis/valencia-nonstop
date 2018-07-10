@@ -2,32 +2,7 @@
 	<div class="posts">
 		<div v-if="loaded === 'true'" >
 			<div v-for="post in posts" :key="post.slug" class="post-container container">
-				<div class="post">
-					<div class="band"></div>
-					<div class="post-summary">
-						<div class="post-thumbnail progressive full" v-if="post.custom_fields.venue">
-							<gmap-map
-								:center="{ lat: parseFloat(post.custom_fields.venue.lat), lng: parseFloat(post.custom_fields.venue.lng) }"
-								:zoom="16"
-								:options="mapOptions"
-								class="post-map">
-								<GmapMarker :position="{ lat: parseFloat(post.custom_fields.venue.lat), lng: parseFloat(post.custom_fields.venue.lng) }" />
-							</gmap-map>
-						</div>
-						<div class="post-summary-content">
-							<h2 class="post-title"><router-link :to="{ name: 'event', params: { name: post.slug, remote: true }}"><span v-html="post.title.rendered"></span></router-link> </h2>
-							<div class="post-fields">
-								<ul>
-									<li><i class="fal fa-calendar-alt fa-fw"></i> <span v-text="formatDate(post.custom_fields.date)"></span> a les {{ post.custom_fields.time }}</li>
-									<li><i class="fal fa-map-marker-alt fa-fw"></i> {{ post.custom_fields.venue_text }}</li>
-								</ul>
-							</div>
-							<div class="post-read-more">
-								<router-link :to="{ name: 'event', params: { name: post.slug, remote: true }}">+ Més info</router-link>
-							</div>
-						</div>
-					</div>
-				</div>
+				<post-summary :post="post" :remote="false" />
 			</div>
 			<nav aria-label="Navegació">
 				<ul class="pagination">
@@ -44,13 +19,12 @@
 
 <script>
 import PostsLoading from './partials/posts-loading.vue';
-import * as VueGoogleMaps from 'vue2-google-maps';
-const mapStyle = require('./maps/events-mapstyle.json');
-
+import PostSummary from './partials/post-summary.vue';
 
 export default {
 	components: {
-		PostsLoading
+		PostsLoading,
+		PostSummary
 	},
 	mounted() {
 		const vm = this;
@@ -72,16 +46,7 @@ export default {
 			postPerPage: '10',
 			totalPages: '',
 			loaded: 'false',
-			pageTitle: '',
-			mapOptions: {
-				styles: mapStyle,
-				streetViewControl: false, 
-				mapTypeControl: false, 
-				fullscreenControl: false,
-				scrollwheel: false,
-				disableDefaultUI: true,
-				draggable: false,
-			}
+			pageTitle: ''
 		};
 	},
 
@@ -126,23 +91,6 @@ export default {
 			if ( vm.currentPage != 1 ) {
 				vm.currentPage = vm.currentPage - 1;
 				vm.$router.push( { 'name': 'events', params: { 'page': vm.currentPage } } );
-			}
-		},
-		formatDate( value ) {
-			if ( value ) {
-				const date = new Date( value );
-				const monthNames = [ "gener", "febrer", "març",
-					"abril", "maig", "juny", "juliol",
-					"agost", "setembre", "octubre",
-					"novembre", "desembre" ];
-				const monthStartingWithVowels = [3, 7, 9];
- 
-				const day = date.getDate();
-				const monthIndex = date.getMonth();
-				const year = date.getFullYear();
-				const prep = (monthStartingWithVowels.includes(monthIndex)) ? 'd\' ' : 'de ';
-
-				return day + ' ' + prep + monthNames[ monthIndex ] + ' de ' + year;
 			}
 		}
 	},
