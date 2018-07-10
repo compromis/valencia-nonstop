@@ -12,7 +12,26 @@
 					/>
 				</div>
 
-				<div class="post-content" v-html="post.content.rendered" ></div>
+				<div class="post-thumbnail" v-if="post.custom_fields.venue">
+					<gmap-map
+						:center="{ lat: parseFloat(post.custom_fields.venue.lat), lng: parseFloat(post.custom_fields.venue.lng) }"
+						:zoom="16"
+						:options="mapOptions"
+						class="post-map">
+						<GmapMarker :position="{ lat: parseFloat(post.custom_fields.venue.lat), lng: parseFloat(post.custom_fields.venue.lng) }" />
+					</gmap-map>
+				</div>
+
+				<div class="post-fields" v-if="!remote">
+					<ul>
+						<li><i class="fal fa-calendar-alt fa-fw"></i> <span v-text="formatDate(post.custom_fields.date)"></span> a les {{ post.custom_fields.time }}</li>
+						<li><i class="fal fa-map-marker-alt fa-fw"></i> {{ post.custom_fields.venue_text }}</li>
+						<li v-if="post.custom_fields.link"><i class="fal fa-link fa-fw"></i> <a :href="post.custom_fields.link" target="_blank" rel="noopener">{{ post.custom_fields.link }}</a></li>
+						<li v-if="post.custom_fields.speakers" class="d-flex"><i class="fal fa-users fa-fw"></i> <div v-html="post.custom_fields.speakers" class="post-speakers"></div></li>
+					</ul>
+				</div>
+
+				<div class="post-content" v-html="post.content.rendered"></div>
 				<div class="cat-list">
 					<router-link v-for="x in post.cat_name" :to="{ name: 'cat', params: { name:x.slug } }" :key="x.id">{{ x.name }}</router-link>
 				</div>
@@ -30,6 +49,8 @@
 
 <script>
 import PageLoading from './partials/page-loading.vue';
+import * as VueGoogleMaps from 'vue2-google-maps';
+const mapStyle = require('./maps/events-mapstyle.json');
 
 export default {
 	component: {
@@ -46,7 +67,16 @@ export default {
 			base_path: rtwp.base_path,
 			post: {},
 			loaded: 'false',
-			pageTitle: ''
+			pageTitle: '',
+			mapOptions: {
+				styles: mapStyle,
+				streetViewControl: false, 
+				mapTypeControl: false, 
+				fullscreenControl: false,
+				scrollwheel: false,
+				disableDefaultUI: true,
+				draggable: false,
+			}
 		};
 	},
 	methods: {
@@ -65,6 +95,23 @@ export default {
 			.catch( ( res ) => {
 				//console.log( `Something went wrong : ${res}` );
 			} );
+		},
+		formatDate( value ) {
+			if ( value ) {
+				const date = new Date( value );
+				const monthNames = [ "gener", "febrer", "març",
+					"abril", "maig", "juny", "juliol",
+					"agost", "setembre", "octubre",
+					"novembre", "desembre" ];
+				const monthStartingWithVowels = [3, 7, 9];
+ 
+				const day = date.getDate();
+				const monthIndex = date.getMonth();
+				const year = date.getFullYear();
+				const prep = (monthStartingWithVowels.includes(monthIndex)) ? 'd\' ' : 'de ';
+
+				return day + ' ' + prep + monthNames[ monthIndex ] + ' de ' + year;
+			}
 		}
 	}
 };
