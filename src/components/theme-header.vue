@@ -76,6 +76,20 @@ export default {
 			this.show_share_buttons = window.scrollY < 50;
 		}
 	},
+	watch: {
+		'$route': function () {
+			setTimeout(() => {
+				const activeLink = document.querySelector('.menu .router-link-active');
+				const menu = document.getElementsByClassName('menu')[0];
+				const sidebar = document.getElementsByClassName('sidebar')[0];
+
+				if(activeLink) {
+					if(activeLink.offsetTop >= menu.offsetHeight) menu.scrollTop = activeLink.offsetTop - 15;
+					sidebar.scrollLeft = activeLink.offsetLeft - ((window.innerWidth - activeLink.offsetWidth) / 2);
+				}
+			}, 200);	
+		}
+	},
 	created() {
 		window.addEventListener('scroll', this.handleScroll);
 	},
