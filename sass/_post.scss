@@ -8,7 +8,8 @@
   }
 
   .post-title {
-    line-height: 1;
+    line-height: 1.25;
+    font-size: 1.5rem;
 
     a {
       display: block;
@@ -24,8 +25,12 @@
   .post-thumbnail {
     margin: -1.5rem -1.5rem 1.5rem -1.5rem;
     border-bottom: 10px $secondary solid;
-    max-height: 300px;
+    max-height: 150px;
     overflow: hidden;
+
+    img {
+      margin-top: -30px;
+    }
   }
 
   &-content {
@@ -39,7 +44,8 @@
 
     .post-read-more {
       text-align: right;
-      margin: 0 -2rem -1.5rem 0;
+      margin: 0.5rem -2rem -1.5rem 0;
+      font-size: 0.75rem;
 
       a {
         display: inline-block;
@@ -161,7 +167,7 @@
     align-items: flex-start;
 
     .post-title {
-      line-height: 1.25;
+      font-size: 2rem;
     }
 
     .post-thumbnail {
@@ -175,6 +181,7 @@
 
       img {
         width: 100%;
+        margin-top: 0;
       }
     }
 
@@ -187,6 +194,7 @@
       position: absolute;
       right: 0;
       bottom: 0;
+      font-size: 1rem;
     }
   }
 
