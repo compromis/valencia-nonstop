@@ -28,7 +28,7 @@
             <li><i class="fal fa-calendar-alt fa-fw"></i> <span v-text="formatDate(post.custom_fields.date)"></span> a les {{ post.custom_fields.time }}</li>
             <li><i class="fal fa-map-marker-alt fa-fw"></i> {{ post.custom_fields.venue_text }}</li>
             <li v-if="post.custom_fields.link"><i class="fal fa-link fa-fw"></i> <a :href="post.custom_fields.link" target="_blank" rel="noopener">{{ post.custom_fields.link }}</a></li>
-            <li v-if="post.custom_fields.speakers" class="d-flex"><i class="fal fa-users fa-fw"></i> <div v-html="post.custom_fields.speakers" class="post-speakers"></div></li>
+            <li v-if="post.custom_fields.speakers"><i class="fal fa-users fa-fw"></i> <div v-html="post.custom_fields.speakers" class="post-speakers"></div></li>
           </ul>
         </div>
 
