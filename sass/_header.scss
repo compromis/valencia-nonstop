@@ -8,8 +8,8 @@
   height: calc($nav-height-mobile + env(safe-area-inset-bottom));
   background: $white;
   overflow-x: scroll;
-	overflow-y: hidden;
-	-webkit-overflow-scrolling: touch;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   z-index: 10;
   box-shadow: $default-shadow;
   padding-right: env(safe-area-inset-right);
@@ -84,17 +84,17 @@
 }
 
 .menu {
-	ul,
-	li {
-		display: flex;
-		list-style: none;
-		margin: 0 0.5rem;
-		padding: 0;
-		align-items: center;
-	}
+  ul,
+  li {
+    display: flex;
+    list-style: none;
+    margin: 0 0.5rem;
+    padding: 0;
+    align-items: center;
+  }
 
-	ul {
-		height: $nav-height-mobile;
+  ul {
+    height: $nav-height-mobile;
   }
   
   li:last-child {
@@ -191,28 +191,28 @@
       top: $top-nav-height-desktop;
       left: 0;
       bottom: 0;
-			width: $nav-width-desktop;
+      width: $nav-width-desktop;
       overflow-x: hidden;
       overflow-y: scroll;
-			border-top: 2px $gray-200 solid;
-			
-			ul {
-				flex-direction: column;
-				margin: 0.5rem 1rem;
-				height: auto;
-			}
-	
-			li {
-				width: 100%;
+      border-top: 2px $gray-200 solid;
+      
+      ul {
+        flex-direction: column;
+        margin: 0.5rem 1rem;
+        height: auto;
+      }
+  
+      li {
+        width: 100%;
         margin: 0.5rem;
         
         &:last-child {
           padding-right: 0;
         }
-			}
-	
-			a {
-				width: 100%;
+      }
+  
+      a {
+        width: 100%;
       }
       
       .category a.category-button {

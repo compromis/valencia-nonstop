@@ -1,145 +1,145 @@
 .category {
-	a.category-button {
-		display: block;
-		position: relative;
-		background: $gray-100;
-		padding: 0.5rem 1rem;
-		border-radius: $border-radius;
-		font-family: $font-family-heading;
-		font-size: 1.5rem;
-		line-height: 1.25;
-		text-transform: uppercase;
-		color: $gray-600;
-		transition: 
-			background 0.25s ease-in-out, 
-			box-shadow 0.25s ease-in-out, 
-			transform 0.25s ease-in-out,
-			color 0.25s ease-in-out,;
-		overflow: hidden;
+  a.category-button {
+    display: block;
+    position: relative;
+    background: $gray-100;
+    padding: 0.5rem 1rem;
+    border-radius: $border-radius;
+    font-family: $font-family-heading;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    text-transform: uppercase;
+    color: $gray-600;
+    transition: 
+      background 0.25s ease-in-out, 
+      box-shadow 0.25s ease-in-out, 
+      transform 0.25s ease-in-out,
+      color 0.25s ease-in-out,;
+    overflow: hidden;
 
-		&:after {
-			content: '';
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			border-radius: $border-radius;
-			transition: 0.25s ease-in-out;
-	}
-	
-		&:hover {
-			background: $gray-200;
-			text-decoration: none;
-			transform: translateY(-2px);
-			box-shadow: $raised-shadow;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: $border-radius;
+      transition: 0.25s ease-in-out;
+  }
+  
+    &:hover {
+      background: $gray-200;
+      text-decoration: none;
+      transform: translateY(-2px);
+      box-shadow: $raised-shadow;
 
-			&:after {
-				border: 3px $gray-200 solid;
-			}
-		}
+      &:after {
+        border: 3px $gray-200 solid;
+      }
+    }
 
-		&:active {
-			transform: translateY(2px);
-		}
+    &:active {
+      transform: translateY(2px);
+    }
 
-		&.router-link-active {
-			background: $gray-600;
-			border-color: $gray-600;
-			color: $white;
+    &.router-link-active {
+      background: $gray-600;
+      border-color: $gray-600;
+      color: $white;
 
-			&:hover {
-				transform: translateY(0);
-				box-shadow: none;
-			}
-		}
-	}
+      &:hover {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+    }
+  }
 
-	&-vlc {
-		display: block;
-		font-size: 1rem;
-		opacity: 0.5;
-	}
+  &-vlc {
+    display: block;
+    font-size: 1rem;
+    opacity: 0.5;
+  }
 }
 
 @each $category, $color in $categories {
-	.category-#{$category} {
-		a.category-button {
-			border-color: colors($color, '100');
-			background: colors($color, '100');
-			color: colors($color, '400');
+  .category-#{$category} {
+    a.category-button {
+      border-color: colors($color, '100');
+      background: colors($color, '100');
+      color: colors($color, '400');
 
-			&:hover {
-				background: colors($color, '200');
-				color: colors($color, '500');
+      &:hover {
+        background: colors($color, '200');
+        color: colors($color, '500');
 
-				&:after {
-					border-color: colors($color, '400');
-				}
-			}
+        &:after {
+          border-color: colors($color, '400');
+        }
+      }
 
-			&.router-link-active {
-				background: colors($color, '300');
-				color: $white;
-				border-color: colors($color, '300');
-			}
-		}
-	}
-	
-	.page-#{$category} {
-		.band {
-			background: colors($color, '300');
-		}
-	}	
+      &.router-link-active {
+        background: colors($color, '300');
+        color: $white;
+        border-color: colors($color, '300');
+      }
+    }
+  }
+  
+  .page-#{$category} {
+    .band {
+      background: colors($color, '300');
+    }
+  }  
 }
 
 .subcategories {
-	ul {
-		margin: 0 -1rem -1rem;
-		padding: 0;
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-	}
+  ul {
+    margin: 0 -1rem -1rem;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
 
-	li {
-		padding: 0.5rem;
-	}
+  li {
+    padding: 0.5rem;
+  }
 }
 
 .siblings {
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
 
-	a.category-button {
-		padding: 0.5rem 1rem;
-		font-size: 1rem;
-		border-width: 2px;
-	}
+  a.category-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-width: 2px;
+  }
 }
 
 @include media-breakpoint-up(lg) {
-	.category {
-		&-vlc {
-			font-size: 1.5rem;
-		}
-	}
-	
-	.subcategories {
-		ul {
-			margin: 0;
-			display: flex;
-			flex-direction: row;
-		}
+  .category {
+    &-vlc {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .subcategories {
+    ul {
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+    }
 
-		li {
-			margin: 0 0.5rem;
-			padding: 0;
+    li {
+      margin: 0 0.5rem;
+      padding: 0;
 
-			&:first-child {
-				margin-left: 0;
-			}
-		}
-	}
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
 }

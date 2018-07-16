@@ -1,59 +1,59 @@
 .loading {
-	.filler {
-		display: block;
-		height: 1rem;
-		animation-duration: 1.5s;
-		animation-fill-mode: forwards;
-		animation-iteration-count: infinite;
-		animation-timing-function: linear;
-		animation-name: placeHolder;
-		background: $gray-200;
-		background: linear-gradient(to right, $gray-200 8%, darken($gray-200, 5%) 18%, $gray-200 33%);
-		background-size: 1200px 100px;
-		position: relative;
-	}
+  .filler {
+    display: block;
+    height: 1rem;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: placeHolder;
+    background: $gray-200;
+    background: linear-gradient(to right, $gray-200 8%, darken($gray-200, 5%) 18%, $gray-200 33%);
+    background-size: 1200px 100px;
+    position: relative;
+  }
 
-	.post-thumbnail {
-		border-bottom: 0;
+  .post-thumbnail {
+    border-bottom: 0;
 
-		.filler {
-			display: block;
-			height: 300px;
-			margin: 0 auto;
-			border-bottom: 0;
-		}
-	}
+    .filler {
+      display: block;
+      height: 300px;
+      margin: 0 auto;
+      border-bottom: 0;
+    }
+  }
 
-	.heading {
-		margin-bottom: 1rem;
+  .heading {
+    margin-bottom: 1rem;
 
-		.filler {
-				display: inline-block;
-				width: 80%;
-				height: 2rem;
-				position: relative;
-				top: 4px;
-		}
-	}
-	.subheading {
-		margin-bottom: 1rem;
+    .filler {
+        display: inline-block;
+        width: 80%;
+        height: 2rem;
+        position: relative;
+        top: 4px;
+    }
+  }
+  .subheading {
+    margin-bottom: 1rem;
 
-		.filler {
-				margin-bottom: 0.5rem;
-		}
-	}
+    .filler {
+        margin-bottom: 0.5rem;
+    }
+  }
 }
 
 @include media-breakpoint-up(lg) {
-	.post-thumbnail {
-		.filler {
-			border-radius: $border-radius;
-			width: 300px;
-		}
-	}
+  .post-thumbnail {
+    .filler {
+      border-radius: $border-radius;
+      width: 300px;
+    }
+  }
 }
 
 @keyframes placeHolder {
-	0% { background-position: -600px 0; }
-	100% { background-position: 600px 0; }
+  0% { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
 }

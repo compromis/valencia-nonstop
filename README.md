@@ -11,7 +11,7 @@ Wordpress theme for Compromís' *Valencia el canvi no para* campaign website. Bu
 ## Development
 1. Go to your WP theme directory & navigate to the theme.
 2. Install dependencies `npm install`
-3. Make sure you add `define( 'RT_VUE_DEV', true );` in `wp-config.php` to get asset files from webpack dev server.
+3. Make sure you add `define('RT_VUE_DEV', true);` in `wp-config.php` to get asset files from webpack dev server.
 4. To start dev server with hot reload `npm run dev`
 5. To create build for production with minification `npm run build`
 

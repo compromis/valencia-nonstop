@@ -3,6 +3,6 @@
 
 <script>
 export default {
-	name: 'frontpage'
+  name: 'frontpage'
 };
 </script>

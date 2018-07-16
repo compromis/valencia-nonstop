@@ -1,79 +1,79 @@
 .page-title {
-	font-size: 2rem;
-	text-transform: uppercase;
+  font-size: 2rem;
+  text-transform: uppercase;
 }
 
 .page-parent {
-	display: inline-block;
-	font-family: $font-family-heading;
-	text-transform: uppercase;
-	
-	a {
-		color: $gray-500;
+  display: inline-block;
+  font-family: $font-family-heading;
+  text-transform: uppercase;
+  
+  a {
+    color: $gray-500;
 
-		&:hover {
-			color: $gray-700;
-		}
-	}
+    &:hover {
+      color: $gray-700;
+    }
+  }
 }
 
 .page.has-map {
-	margin-top: 65vh;
+  margin-top: 65vh;
 }
 
 .band {
-	background: $secondary;
-	height: 10px;
-	margin: -1.5rem -1.5rem 1.5rem -1.5rem;
-	transition: 0.5s ease;
+  background: $secondary;
+  height: 10px;
+  margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+  transition: 0.5s ease;
 }
 
 .map h3 {
-	font-family: $font-family-sans-serif;
-	font-size: 1.5rem;
+  font-family: $font-family-sans-serif;
+  font-size: 1.5rem;
 }
 
 @include media-breakpoint-up(lg) {
-	.band {
-		margin: -1.5rem -2rem 1.5rem -2rem;
-	}
+  .band {
+    margin: -1.5rem -2rem 1.5rem -2rem;
+  }
 
-	.page.has-map {
-		margin-top: 75vh;
-	}
+  .page.has-map {
+    margin-top: 75vh;
+  }
 
-	.page-content-wrapper {
-		display: flex;
-		flex-direction: column;
-	
-		.siblings {
-			order: 1;
-		}
-	
-		.page-content {
-			order: 2;
-		}
-	
-		.children {
-			order: 3;
-		}
-	}
+  .page-content-wrapper {
+    display: flex;
+    flex-direction: column;
+  
+    .siblings {
+      order: 1;
+    }
+  
+    .page-content {
+      order: 2;
+    }
+  
+    .children {
+      order: 3;
+    }
+  }
 
-	.subcategories {
-		margin-top: 0.5rem;
-		padding: 1rem 0;
-		border-top: 2px $gray-300 solid;
-		border-bottom: 2px $gray-300 solid;
+  .subcategories {
+    margin-top: 0.5rem;
+    padding: 1rem 0;
+    border-top: 2px $gray-300 solid;
+    border-bottom: 2px $gray-300 solid;
 
-		&.children {
-			border-top: 0;
-			border-bottom: 0;
-		}
-	}
+    &.children {
+      border-top: 0;
+      border-bottom: 0;
+    }
+  }
 
-	@media (min-height: 800px) {
-		.page.has-map {
-			margin-top: 80vh;
-		}
-	}
+  @media (min-height: 800px) {
+    .page.has-map {
+      margin-top: 80vh;
+    }
+  }
 }

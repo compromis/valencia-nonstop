@@ -7,106 +7,102 @@ import * as VueGoogleMaps from 'vue2-google-maps';
 
 Vue.prototype.$http = axios;
 
-Vue.use( Vuex );
-Vue.use( VueRouter );
-Vue.use( VueProgressiveImage, {
-	removePreview: true
-} );
-Vue.use( VueRouter );
+Vue.use(Vuex);
+Vue.use(VueRouter);
+Vue.use(VueProgressiveImage, {
+  removePreview: true
+});
+Vue.use(VueRouter);
 
-Vue.use( VueGoogleMaps, {
-	load: {
-		key: 'AIzaSyCHia_53O9k25YuqFb3PKkvp-XO6l5KNWY',
-		libraries: ''
-	}
-} );
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyCHia_53O9k25YuqFb3PKkvp-XO6l5KNWY',
+    libraries: ''
+  }
+});
 
 Vue.config.debug = true;
 Vue.config.devTools = true;
 
 //Import all vue components
-import posts from './components/posts.vue';
-Vue.component( 'posts', posts );
-import events from './components/events.vue';
-Vue.component( 'events', events );
-import post from './components/post.vue';
-Vue.component( 'post', post );
-import header from './components/theme-header.vue';
-Vue.component( 'theme-header', header );
-import frontpage from './components/frontpage.vue';
-Vue.component( 'frontpage', frontpage );
-import footer from './components/theme-footer.vue';
-Vue.component( 'theme-footer', footer );
-import page from './components/page.vue';
-Vue.component( 'page', page );
-import category from './components/category.vue';
-Vue.component( 'category', category );
-import tag from './components/tag.vue';
-Vue.component( 'tag', tag );
-//Create main vue component
-const App = Vue.extend( {
-	template: '<div id="page" :class="[template, \'hfeed site\']"><theme-header></theme-header>' +
-			'<main class="content"><router-view></router-view></main>' +
-			'<theme-footer></theme-footer></div>',
-	data() {
-		return {
-			template: ''
-		};
-	},
-	watch: {
-		'$route': function( to, from ) {
-			this.template = to.name;
-		}
-	},
-	mounted() {
-		this.template = this.$route.name;
-	}
-} );
+import Posts from './components/posts.vue';
+import Post from './components/post.vue';
+import Header from './components/theme-header.vue';
+import Frontpage from './components/frontpage.vue';
+import Footer from './components/theme-footer.vue';
+import Page from './components/page.vue';
+import Category from './components/category.vue';
+import Tag from './components/tag.vue';
 
-//Define route for vue app
-//ref : http://router.vuejs.org/en/
-const router = new VueRouter( {
-	mode: 'history',
-	routes: [
+// Define route for vue app
+// ref : http://router.vuejs.org/en/
+const router = new VueRouter({
+  mode: 'history',
+  routes: [
+    { path: '/noticies/:page(\\d+)?', name: 'articles', component: Posts, props: { remote: true } },
+    { path: '/noticies/:name', name: 'article', component: Post, props: { remote: true } },
+    { path: '/agenda/:page(\\d+)?', name: 'events', component: Posts, props: { remote: false } },
+    { path: '/agenda/:name', name: 'event', component: Post, props: { remote: false } },
+    { path: '/page/:name', name: 'page', component: Page },
+    { path: '/page/:parent/:name', name: 'subpage', component: Page },
+    { path: '/category/:name', name: 'cat', component: Category, props: { remote: true } },
+    { path: '/tag/:name', name: 'tag', component: Tag, props: { remote: true } },
+    { path: '/event-category/:name', name: 'event-cat', component: Category, props: { remote: false } },
+    { path: '/event-tag/:name', name: 'event-tag', component: Tag, props: { remote: false } },
+    { path: '/', name: 'frontpage', component: Frontpage },
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
 
-		{ path: '/noticies/:page(\\d+)?', name: 'articles', component: posts },
-		{ path: '/noticies/:name', name: 'article', component: post, props: { remote: true } },
-		{ path: '/agenda/:page(\\d+)?', name: 'events', component: events },
-		{ path: '/agenda/:name', name: 'event', component: post },
-		{ path: '/page/:name', name: 'page', component: page },
-		{ path: '/page/:parent/:name', name: 'subpage', component: page },
-		{ path: '/category/:name', name: 'cat', component: category, props: { remote: true } },
-		{ path: '/tag/:name', name: 'tag', component: tag, props: { remote: true } },
-		{ path: '/event-category/:name', name: 'event-cat', component: category, props: { remote: false } },
-		{ path: '/event-tag/:name', name: 'event-tag', component: tag, props: { remote: false } },
-		{ path: '/', name: 'frontpage', component: frontpage },
+    return { x: 0, y: 0 };
+  }
+});
 
-	],
-	scrollBehavior( to, from, savedPosition ) {
-		if ( savedPosition ) {
-			return savedPosition;
-		}
+// Define vuex store
+const store = new Vuex.Store({
+  state: {
+    title: ''
+  },
+  mutations: {
+    rtChangeTitle(state, value) {
+      // mutate state
+      state.title = value;
+      document.title = (state.title ? state.title + ' - ' : '') + rtwp.site_name;
+    }
+  }
+});
 
-		return { x: 0, y: 0 };
-	}
-} );
+// Register global components
+Vue.component('theme-header', Header);
+Vue.component('theme-footer', Footer);
 
-//Define vuex store
-const store = new Vuex.Store( {
-	state: {
-		title: ''
-	},
-	mutations: {
-		rtChangeTitle( state, value ) {
-			// mutate state
-			state.title = value;
-			document.title = ( state.title ? state.title + ' - ' : '' ) + rtwp.site_name;
-		}
-	}
-} );
-
-//Create instance of main component
-new App( {
-	store,
-	router
-} ).$mount( '#app' );
+// Create instance of main component
+const app = new Vue({
+  el: '#app',
+  store,
+  router,
+  template: `
+    <div id="page" :class="[pageTemplate, 'hfeed site']">
+      <theme-header></theme-header>
+      <main class="content">
+        <router-view></router-view>
+      </main>
+      <theme-footer></theme-footer>
+    </div>
+  `,
+  data() {
+    return {
+      pageTemplate: ''
+    };
+  },
+  watch: {
+    '$route': function(to, from) {
+      this.pageTemplate = to.name;
+    }
+  },
+  mounted() {
+    this.pageTemplate = this.$route.name;
+  }
+});

@@ -1,16 +1,3 @@
-/* Colors */
-$blue:       #1E88E5;
-$indigo:     #3949AB;
-$purple:     #5E35B1;
-$pink:       #D81B60;
-$red:        #E53935;
-$orange:     #F4511E;
-$yellow:     #FFB300;
-$brown:      #6D4C41;
-$green:      #43A047;
-$teal:       #00897B;
-$cyan:       #00ACC1;
-
 /* Grays */
 $gray-100:   #f8f9fa;
 $gray-200:   #e9ecef;
@@ -30,7 +17,7 @@ $font-family-heading: 'Concert One', sans-serif;
 
 /* Semantic colors */
 $body-bg:    $white;
-$primary:    $orange;
+$primary:    #DE7326;
 $link-color: $primary;
 $secondary:  $gray-600;
 
@@ -48,15 +35,6 @@ $gradient-from: #D4432F;
 $gradient-to: #E28333;
 $brand-gradient: linear-gradient(135deg, $gradient-from 0%, $gradient-to 100%);
 
-/* Categories */
-$categories: (
-	'sostenible': 'green',
-	'persones': 'red',
-	'barris': 'blue',
-	'cultural': 'orange',
-	'participativa': 'purple'
-);
-
 /* Dimensions */
 $nav-width-desktop: 300px;
 $nav-height-mobile: 100px;
@@ -64,3 +42,51 @@ $top-nav-height-desktop: 350px;
 $top-nav-height-mobile: 55px;
 $wp-admin-nav-height-desktop: 32px;
 $wp-admin-nav-height-mobile: 46px;
+
+/* Colors */
+$colors: (
+  'green': (
+    '100': #C7D396,
+    '200': #A7BD61,
+    '300': #4D804C,
+    '400': #375937,
+    '500': #2E482D,
+  ),
+  'red': (
+    '100': #EAAFA9,
+    '200': #DD938E,
+    '300': #E05633,
+    '400': #B93526,
+    '500': #93211E,
+  ),
+  'blue': (
+    '100': #A7CFE1,
+    '200': #5AB9D2,
+    '300': #147FBC,
+    '400': #12688F,
+    '500': #0D5067,
+  ),
+  'orange': (
+    '100': #EAD5BB,
+    '200': #EABE96,
+    '300': #DE7326,
+    '400': #B55A27,
+    '500': #893D1E,
+  ),
+  'purple': (
+    '100': #A8A6D3,
+    '200': #9B9BC8,
+    '300': #5C59A6,
+    '400': #30337B,
+    '500': #2C2D66,
+  )
+);
+
+/* Categories */
+$categories: (
+  'sostenible': 'green',
+  'persones': 'red',
+  'barris': 'blue',
+  'cultural': 'orange',
+  'participativa': 'purple'
+);

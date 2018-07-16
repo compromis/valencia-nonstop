@@ -1,202 +1,202 @@
 .post-summary {
-	position: relative;
-	display: flex;
-	flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
-	&-content {
-		width: 100%;
-	}
+  &-content {
+    width: 100%;
+  }
 
-	.post-title {
-		line-height: 1;
-		
-		a {
-			display: block;
-			color: transparent;
-			background: $primary;
-			background: $brand-gradient;
-			background-clip: text;
-			-webkit-background-clip: text;
-  		-webkit-text-fill-color: transparent;
-		}
-	}
+  .post-title {
+    line-height: 1;
 
-	.post-thumbnail {
-		margin: -1.5rem -1.5rem 1.5rem -1.5rem;
-		border-bottom: 10px $secondary solid;
-		max-height: 300px;
-		overflow: hidden;
-	}
+    a {
+      display: block;
+      color: transparent;
+      background: $primary;
+      background: $brand-gradient;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
 
-	&-content {
-		display: flex;
-		flex-direction: column;
+  .post-thumbnail {
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    border-bottom: 10px $secondary solid;
+    max-height: 300px;
+    overflow: hidden;
+  }
 
-		.post-meta {
-			color: $gray-600;
-			order: -1;
-		}
+  &-content {
+    display: flex;
+    flex-direction: column;
 
-		.post-read-more {
-			text-align: right;
-			margin: 0 -2rem -1.5rem 0;
+    .post-meta {
+      color: $gray-600;
+      order: -1;
+    }
 
-			a {
-				display: inline-block;
-				background: $gray-300;
-				color: $gray-700;
-				font-family: $font-family-heading;
-				text-transform: uppercase;
-				padding: 0.5rem 1rem;
-				border-radius: $border-radius 0 0 0;
+    .post-read-more {
+      text-align: right;
+      margin: 0 -2rem -1.5rem 0;
 
-				&:hover {
-					background: $primary;
-					background: $brand-gradient;
-					color: $white;
-					text-decoration: none;
-				}
+      a {
+        display: inline-block;
+        background: $gray-300;
+        color: $gray-700;
+        font-family: $font-family-heading;
+        text-transform: uppercase;
+        padding: 0.5rem 1rem;
+        border-radius: $border-radius 0 0 0;
 
-				&:active {
-					outline: 2px $orange solid;
-				}
-			}
-		}
-	}
+        &:hover {
+          background: $primary;
+          background: $brand-gradient;
+          color: $white;
+          text-decoration: none;
+        }
+
+        &:active {
+          outline: 2px $orange solid;
+        }
+      }
+    }
+  }
 }
 
 .post-container {
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .posts .band {
-	display: none;
+  display: none;
 }
 
 .post-map {
-	width: 100%;
-	height: 200px;
+  width: 100%;
+  height: 200px;
 }
 
 .post-fields {
-	ul {
-		padding: 0;
-		margin: 1rem 0;
-		border-top: 1px $gray-200 solid;
-	}
+  ul {
+    padding: 0;
+    margin: 1rem 0;
+    border-top: 1px $gray-200 solid;
+  }
 
-	li {
-		list-style: none;
-		border-bottom: 1px $gray-200 solid;
-		padding: 0.5rem 0;
-	}
+  li {
+    list-style: none;
+    border-bottom: 1px $gray-200 solid;
+    padding: 0.5rem 0;
+  }
 
-	.fa-fw {
-		margin-right: 0.5rem;
-	}
+  .fa-fw {
+    margin-right: 0.5rem;
+  }
 }
 
 .post-excerpt {
-	display: none;
+  display: none;
 }
 
 .pagination {
-	max-width: 900px;
-	margin: 0 auto;
-	justify-content: space-between;
-	border-top: 2px $gray-500 solid;
-	padding-top: 2rem;
-	margin-top: 4rem;
-	border-radius: 0;
+  max-width: 900px;
+  margin: 0 auto;
+  justify-content: space-between;
+  border-top: 2px $gray-500 solid;
+  padding-top: 2rem;
+  margin-top: 4rem;
+  border-radius: 0;
 
-	.btn {
-		background: $white;
-		
-		&:hover {
-			background: $primary;
-		}
-	}
+  .btn {
+    background: $white;
+    
+    &:hover {
+      background: $primary;
+    }
+  }
 }
 
 .post-full {
-	.post-title {
-		font-size: 2rem;
-		line-height: 1;
-	}
+  .post-title {
+    font-size: 2rem;
+    line-height: 1;
+  }
 
-	.post-image {
-		border-radius: $border-radius;
-		margin: 1rem 0;
-	}
+  .post-image {
+    border-radius: $border-radius;
+    margin: 1rem 0;
+  }
 
-	.post-content {
-		line-height: 2;
-	}
+  .post-content {
+    line-height: 2;
+  }
 
-	.tag-list,
-	.cat-list {
-		a {
-			display: inline-block;
-			font-size: 1rem;
-			background: $gray-200;
-			padding: 0.25rem 1rem;
-			margin: 0.25rem 1rem 0.25rem 0;
-			border-radius: 3rem;
-			white-space: nowrap;
+  .tag-list,
+  .cat-list {
+    a {
+      display: inline-block;
+      font-size: 1rem;
+      background: $gray-200;
+      padding: 0.25rem 1rem;
+      margin: 0.25rem 1rem 0.25rem 0;
+      border-radius: 3rem;
+      white-space: nowrap;
 
-			&:hover {
-				background: $primary;
-				background: $brand-gradient;
-				color: $white;
-				text-decoration: none;
-			}
-		}
-	}
+      &:hover {
+        background: $primary;
+        background: $brand-gradient;
+        color: $white;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 @include media-breakpoint-up(lg) {
-	.post-summary {
-		flex-direction: row;
-		align-items: flex-start;
+  .post-summary {
+    flex-direction: row;
+    align-items: flex-start;
 
-		.post-title {
-			line-height: 1.25;
-		}
+    .post-title {
+      line-height: 1.25;
+    }
 
-		.post-thumbnail {
-			width: 300px;
-			max-height: 350px;
-			overflow: hidden;
-			flex-shrink: 0;
-			margin: 0 1.5rem 0 -0.5rem;
-			border-radius: $border-radius;
-			border-bottom: 0;
+    .post-thumbnail {
+      width: 300px;
+      max-height: 350px;
+      overflow: hidden;
+      flex-shrink: 0;
+      margin: 0 1.5rem 0 -0.5rem;
+      border-radius: $border-radius;
+      border-bottom: 0;
 
-			img {
-				width: 100%;
-			}
-		}
+      img {
+        width: 100%;
+      }
+    }
 
-		.post-excerpt {
-			display: block;
-			color: $gray-600;
-		}
+    .post-excerpt {
+      display: block;
+      color: $gray-600;
+    }
 
-		.post-read-more {
-			position: absolute;
-			right: 0;
-			bottom: 0;
-		}
-	}
+    .post-read-more {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
 
-	.posts .band {
-		display: block;
-	}
+  .posts .band {
+    display: block;
+  }
 
-	.post-full {
-		.post-title {
-			font-size: 3rem;
-		}
-	}
+  .post-full {
+    .post-title {
+      font-size: 3rem;
+    }
+  }
 }
