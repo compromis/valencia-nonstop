@@ -45,13 +45,13 @@ export default {
     return {
       primary_menu: [],
       secondary_menu: [],
-      site_name: rtwp.site_name,
+      site_name: process.env.VUE_APP_NAME,
       show_share_buttons: true
     }
   },
   methods: {
     getMenu (menuLocation) {
-      this.$http.get('/wp-json/wp-api-menus/v2/menu-locations/' + menuLocation)
+      this.$http.get(process.env.VUE_APP_WPJSON + '/wp-api-menus/v2/menu-locations/' + menuLocation)
         .then((res) => {
           if (menuLocation === 'primary-menu') {
             this.primary_menu = res.data

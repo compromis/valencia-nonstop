@@ -39,15 +39,15 @@ export default {
   methods: {
     getPosts: function (tagId) {
       this.loaded = false
-      const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/posts' : '/wp-json/wp/v2/posts'
-      this.$http.get(url, {
+      const baseUrl = (this.remote) ? process.env.VUE_APP_REMOTE_WPJSON : process.env.VUE_APP_WPJSON
+      this.$http.get(baseUrl + '/wp/v2/posts', {
         params: { tags: tagId }
       })
         .then((res) => {
           this.posts = res.data
           this.loaded = true
           this.pageTitle = 'Etiqueta' + ' - ' + this.tagName
-          this.$store.commit('rtChangeTitle', this.pageTitle)
+          EventBus.$emit('title-changed', this.pageTitle)
         })
         .catch((res) => {
         // console.log(`Something went wrong : ${ res }`)
@@ -56,8 +56,8 @@ export default {
     getTagId: function (name) {
       this.tagName = name
       this.loaded = false
-      const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/tags/?slug=' : '/wp-json/wp/v2/tags/?slug='
-      this.$http.get(url + name)
+      const baseUrl = (this.remote) ? process.env.VUE_APP_REMOTE_WPJSON : process.env.VUE_APP_WPJSON
+      this.$http.get(baseUrl + '/wp/v2/tags/?slug=' + name)
         .then((res) => {
           res = res.data[0]
           this.totalCount = (res.data)

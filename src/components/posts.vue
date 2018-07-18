@@ -54,9 +54,9 @@ export default {
 
   methods: {
     getPosts (pageNumber = 1) {
-      const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/posts' : '/wp-json/wp/v2/posts'
+      const baseUrl = (this.remote) ? process.env.VUE_APP_REMOTE_WPJSON : process.env.VUE_APP_WPJSON
       this.loaded = false
-      this.$http.get(url, {
+      this.$http.get(baseUrl + '/wp/v2/posts', {
         params: { per_page: this.postPerPage, page: pageNumber }
       })
         .then((res) => {
@@ -73,8 +73,8 @@ export default {
             this.showNext = true
           }
           this.loaded = true
-          this.pageTitle = 'Notícies'
-          this.$store.commit('rtChangeTitle', this.pageTitle)
+          this.pageTitle = (this.remote) ? 'Notícies' : 'Agenda'
+          EventBus.$emit('title-changed', this.pageTitle)
         })
         .catch((res) => {
         // console.log(`Something went wrong : ${ res }`);

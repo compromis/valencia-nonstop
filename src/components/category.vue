@@ -41,15 +41,15 @@ export default {
   methods: {
     getPosts: function (catId) {
       this.loaded = false
-      const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/posts' : '/wp-json/wp/v2/posts'
-      this.$http.get(url, {
+      const baseUrl = (this.remote) ? process.env.VUE_APP_REMOTE_WPJSON : process.env.VUE_APP_WPJSON
+      this.$http.get(baseUrl + '/wp/v2/posts', {
         params: { categories: catId }
       })
         .then((res) => {
           this.posts = res.data
           this.loaded = true
-          this.pageTitle = 'Category' + ' - ' + this.catName
-          this.$store.commit('rtChangeTitle', this.pageTitle)
+          this.pageTitle = 'Categoria' + ' - ' + this.catName
+          EventBus.$emit('title-changed', this.pageTitle)
         })
         .catch((res) => {
         // console.log(`Something went wrong : ${ res }`);
@@ -58,8 +58,8 @@ export default {
     getCatId: function (name) {
       this.catName = name
       this.loaded = false
-      const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/categories/?slug=' : '/wp-json/wp/v2/categories/?slug='
-      this.$http.get(url + name)
+      const baseUrl = (this.remote) ? process.env.VUE_APP_REMOTE_WPJSON : process.env.VUE_APP_WPJSON
+      this.$http.get(baseUrl + '/wp/v2/categories/?slug=' + name)
         .then((res) => {
           res = res.data[0]
           this.totalCount = (res.data)

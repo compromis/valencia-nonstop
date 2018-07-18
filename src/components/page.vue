@@ -102,13 +102,15 @@ export default {
         })
       }
 
-      this.$http.get('/wp-json/wp/v2/pages', {
+      this.$http.get(process.env.VUE_APP_WPJSON + '/wp/v2/pages', {
         params: { slug: this.$route.params.name }
       }).then((res) => {
         this.page = res.data[0]
         this.loaded = true
         this.pageTitle = this.page.title.rendered
-        this.$store.commit('rtChangeTitle', this.pageTitle)
+
+        EventBus.$emit('title-changed', this.pageTitle)
+
         if (this.page.parent) {
           this.pageClass = 'page-' + this.page.slug + ' page-' + this.page.parent_info.slug + ' category-' + this.page.parent_info.slug
         } else {

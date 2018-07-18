@@ -9,7 +9,7 @@ module.exports = {
   ],
   globals: {
     'google': true,
-    'rtwp': true
+    'EventBus': true
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',

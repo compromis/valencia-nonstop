@@ -64,7 +64,6 @@ export default {
   },
   data () {
     return {
-      base_path: rtwp.base_path,
       post: {},
       loaded: false,
       pageTitle: '',
@@ -81,15 +80,15 @@ export default {
   },
   methods: {
     getPost: function () {
-      const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/posts' : '/wp-json/wp/v2/posts'
-      this.$http.get(url, {
+      const baseUrl = (this.remote) ? process.env.VUE_APP_REMOTE_WPJSON : process.env.VUE_APP_WPJSON
+      this.$http.get(baseUrl + '/wp/v2/posts', {
         params: { slug: this.$route.params.name }
       })
         .then((res) => {
           this.post = res.data[0]
           this.loaded = true
           this.pageTitle = this.post.title.rendered
-          this.$store.commit('rtChangeTitle', this.pageTitle)
+          EventBus.$emit('title-changed', this.pageTitle)
         })
         .catch((res) => {
         // console.log(`Something went wrong : ${res}`);
