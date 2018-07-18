@@ -1,6 +1,6 @@
 <template>
   <div>
-    <iframe 
+    <iframe
       :src="'https://www.facebook.com/plugins/like.php?href=' + encodeURI(shareableUrl) + '&width=154&layout=button_count&action=like&size=large&show_faces=false&share=true&height=46&appId=252515324782640'"
       class="share-buttons-facebook"
       width="154"
@@ -9,7 +9,7 @@
       frameborder="0"
       allowTransparency="true"
       allow="encrypted-media"></iframe>
-    <iframe 
+    <iframe
       :src="'https://platform.twitter.com/widgets/tweet_button.html?size=l&amp;url=' + encodeURI(shareableUrl) + '&amp;via=' + twitter_account + '&amp;related=' + twitter_account + '&amp;text=' + encodeURI(tweet) + '&amp;lang=es'"
       class="share-buttons-twitter"
       width="140"
@@ -24,7 +24,7 @@
 export default {
   name: 'share-buttons',
 
-  data() {
+  data () {
     return {
       shareableUrl: 'https://elcanvinopara.com',
       twitter_account: 'compromisVLC',

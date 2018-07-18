@@ -1,16 +1,16 @@
 <template>
   <div :class="['category-icon', classes]">
     <span v-if="classes === 'category-sostenible'">
-      <img class="palmtree" svg-inline src="../../../images/icons/icon-palmtree.svg" alt="Icona de una palmera" />
+      <img class="palmtree" svg-inline src="../../images/icons/icon-palmtree.svg" alt="Icona de una palmera" />
     </span>
     <span v-else-if="classes === 'category-persones'">
       persones
     </span>
     <span v-else-if="classes === 'category-barris'">
-      <img class="tower" svg-inline src="../../../images/icons/icon-tower.svg" alt="Icona de una torre" />
+      <img class="tower" svg-inline src="../../images/icons/icon-tower.svg" alt="Icona de una torre" />
     </span>
     <span v-else-if="classes === 'category-cultural'">
-      <img class="micalet" svg-inline src="../../../images/icons/icon-micalet.svg" alt="Icona del Micalet" />
+      <img class="micalet" svg-inline src="../../images/icons/icon-micalet.svg" alt="Icona del Micalet" />
     </span>
     <span v-else-if="classes === 'category-participativa'">
       participativa
@@ -25,5 +25,5 @@ export default {
   props: {
     classes: String
   }
-};
+}
 </script>

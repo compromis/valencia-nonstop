@@ -6,9 +6,9 @@
         <h2 class="post-title" v-html="post.title.rendered"></h2>
         <div class="post-image progressive full" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['full'][0]">
           <img class="lazy"
-            v-progressive="post.featured_image_src['full'][0]" 
-            :data-srcset="post.featured_image_src['srcset']" 
-            :src="post.featured_image_src['full'][0]" 
+            v-progressive="post.featured_image_src['full'][0]"
+            :data-srcset="post.featured_image_src['srcset']"
+            :src="post.featured_image_src['full'][0]"
           />
         </div>
 
@@ -49,21 +49,20 @@
 </template>
 
 <script>
-import PageLoading from './partials/page-loading.vue';
-import * as VueGoogleMaps from 'vue2-google-maps';
-const mapStyle = require('./maps/events-mapstyle.json');
+import PageLoading from './partials/page-loading.vue'
+const mapStyle = require('./maps/events-mapstyle.json')
 
 export default {
   components: {
     PageLoading
   },
-  mounted: function() {
-    this.getPost();
+  mounted: function () {
+    this.getPost()
   },
   props: {
     remote: Boolean
   },
-  data() {
+  data () {
     return {
       base_path: rtwp.base_path,
       post: {},
@@ -71,48 +70,48 @@ export default {
       pageTitle: '',
       mapOptions: {
         styles: mapStyle,
-        streetViewControl: false, 
-        mapTypeControl: false, 
+        streetViewControl: false,
+        mapTypeControl: false,
         fullscreenControl: false,
         scrollwheel: false,
         disableDefaultUI: true,
-        draggable: false,
+        draggable: false
       }
-    };
+    }
   },
   methods: {
-    getPost: function() {
-      const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/posts' : '/wp-json/wp/v2/posts';
+    getPost: function () {
+      const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/posts' : '/wp-json/wp/v2/posts'
       this.$http.get(url, {
         params: { slug: this.$route.params.name }
       })
-      .then((res) => {
-        this.post = res.data[0];
-        this.loaded = true;
-        this.pageTitle = this.post.title.rendered;
-        this.$store.commit('rtChangeTitle', this.pageTitle);
-      })
-      .catch((res) => {
-        //console.log(`Something went wrong : ${res}`);
-      });
+        .then((res) => {
+          this.post = res.data[0]
+          this.loaded = true
+          this.pageTitle = this.post.title.rendered
+          this.$store.commit('rtChangeTitle', this.pageTitle)
+        })
+        .catch((res) => {
+        // console.log(`Something went wrong : ${res}`);
+        })
     },
-    formatDate(value) {
+    formatDate (value) {
       if (value) {
-        const date = new Date(value);
-        const monthNames = ["gener", "febrer", "març",
-          "abril", "maig", "juny", "juliol",
-          "agost", "setembre", "octubre",
-          "novembre", "desembre"];
-        const monthStartingWithVowels = [3, 7, 9];
- 
-        const day = date.getDate();
-        const monthIndex = date.getMonth();
-        const year = date.getFullYear();
-        const prep = (monthStartingWithVowels.includes(monthIndex)) ? 'd\' ' : 'de ';
+        const date = new Date(value)
+        const monthNames = ['gener', 'febrer', 'març',
+          'abril', 'maig', 'juny', 'juliol',
+          'agost', 'setembre', 'octubre',
+          'novembre', 'desembre']
+        const monthStartingWithVowels = [3, 7, 9]
 
-        return day + ' ' + prep + monthNames[monthIndex] + ' de ' + year;
+        const day = date.getDate()
+        const monthIndex = date.getMonth()
+        const year = date.getFullYear()
+        const prep = (monthStartingWithVowels.includes(monthIndex)) ? 'd\' ' : 'de '
+
+        return day + ' ' + prep + monthNames[monthIndex] + ' de ' + year
       }
     }
   }
-};
+}
 </script>

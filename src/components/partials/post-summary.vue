@@ -44,8 +44,7 @@
 </template>
 
 <script>
-import * as VueGoogleMaps from 'vue2-google-maps';
-const mapStyle = require('../maps/events-mapstyle.json');
+const mapStyle = require('../maps/events-mapstyle.json')
 
 export default {
   name: 'post-summary',
@@ -53,35 +52,35 @@ export default {
     post: Object,
     remote: Boolean
   },
-  data() {
+  data () {
     return {
       mapOptions: {
         styles: mapStyle,
-        streetViewControl: false, 
-        mapTypeControl: false, 
+        streetViewControl: false,
+        mapTypeControl: false,
         fullscreenControl: false,
         scrollwheel: false,
         disableDefaultUI: true,
-        draggable: false,
+        draggable: false
       }
     }
   },
   methods: {
-    formatDate(value) {
+    formatDate (value) {
       if (value) {
-        const date = new Date(value);
-        const monthNames = ["gener", "febrer", "març",
-          "abril", "maig", "juny", "juliol",
-          "agost", "setembre", "octubre",
-          "novembre", "desembre"];
-        const monthStartingWithVowels = [3, 7, 9];
- 
-        const day = date.getDate();
-        const monthIndex = date.getMonth();
-        const year = date.getFullYear();
-        const prep = (monthStartingWithVowels.includes(monthIndex)) ? 'd\' ' : 'de ';
+        const date = new Date(value)
+        const monthNames = ['gener', 'febrer', 'març',
+          'abril', 'maig', 'juny', 'juliol',
+          'agost', 'setembre', 'octubre',
+          'novembre', 'desembre']
+        const monthStartingWithVowels = [3, 7, 9]
 
-        return day + ' ' + prep + monthNames[monthIndex] + ' de ' + year;
+        const day = date.getDate()
+        const monthIndex = date.getMonth()
+        const year = date.getFullYear()
+        const prep = (monthStartingWithVowels.includes(monthIndex)) ? 'd\' ' : 'de '
+
+        return day + ' ' + prep + monthNames[monthIndex] + ' de ' + year
       }
     }
   }
