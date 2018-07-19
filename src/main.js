@@ -13,6 +13,7 @@ import Frontpage from './components/frontpage.vue'
 import Page from './components/page.vue'
 import Category from './components/category.vue'
 import Tag from './components/tag.vue'
+import FormattedDate from './components/partials/formatted-date.vue'
 
 Vue.prototype.$http = axios
 
@@ -57,6 +58,9 @@ const router = new VueRouter({
 
 // Event Bus
 window.EventBus = new Vue()
+
+// Global components
+Vue.component('formatted-date', FormattedDate)
 
 // Create instance of main component
 new Vue({

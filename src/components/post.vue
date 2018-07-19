@@ -4,6 +4,7 @@
       <div class="band"></div>
       <div v-if="loaded === true">
         <h2 class="post-title" v-html="post.title.rendered"></h2>
+        <formatted-date class="date" v-if="remote" :date="post.date" />
         <div class="post-image progressive full" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['full'][0]">
           <img class="lazy"
             v-progressive="post.featured_image_src['full'][0]"
@@ -25,7 +26,7 @@
 
         <div class="post-fields" v-if="!remote">
           <ul>
-            <li><i class="fal fa-calendar-alt fa-fw"></i> <span v-text="formatDate(post.custom_fields.date)"></span> a les {{ post.custom_fields.time }}</li>
+            <li><i class="fal fa-calendar-alt fa-fw"></i> <formatted-date :date="post.custom_fields.date" /> a les {{ post.custom_fields.time }}</li>
             <li><i class="fal fa-map-marker-alt fa-fw"></i> {{ post.custom_fields.venue_text }}</li>
             <li v-if="post.custom_fields.link"><i class="fal fa-link fa-fw"></i> <a :href="post.custom_fields.link" target="_blank" rel="noopener">{{ post.custom_fields.link }}</a></li>
             <li v-if="post.custom_fields.speakers"><i class="fal fa-users fa-fw"></i> <div v-html="post.custom_fields.speakers" class="post-speakers"></div></li>
@@ -93,23 +94,6 @@ export default {
         .catch((res) => {
         // console.log(`Something went wrong : ${res}`);
         })
-    },
-    formatDate (value) {
-      if (value) {
-        const date = new Date(value)
-        const monthNames = ['gener', 'febrer', 'març',
-          'abril', 'maig', 'juny', 'juliol',
-          'agost', 'setembre', 'octubre',
-          'novembre', 'desembre']
-        const monthStartingWithVowels = [3, 7, 9]
-
-        const day = date.getDate()
-        const monthIndex = date.getMonth()
-        const year = date.getFullYear()
-        const prep = (monthStartingWithVowels.includes(monthIndex)) ? 'd\' ' : 'de '
-
-        return day + ' ' + prep + monthNames[monthIndex] + ' de ' + year
-      }
     }
   }
 }
