@@ -28,9 +28,6 @@ Vue.use(VueGoogleMaps, {
   }
 })
 
-Vue.config.debug = true
-Vue.config.devTools = true
-
 // Define route for vue app
 // ref : http://router.vuejs.org/en/
 const router = new VueRouter({
