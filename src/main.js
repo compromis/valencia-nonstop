@@ -14,6 +14,7 @@ import Page from './components/page.vue'
 import Category from './components/category.vue'
 import Tag from './components/tag.vue'
 import FormattedDate from './components/partials/formatted-date.vue'
+import SvgIcon from './components/partials/svg-icon.vue'
 
 Vue.prototype.$http = axios
 
@@ -61,6 +62,7 @@ window.EventBus = new Vue()
 
 // Global components
 Vue.component('formatted-date', FormattedDate)
+Vue.component('svg-icon', SvgIcon)
 
 // Create instance of main component
 new Vue({
