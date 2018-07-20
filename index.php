@@ -4,14 +4,14 @@
   <title><?php wp_title(); ?> <?php bloginfo('site_name'); ?></title>
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
-  <link rel="shortcut icon" href="<?php echo get_template_directory_uri() . '/dist/favicons/favicon.ico'; ?>">
-  <link rel="icon" sizes="16x16 32x32 64x64" href="<?php echo get_template_directory_uri() . '/dist/favicons/favicon.ico'; ?>">
-  <link rel="icon" type="image/png" sizes="196x196" href="<?php echo get_template_directory_uri() . '/dist/favicons/favicon-192.png'; ?>">
-  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri() . '/dist/favicons/favicon-32.png'; ?>">
-  <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() . '/dist/favicons/favicon-310.png'; ?>">
+  <link rel="shortcut icon" href="<?php echo get_template_directory_uri() . '/public/favicons/favicon.ico'; ?>">
+  <link rel="icon" sizes="16x16 32x32 64x64" href="<?php echo get_template_directory_uri() . '/public/favicons/favicon.ico'; ?>">
+  <link rel="icon" type="image/png" sizes="196x196" href="<?php echo get_template_directory_uri() . '/public/favicons/favicon-192.png'; ?>">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri() . '/public/favicons/favicon-32.png'; ?>">
+  <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri() . '/public/favicons/favicon-310.png'; ?>">
   <meta name="msapplication-TileColor" content="#FFFFFF">
-  <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() . '/dist/favicons/favicon-144.png'; ?>">
-  <meta name="msapplication-config" content="<?php echo get_template_directory_uri() . '/dist/favicons/browserconfig.xml'; ?>">
+  <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri() . '/public/favicons/favicon-144.png'; ?>">
+  <meta name="msapplication-config" content="<?php echo get_template_directory_uri() . '/public/favicons/browserconfig.xml'; ?>">
   <meta name="theme-color" content="#DE6D0F">
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
   <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
