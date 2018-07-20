@@ -7,12 +7,12 @@ function get_assets_manifest() {
 }
 
 function rt_rest_theme_scripts() {
-    $manifest = get_assets_manifest();
+  $manifest = get_assets_manifest();
 
-    wp_enqueue_style('app-css', $manifest['app.css']);
-    wp_enqueue_script('vendors-js', $manifest['chunk-vendors.js'], null, null, true);
-    wp_enqueue_script('app-js', $manifest['app.js'], null, null, true);
-    wp_deregister_script('wp-embed');
+  wp_enqueue_style('app-css', $manifest['app.css']);
+  wp_enqueue_script('vendors-js', $manifest['chunk-vendors.js'], null, null, true);
+  wp_enqueue_script('app-js', $manifest['app.js'], null, null, true);
+  wp_deregister_script('wp-embed');
 }
 
 add_action('wp_enqueue_scripts', 'rt_rest_theme_scripts');
@@ -161,8 +161,12 @@ function add_custom_fields() {
 
 function get_custom_fields($object, $field_name, $request) {
   $wp_custom_fields = get_post_meta($object['id']);
-  $acf_custom_fields = get_fields($object['id']);
-  return (object) array_merge((array) $wp_custom_fields, (array) $acf_custom_fields);;
+  if(function_exists('get_fields')) {
+    $acf_custom_fields = get_fields($object['id']);
+    return (object) array_merge((array) $wp_custom_fields, (array) $acf_custom_fields);
+  }
+
+  return $wp_custom_fields;
 }
 
 add_action('rest_api_init', 'add_page_children');
