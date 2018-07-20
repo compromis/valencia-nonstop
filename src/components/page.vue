@@ -33,25 +33,25 @@
     ></gmap-map>
     <div class="map-decorations">
       <div class="map-decoration map-bird">
-        <img class="bird" svg-inline src="../../images/icons/icon-bird-positive.svg" alt="Icona d'un pardal" />
+        <svg-icon icon="bird" />
       </div>
       <div class="map-decoration map-micalet">
-        <img class="micalet" svg-inline src="../../images/icons/icon-micalet.svg" alt="Icona del micalet" />
+        <svg-icon icon="micalet" />
       </div>
       <div class="map-decoration map-palmtree">
-        <img class="palmtree" svg-inline src="../../images/icons/icon-palmtree.svg" alt="Icona d'una palmera" />
+        <svg-icon icon="palmtree" />
       </div>
       <div class="map-decoration map-wave">
-        <img class="wave" svg-inline src="../../images/icons/icon-wave.svg" alt="Icona d'una ona" />
+        <svg-icon icon="wave" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import PageLoading from './partials/page-loading.vue';
-import * as VueGoogleMaps from 'vue2-google-maps';
-const mapStyle = require('./maps/pages-mapstyle.json');
+import PageLoading from './partials/page-loading.vue'
+import * as VueGoogleMaps from 'vue2-google-maps'
+const mapStyle = require('./maps/pages-mapstyle.json')
 
 export default {
   components: {
@@ -63,14 +63,14 @@ export default {
       loaded: false,
       hasMap: false,
       pageClass: '',
-      mapCenter: { 
-        lat: 39.4650884, 
+      mapCenter: {
+        lat: 39.4650884,
         lng: -0.3711834 // Valencia
       },
-      mapOptions: { 
-        styles: mapStyle, 
-        streetViewControl: false, 
-        mapTypeControl: false, 
+      mapOptions: {
+        styles: mapStyle,
+        streetViewControl: false,
+        mapTypeControl: false,
         fullscreenControl: false,
         scrollwheel: false,
         disableDefaultUI: false,
@@ -80,76 +80,78 @@ export default {
       pageTitle: '',
       kml: [],
       children: null
-    };
+    }
   },
 
   mounted () {
-    this.getPage();
+    this.getPage()
 
     VueGoogleMaps.loaded.then(() => {
       this.mapOptions.zoomControlOptions = {
         position: google.maps.ControlPosition.RIGHT_CENTER
-      };
-    });
+      }
+    })
   },
 
   methods: {
     getPage () {
-      this.loaded = false;
-      if(this.kml.length !== 0){
+      this.loaded = false
+      if (this.kml.length !== 0) {
         this.kml.forEach((element) => {
-          element.setMap(null);
-        });
+          element.setMap(null)
+        })
       }
 
-      this.$http.get('/wp-json/wp/v2/pages', {
+      this.$http.get(process.env.VUE_APP_WPJSON + '/wp/v2/pages', {
         params: { slug: this.$route.params.name }
       }).then((res) => {
-        this.page = res.data[0];
-        this.loaded = true;
-        this.pageTitle = this.page.title.rendered;
-        this.$store.commit('rtChangeTitle', this.pageTitle);
-        if(this.page.parent) {
-          this.pageClass = 'page-' + this.page.slug + ' page-' + this.page.parent_info.slug + ' category-' + this.page.parent_info.slug;
+        this.page = res.data[0]
+        this.loaded = true
+        this.pageTitle = this.page.title.rendered
+
+        EventBus.$emit('title-changed', this.pageTitle)
+
+        if (this.page.parent) {
+          this.pageClass = 'page-' + this.page.slug + ' page-' + this.page.parent_info.slug + ' category-' + this.page.parent_info.slug
         } else {
-          this.pageClass = 'page-' + this.page.slug + ' category-' + this.page.slug;
+          this.pageClass = 'page-' + this.page.slug + ' category-' + this.page.slug
         }
 
-        if(this.page.custom_fields.hasOwnProperty('kml')) {
-          this.getMap(this.page.custom_fields.kml[0]);
+        if (this.page.custom_fields.hasOwnProperty('kml')) {
+          this.getMap(this.page.custom_fields.kml[0])
         } else {
-          this.hasMap = false;
-          this.mapOptions.disableDefaultUI = true;
-          this.mapOptions.draggable = false;
+          this.hasMap = false
+          this.mapOptions.disableDefaultUI = true
+          this.mapOptions.draggable = false
         }
       }).catch((res) => {
-        console.log(`Something went wrong : ${ res }`);
-      });
+        // console.log(`Something went wrong : ${res}`)
+      })
     },
     getMap (url) {
-      this.hasMap = true;
-      this.mapOptions.disableDefaultUI = false;
-      this.mapOptions.draggable = true;
+      this.hasMap = true
+      this.mapOptions.disableDefaultUI = false
+      this.mapOptions.draggable = true
 
       this.$refs.gmap.$mapCreated.then(() => {
         this.$refs.gmap.$deferredReadyPromise.then(() => {
-          const maps = url.split(',');
+          const maps = url.split(',')
           maps.forEach((kmlAddress) => {
-            this.kml.push(new google.maps.KmlLayer({ 
-              url: kmlAddress, 
+            this.kml.push(new google.maps.KmlLayer({
+              url: kmlAddress,
               preserveViewport: true,
               map: this.$refs.gmap.$mapObject
-            }));
-          });
-        });
-      });
+            }))
+          })
+        })
+      })
     }
   },
   watch: {
     '$route': function (to, from) {
       // react to route changes...
-      this.getPage();
+      this.getPage()
     }
   }
-};
+}
 </script>

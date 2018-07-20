@@ -21,14 +21,13 @@
         <h2 class="post-title"><router-link :to="{ name: (!remote) ? 'event' : 'article', params: { name: post.slug, remote }}"><span v-html="post.title.rendered"></span></router-link> </h2>
         <div class="post-meta" v-if="remote">
           <span class="posted-on">
-            <span class="date" v-text="formatDate(post.date)">
-            </span>
+            <formatted-date class="date" :date="post.date" />
           </span>
         </div>
 
         <div class="post-fields" v-if="!remote">
           <ul>
-            <li><i class="fal fa-calendar-alt fa-fw"></i> <span v-text="formatDate(post.custom_fields.date)"></span> a les {{ post.custom_fields.time }}</li>
+            <li><i class="fal fa-calendar-alt fa-fw"></i> <formatted-date :date="post.custom_fields.date" /> a les {{ post.custom_fields.time }}</li>
             <li><i class="fal fa-map-marker-alt fa-fw"></i> {{ post.custom_fields.venue_text }}</li>
           </ul>
         </div>
@@ -44,8 +43,7 @@
 </template>
 
 <script>
-import * as VueGoogleMaps from 'vue2-google-maps';
-const mapStyle = require('../maps/events-mapstyle.json');
+const mapStyle = require('../maps/events-mapstyle.json')
 
 export default {
   name: 'post-summary',
@@ -53,35 +51,16 @@ export default {
     post: Object,
     remote: Boolean
   },
-  data() {
+  data () {
     return {
       mapOptions: {
         styles: mapStyle,
-        streetViewControl: false, 
-        mapTypeControl: false, 
+        streetViewControl: false,
+        mapTypeControl: false,
         fullscreenControl: false,
         scrollwheel: false,
         disableDefaultUI: true,
-        draggable: false,
-      }
-    }
-  },
-  methods: {
-    formatDate(value) {
-      if (value) {
-        const date = new Date(value);
-        const monthNames = ["gener", "febrer", "març",
-          "abril", "maig", "juny", "juliol",
-          "agost", "setembre", "octubre",
-          "novembre", "desembre"];
-        const monthStartingWithVowels = [3, 7, 9];
- 
-        const day = date.getDate();
-        const monthIndex = date.getMonth();
-        const year = date.getFullYear();
-        const prep = (monthStartingWithVowels.includes(monthIndex)) ? 'd\' ' : 'de ';
-
-        return day + ' ' + prep + monthNames[monthIndex] + ' de ' + year;
+        draggable: false
       }
     }
   }

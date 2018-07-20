@@ -131,7 +131,6 @@
     position: fixed;
     top: 0;
     right: 0;
-    height: $top-nav-height-mobile;
     z-index: 30;  
     display: flex;
     align-items: center;
@@ -139,14 +138,15 @@
     width: 63px;
     width: calc(63px + env(safe-area-inset-right));
     height: $top-nav-height-mobile;
-    padding: 0 1rem;
-    padding-right: calc(1rem + env(safe-area-inset-right));
+    padding-left: 1rem;
+    padding-right: env(safe-area-inset-right);
     transition: 0.15s ease-in-out;
 
     a {
       display: block;
       overflow: hidden;
       width: 35px;
+      margin-right: 1rem;
     }
 
     img {
@@ -245,7 +245,7 @@
     .site-name {
       display: block;
       text-indent: -9999px;
-      background-image: url('images/logo.svg');
+      background-image: url('../images/logo.svg');
       background-repeat: no-repeat;
       background-position: center;
       background-size: 65%;
@@ -310,9 +310,11 @@
       width: 190px;
       box-shadow: $default-shadow;
       border-left: 0;
+      border-radius: 0 0 0 $border-radius;
 
       a {
         width: 100%;
+        transition: 0.15s ease-in-out;
       }
 
       img {
@@ -322,6 +324,15 @@
 
       &:hover {
         box-shadow: $big-shadow;
+        height: $top-nav-height-mobile + 7px;
+
+        a {
+          padding-top: 7px;
+        }
+      }
+
+      &:active {
+        opacity: 0.8;
       }
     }
 

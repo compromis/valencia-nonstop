@@ -18,25 +18,25 @@
 </template>
 
 <script>
-import PostsLoading from './partials/posts-loading.vue';
-import PostSummary from './partials/post-summary.vue';
+import PostsLoading from './partials/posts-loading.vue'
+import PostSummary from './partials/post-summary.vue'
 
 export default {
   components: {
     PostsLoading,
     PostSummary
   },
-  mounted() {
+  mounted () {
     if (this.$route.params.page) {
-      this.getPosts(this.$route.params.page);
+      this.getPosts(this.$route.params.page)
     } else {
-      this.getPosts();
+      this.getPosts()
     }
   },
   props: {
     remote: Boolean
   },
-  data() {
+  data () {
     return {
       posts: {},
       currentPage: '',
@@ -48,55 +48,55 @@ export default {
       postPerPage: '10',
       totalPages: '',
       loaded: false,
-      pageTitle: '',
-    };
+      pageTitle: ''
+    }
   },
 
   methods: {
-    getPosts(pageNumber = 1) {
-      const url = (this.remote) ? 'https://valencia.compromis.net/wp-json/wp/v2/posts' : '/wp-json/wp/v2/posts';
-			this.loaded = false;
-      this.$http.get(url, {
+    getPosts (pageNumber = 1) {
+      const baseUrl = (this.remote) ? process.env.VUE_APP_REMOTE_WPJSON : process.env.VUE_APP_WPJSON
+      this.loaded = false
+      this.$http.get(baseUrl + '/wp/v2/posts', {
         params: { per_page: this.postPerPage, page: pageNumber }
       })
-      .then((res) => {
-        this.posts = res.data;
-        this.totalPages = res.headers['x-wp-totalpages'];
-        if (pageNumber <= parseInt(this.totalPages)) {
-          this.currentPage = parseInt(pageNumber);
-          this.showPrev = (pageNumber == 1) ? false : true;
-          this.showNext = (pageNumber == this.totalPages) ? false : true;
-        } else {
-          this.$router.push({ 'name': 'posts' });
-          this.currentPage = 1;
-          this.showPrev = false;
-          this.showNext = true;
-        }
-        this.loaded = true;
-        this.pageTitle = 'Notícies';
-        this.$store.commit('rtChangeTitle', this.pageTitle);
-      })
-      .catch((res) => {
-        //console.log(`Something went wrong : ${ res }`);
-      });
+        .then((res) => {
+          this.posts = res.data
+          this.totalPages = res.headers['x-wp-totalpages']
+          if (pageNumber <= parseInt(this.totalPages)) {
+            this.currentPage = parseInt(pageNumber)
+            this.showPrev = pageNumber !== 1
+            this.showNext = pageNumber !== this.totalPages
+          } else {
+            this.$router.push({ 'name': 'posts' })
+            this.currentPage = 1
+            this.showPrev = false
+            this.showNext = true
+          }
+          this.loaded = true
+          this.pageTitle = (this.remote) ? 'Notícies' : 'Agenda'
+          EventBus.$emit('title-changed', this.pageTitle)
+        })
+        .catch((res) => {
+        // console.log(`Something went wrong : ${ res }`);
+        })
     },
-    rtShowNext(event) {
+    rtShowNext (event) {
       if (this.currentPage < this.totalPages) {
-        this.currentPage = this.currentPage + 1;
-        this.$router.push({ 'name': 'articles', params: { 'page': this.currentPage } });
+        this.currentPage = this.currentPage + 1
+        this.$router.push({ 'name': 'articles', params: { 'page': this.currentPage } })
       }
     },
-    rtShowPrev(event) {
-      if (this.currentPage != 1) {
-        this.currentPage = this.currentPage - 1;
-        this.$router.push({ 'name': 'articles', params: { 'page': this.currentPage } });
+    rtShowPrev (event) {
+      if (this.currentPage !== 1) {
+        this.currentPage = this.currentPage - 1
+        this.$router.push({ 'name': 'articles', params: { 'page': this.currentPage } })
       }
     }
   },
   watch: {
-    '$route'(to, from) {
-      this.getPosts(this.$route.params.page);
+    '$route' (to, from) {
+      this.getPosts(this.$route.params.page)
     }
   }
-};
+}
 </script>

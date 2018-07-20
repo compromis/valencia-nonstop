@@ -1,18 +1,7 @@
-/*
-Theme Name: Valencia Non-Stop
-Theme URI: http://valenciaelcanvinopara.com
-Author: Disedit
-Author URI: http://disedit.com
-Description: Website for the Valencia el canvi no para campaign
-Version: 1.0.0
-License: MIT
-*/
-
 @import 'variables';
 @import 'colors';
-@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'bootstrap';
 @import 'node_modules/progressive-image/dist/index';
-
 @import 'fonts';
 @import 'global';
 @import 'map';

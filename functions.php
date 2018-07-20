@@ -1,28 +1,18 @@
 <?php
 
+function get_assets_manifest() {
+  $manifest = file_get_contents(get_template_directory() . '/dist/manifest.json');
+  $manifest = json_decode($manifest, true);
+  return $manifest;
+}
+
 function rt_rest_theme_scripts() {
-  $base_url  = esc_url_raw(home_url());
-  $base_path = rtrim(parse_url($base_url, PHP_URL_PATH), '/');
+  $manifest = get_assets_manifest();
 
-  if (defined('RT_VUE_DEV') && RT_VUE_DEV) {
-    wp_enqueue_style('style', get_stylesheet_uri(), null, time());
-  } else {
-    wp_enqueue_style('style', get_stylesheet_uri());
-  }
-
-  if (defined('RT_VUE_DEV') && RT_VUE_DEV) {
-    wp_enqueue_script('rest-theme-vue', 'http://localhost:8080/dist/build.js', array('jquery'), '1.0.0', true);
-  } else {
-    wp_enqueue_script('rest-theme-vue', get_template_directory_uri() . '/dist/build.js', array('jquery'), '1.0.0', true);
-  }
-
-  wp_localize_script('rest-theme-vue', 'rtwp', array(
-    'root'      => esc_url_raw(rest_url()),
-    'base_url'  => $base_url,
-    'base_path' => $base_path ? $base_path . '/' : '/',
-    'nonce'     => wp_create_nonce('wp_rest'),
-    'site_name' => get_bloginfo('name'),
- ));
+  wp_enqueue_style('app-css', $manifest['app.css']);
+  wp_enqueue_script('vendors-js', $manifest['chunk-vendors.js'], null, null, true);
+  wp_enqueue_script('app-js', $manifest['app.js'], null, null, true);
+  wp_deregister_script('wp-embed');
 }
 
 add_action('wp_enqueue_scripts', 'rt_rest_theme_scripts');
@@ -46,11 +36,11 @@ function rt_theme_setup() {
 
 function rt_custom_rewrite_rule() {
   global $wp_rewrite;
-  $wp_rewrite->front               = $wp_rewrite->root;
+  $wp_rewrite->front = $wp_rewrite->root;
   $wp_rewrite->set_permalink_structure('agenda/%postname%/');
-  $wp_rewrite->page_structure      = $wp_rewrite->root . 'page/%pagename%/';
-  $wp_rewrite->author_base         = 'author';
-  $wp_rewrite->author_structure    = '/' . $wp_rewrite->author_base . '/%author%';
+  $wp_rewrite->page_structure = $wp_rewrite->root . 'page/%pagename%/';
+  $wp_rewrite->author_base = 'author';
+  $wp_rewrite->author_structure = '/' . $wp_rewrite->author_base . '/%author%';
   $wp_rewrite->set_category_base('category');
   $wp_rewrite->set_tag_base('tag');
   $wp_rewrite->add_rule('^agenda$', 'index.php', 'top');
@@ -67,9 +57,9 @@ function rt_forcee_perma_struct($old, $new) {
 add_filter('wp_title','rt_vue_title', 10, 3);
 
 function rt_vue_title($title, $sep, $seplocation) {
-  if (false !== strpos($title, __('Page not found'))) {
+  if (false !== strpos($title, __('Pàgina no trobada'))) {
     $replacement = ucwords(str_replace('/', ' ', $_SERVER['REQUEST_URI']));
-    $title       = str_replace(__('Page not found'), $replacement, $title);
+    $title       = str_replace(__('Pàgina no trobada'), $replacement, $title);
   }
 
   return $title;
@@ -81,7 +71,7 @@ add_action('rest_api_init', 'rt_extend_rest_post_response');
 function rt_extend_rest_post_response() {
   // Add featured image
   register_rest_field('post',
-    'featured_image_src', //NAME OF THE NEW FIELD TO BE ADDED - you can call this anything
+    'featured_image_src',
     array(
       'get_callback'    => 'get_image_src',
       'update_callback' => null,
@@ -90,7 +80,7 @@ function rt_extend_rest_post_response() {
  );
 
   register_rest_field('post',
-    'cat_name', //NAME OF THE NEW FIELD TO BE ADDED - you can call this anything
+    'cat_name',
     array(
       'get_callback'    => 'rt_get_cat_name',
       'update_callback' => null,
@@ -171,8 +161,12 @@ function add_custom_fields() {
 
 function get_custom_fields($object, $field_name, $request) {
   $wp_custom_fields = get_post_meta($object['id']);
-  $acf_custom_fields = get_fields($object['id']);
-  return (object) array_merge((array) $wp_custom_fields, (array) $acf_custom_fields);;
+  if(function_exists('get_fields')) {
+    $acf_custom_fields = get_fields($object['id']);
+    return (object) array_merge((array) $wp_custom_fields, (array) $acf_custom_fields);
+  }
+
+  return $wp_custom_fields;
 }
 
 add_action('rest_api_init', 'add_page_children');
@@ -243,7 +237,7 @@ function get_parent_slug($object) {
 }
 
 function my_acf_google_map_api($api){
-  $api['key'] = 'AIzaSyCHia_53O9k25YuqFb3PKkvp-XO6l5KNWY';
+  $api['key'] = 'AIzaSyDEC0TPaQ4ndq1QDQcyELcJ2IQagLNoyfo';
   return $api;
 }
 

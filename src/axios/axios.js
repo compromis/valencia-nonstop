@@ -1,3 +1,3 @@
-import axios from 'axios';
+import axios from 'axios'
 
-export const HTTP = axios.create();
+export const HTTP = axios.create()
