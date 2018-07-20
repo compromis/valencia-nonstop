@@ -139,14 +139,15 @@
     width: 63px;
     width: calc(63px + env(safe-area-inset-right));
     height: $top-nav-height-mobile;
-    padding: 0 1rem;
-    padding-right: calc(1rem + env(safe-area-inset-right));
+    padding-left: 1rem;
+    padding-right: env(safe-area-inset-right);
     transition: 0.15s ease-in-out;
 
     a {
       display: block;
       overflow: hidden;
       width: 35px;
+      margin-right: 1rem;
     }
 
     img {
