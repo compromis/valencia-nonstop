@@ -131,7 +131,6 @@
     position: fixed;
     top: 0;
     right: 0;
-    height: $top-nav-height-mobile;
     z-index: 30;  
     display: flex;
     align-items: center;
@@ -311,9 +310,11 @@
       width: 190px;
       box-shadow: $default-shadow;
       border-left: 0;
+      border-radius: 0 0 0 $border-radius;
 
       a {
         width: 100%;
+        transition: 0.15s ease-in-out;
       }
 
       img {
@@ -323,6 +324,15 @@
 
       &:hover {
         box-shadow: $big-shadow;
+        height: $top-nav-height-mobile + 7px;
+
+        a {
+          padding-top: 7px;
+        }
+      }
+
+      &:active {
+        opacity: 0.8;
       }
     }
 
