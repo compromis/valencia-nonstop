@@ -19,11 +19,11 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-PnWzJku7hTqk2JREATthkLpYeVVGcBbXG5yEzk7hD2HIr/VxffIDfNSR7p7u4HUy" crossorigin="anonymous">
   <?php wp_head(); ?>
 </head>
-<body  <?php body_class() ?> >
+<body <?php body_class() ?> >
   <div id="app">
   <?php
     if (have_posts()) {
-      if (is_home() && ! is_front_page()) {
+      if (is_home() && !is_front_page()) {
         echo '<h1>' . single_post_title('', false) . '</h1>';
       }
 
