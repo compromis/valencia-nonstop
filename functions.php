@@ -59,7 +59,7 @@ add_filter('wp_title','rt_vue_title', 10, 3);
 function rt_vue_title($title, $sep, $seplocation) {
     if (false !== strpos($title, __('Pàgina no trobada'))) {
         $replacement = ucwords(str_replace('/', ' ', $_SERVER['REQUEST_URI']));
-        $title             = str_replace(__('Pàgina no trobada'), $replacement, $title);
+        $title = str_replace(__('Pàgina no trobada'), $replacement, $title);
     }
 
     return $title;
@@ -73,36 +73,36 @@ function rt_extend_rest_post_response() {
     register_rest_field('post',
         'featured_image_src',
         array(
-            'get_callback'        => 'get_image_src',
+            'get_callback' => 'get_image_src',
             'update_callback' => null,
-            'schema'                    => null,
-            )
- );
+            'schema' => null,
+        )
+    );
 
     register_rest_field('post',
         'cat_name',
         array(
-            'get_callback'        => 'rt_get_cat_name',
+            'get_callback' => 'rt_get_cat_name',
             'update_callback' => null,
-            'schema'                    => null,
-            )
- );
+            'schema' => null,
+        )
+    );
 
     register_rest_field('post',
         'tag_name',
         array(
-            'get_callback'        => 'rt_get_tag_name',
+            'get_callback' => 'rt_get_tag_name',
             'update_callback' => null,
-            'schema'                    => null,
-         )
- );
+            'schema' => null,
+        )
+    );
 }
 // Get featured image
 function get_image_src($object, $field_name, $request) {
     $feat_img_array['full'] = wp_get_attachment_image_src($object['featured_media'], 'full', false);
-    $feat_img_array['thumbnail'] = wp_get_attachment_image_src($object['featured_media'], 'thumbnail', false);
+    $feat_img_array['large'] = wp_get_attachment_image_src($object['featured_media'], 'large', false);
     $feat_img_array['srcset'] = wp_get_attachment_image_srcset($object['featured_media']);
-    $image = is_array($feat_img_array) ? $feat_img_array : 'false';
+    $image = is_array($feat_img_array) ? $feat_img_array : false;
     return $image;
 }
 
@@ -152,9 +152,9 @@ function add_custom_fields() {
         array('post', 'page'),
         'custom_fields',
         array(
-            'get_callback'        => 'get_custom_fields',
+            'get_callback' => 'get_custom_fields',
             'update_callback' => null,
-            'schema'                    => null,
+            'schema' => null,
      )
  );
 }
@@ -176,9 +176,9 @@ function add_page_children() {
         array('page'),
         'page_children',
         array(
-            'get_callback'        => 'get_subpages',
+            'get_callback' => 'get_subpages',
             'update_callback' => null,
-            'schema'                    => null,
+            'schema' => null,
      )
  );
 }
@@ -196,9 +196,9 @@ function add_page_siblings() {
         array('page'),
         'page_siblings',
         array(
-            'get_callback'        => 'get_page_siblings',
+            'get_callback' => 'get_page_siblings',
             'update_callback' => null,
-            'schema'                    => null,
+            'schema' => null,
      )
  );
 }
@@ -220,9 +220,9 @@ function add_page_parent_slug() {
         'page',
         'parent_info',
         array(
-            'get_callback'        => 'get_parent_slug',
+            'get_callback' => 'get_parent_slug',
             'update_callback' => null,
-            'schema'                    => null,
+            'schema' => null,
      )
  );
 }

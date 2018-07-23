@@ -12,11 +12,7 @@
           <GmapMarker :position="{ lat: parseFloat(post.custom_fields.venue.lat), lng: parseFloat(post.custom_fields.venue.lng) }" />
         </gmap-map>
       </div>
-      <div v-else>
-        <div class="post-thumbnail progressive full" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['full'][0]">
-          <img class="lazy" v-progressive="post.featured_image_src['full'][0]" :data-srcset="post.featured_image_src['srcset']" :src="post.featured_image_src['full'][0]" />
-        </div>
-      </div>
+      <div class="post-thumbnail progressive full" v-else-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['large'][0]" :style="'background-image: url(' + post.featured_image_src['large'][0] + ');'"></div>
       <div class="post-summary-content">
         <h2 class="post-title"><router-link :to="{ name: (!remote) ? 'event' : 'article', params: { name: post.slug, remote }}"><span v-html="post.title.rendered"></span></router-link> </h2>
         <div class="post-meta" v-if="remote">

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
 import { HTTP as axios } from './axios/axios'
-import VueProgressiveImage from 'progressive-image/dist/vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import './sass/style.scss'
 
@@ -14,9 +13,6 @@ import SvgIcon from './components/partials/svg-icon.vue'
 Vue.prototype.$http = axios
 
 Vue.use(VueRouter)
-Vue.use(VueProgressiveImage, {
-  removePreview: true
-})
 Vue.use(VueGoogleMaps, {
   load: {
     key: process.env.VUE_APP_GOOGLE_MAPS_API

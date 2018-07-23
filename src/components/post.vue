@@ -3,17 +3,21 @@
     <div class="post-container container post-full">
       <div class="band"></div>
       <div v-if="loaded === true">
+        <div class="post-meta">
+          <router-link v-if="remote" to="/noticies"><span class="fal fa-newspaper fa-fw"></span> Notícies</router-link>
+          <router-link v-else to="/agenda"><span class="fal fa-calendar-alt fa-fw"></span> Agenda</router-link>
+          <formatted-date class="date" v-if="remote" :date="post.date" />
+        </div>
         <h2 class="post-title" v-html="post.title.rendered"></h2>
-        <formatted-date class="date" v-if="remote" :date="post.date" />
-        <div class="post-image progressive full" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['full'][0]">
-          <img class="lazy"
-            v-progressive="post.featured_image_src['full'][0]"
+        
+        <div class="post-image" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['large'][0]">
+          <img
             :data-srcset="post.featured_image_src['srcset']"
             :src="post.featured_image_src['full'][0]"
           />
         </div>
 
-        <div class="post-thumbnail" v-if="!remote">
+        <div class="post-image" v-if="!remote">
           <gmap-map
             v-if="post.custom_fields.venue"
             :center="{ lat: parseFloat(post.custom_fields.venue.lat), lng: parseFloat(post.custom_fields.venue.lng) }"
