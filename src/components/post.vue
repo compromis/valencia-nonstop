@@ -9,7 +9,7 @@
           <formatted-date class="date" v-if="remote" :date="post.date" />
         </div>
         <h2 class="post-title" v-html="post.title.rendered"></h2>
-        
+
         <div class="post-image" v-if="post.hasOwnProperty('featured_image_src') && post.featured_image_src['large'][0]">
           <img
             :data-srcset="post.featured_image_src['srcset']"

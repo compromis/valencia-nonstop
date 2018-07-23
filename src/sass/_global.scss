@@ -29,6 +29,26 @@ h1, h2, h3, h4, h5, h6 {
   } 
 }
 
+a.button {
+  display: inline-block;
+  background: $gray-300;
+  color: $gray-700;
+  font-family: $font-family-heading;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  &:hover {
+    background: $primary;
+    background: $brand-gradient;
+    color: $white;
+    text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: 0 0 0 3px colors('orange', '200');
+  }
+}
+
 .admin-bar {
   .top-nav {
     top: $wp-admin-nav-height-mobile;

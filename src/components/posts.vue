@@ -6,8 +6,8 @@
       </div>
       <nav aria-label="Navegació">
         <ul class="pagination">
-          <li><a href="#" v-if="showPrev" v-on:click.prevent="rtShowPrev()" class="btn btn-outline-primary btn-lg">&LT; Anterior</a></li>
-          <li><a href="#" v-if="showNext" v-on:click.prevent="rtShowNext()" class="btn btn-outline-primary btn-lg">Següent &GT;</a></li>
+          <li><a href="#" v-if="showPrev" v-on:click.prevent="rtShowPrev()" class="button">&LT; Anterior</a></li>
+          <li><a href="#" v-if="showNext" v-on:click.prevent="rtShowNext()" class="button">Següent &GT;</a></li>
         </ul>
       </nav>
     </div>

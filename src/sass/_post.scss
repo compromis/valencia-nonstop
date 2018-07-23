@@ -50,24 +50,7 @@
       font-size: 0.75rem;
 
       a {
-        display: inline-block;
-        background: $gray-300;
-        color: $gray-700;
-        font-family: $font-family-heading;
-        text-transform: uppercase;
-        padding: 0.5rem 1rem;
         border-radius: $border-radius 0 0 0;
-
-        &:hover {
-          background: $primary;
-          background: $brand-gradient;
-          color: $white;
-          text-decoration: none;
-        }
-
-        &:active {
-          box-shadow: 0 0 0 3px colors('orange', '200');
-        }
       }
     }
   }
@@ -111,20 +94,17 @@
 }
 
 .pagination {
+  display: flex;
   max-width: 900px;
   margin: 0 auto;
   justify-content: space-between;
   border-top: 2px $gray-500 solid;
-  padding-top: 2rem;
+  padding: 2rem 0;
   margin-top: 4rem;
   border-radius: 0;
 
-  .btn {
-    background: $white;
-    
-    &:hover {
-      background: $primary;
-    }
+  li {
+    list-style: none;
   }
 }
 
@@ -151,8 +131,11 @@
 
   .post-image  {
     margin: 1rem -2rem;
+    max-height: 400px;
+    overflow: hidden;
 
     img {
+      margin-top: -50px;
       width: 100%;
     }
   }
@@ -222,6 +205,12 @@
   .post-full {
     .post-title {
       font-size: 3rem;
+    }
+  }
+
+  .pagination {
+    a {
+      font-size: 1.25rem;
     }
   }
 }

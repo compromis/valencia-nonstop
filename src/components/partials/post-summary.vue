@@ -31,7 +31,7 @@
         <div class="post-excerpt post-content" v-html="post.excerpt.rendered" v-if="remote"></div>
 
         <div class="post-read-more">
-          <router-link :to="{ name: (!remote) ? 'event' : 'article', params: { name: post.slug, remote }}">+ Més info</router-link>
+          <router-link :to="{ name: (!remote) ? 'event' : 'article', params: { name: post.slug, remote }}" class="button">+ Més info</router-link>
         </div>
       </div>
     </div>
