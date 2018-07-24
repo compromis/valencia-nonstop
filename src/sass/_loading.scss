@@ -43,6 +43,15 @@
         margin-bottom: 0.5rem;
     }
   }
+
+  &.menu-loading {
+    .filler {
+      display: block;
+      width: 100%;
+      height: 142px;
+      border-radius: $border-radius;
+    }
+  }
 }
 
 @include media-breakpoint-up(lg) {

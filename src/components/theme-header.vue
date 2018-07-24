@@ -19,7 +19,8 @@
       <top-nav v-if="$route.name == 'frontpage'" :secondary-menu="secondary_menu" />
       <div class="menu">
         <div class="secondary-logo d-lg-none"></div>
-        <primary-menu :primary-menu="primary_menu" />
+        <primary-menu :primary-menu="primary_menu" v-if="!loading" />
+        <menu-loading v-else />
       </div>
     </nav>
   </div>
@@ -29,13 +30,15 @@
 import ShareButtons from './partials/share-buttons.vue'
 import TopNav from './partials/top-nav.vue'
 import PrimaryMenu from './partials/primary-menu.vue'
+import MenuLoading from './partials/menu-loading.vue'
 
 export default {
   name: 'theme-header',
   components: {
     ShareButtons,
     TopNav,
-    PrimaryMenu
+    PrimaryMenu,
+    MenuLoading
   },
   mounted: function () {
     this.getMenu('primary-menu')
@@ -43,6 +46,7 @@ export default {
   },
   data () {
     return {
+      loading: true,
       primary_menu: [],
       secondary_menu: [],
       site_name: process.env.VUE_APP_NAME,
@@ -58,6 +62,8 @@ export default {
           } else {
             this.secondary_menu = res.data
           }
+
+          this.loading = false
         })
         .catch((res) => {
           // console.log(`Something went wrong : ${ res }`);
