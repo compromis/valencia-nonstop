@@ -27,7 +27,7 @@
     <gmap-map
       ref="gmap"
       :center="mapCenter"
-      :zoom="14"
+      :zoom="zoomLevel"
       :options="mapOptions"
       :class="{ 'map': true, 'map-background': !hasMap }"
     ></gmap-map>
@@ -77,6 +77,7 @@ export default {
         draggable: true,
         gestureHandling: 'greedy'
       },
+      zoomLevel: 14,
       pageTitle: '',
       kml: [],
       children: null
@@ -85,6 +86,12 @@ export default {
 
   mounted () {
     this.getPage()
+
+    if (screen.width < 500) {
+      this.zoomLevel = 12
+    }
+
+    console.log(screen.width)
 
     VueGoogleMaps.loaded.then(() => {
       this.mapOptions.zoomControlOptions = {
