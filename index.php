@@ -21,25 +21,34 @@
 </head>
 <body <?php body_class() ?> >
   <div id="app">
-  <?php
-    if (have_posts()) {
-      if (is_home() && !is_front_page()) {
-        echo '<h1>' . single_post_title('', false) . '</h1>';
-      }
+    <noscript>
+      <nav>
+        <?php wp_nav_menu(array('theme_location' => 'primary-menu')); ?>
+        <?php wp_nav_menu(array('theme_location' => 'secondary-menu')); ?>
+      </nav>
+      <main>
+        <?php
 
-      while (have_posts()) {
-        the_post();
+          if (have_posts()) {
+            if (is_home() && !is_front_page()) {
+              echo '<h1>' . single_post_title('', false) . '</h1>';
+            }
 
-        if (is_singular()) {
-          the_title('<h1>', '</h1>');
-        } else {
-          the_title('<h2><a href="' . esc_url(get_permalink()) . '">', '</a></h2>');
-        }
+            while (have_posts()) {
+              the_post();
 
-        the_content();
-      }
-    }
-  ?>
+              if (is_singular()) {
+                the_title('<h1>', '</h1>');
+              } else {
+                the_title('<h2><a href="' . esc_url(get_permalink()) . '">', '</a></h2>');
+              }
+
+              the_content();
+            }
+          }
+        ?>
+      </main>
+    </noscript>
   </div>
 
   <?php wp_footer(); ?>
