@@ -4,8 +4,8 @@
       <div class="band"></div>
       <div v-if="loaded === true">
         <div class="post-meta">
-          <router-link v-if="remote" to="/noticies"><span class="fal fa-newspaper fa-fw"></span> Notícies</router-link>
-          <router-link v-else to="/agenda"><span class="fal fa-calendar-alt fa-fw"></span> Agenda</router-link>
+          <router-link v-if="remote" to="/noticies">📰 Notícies</router-link>
+          <router-link v-else to="/agenda">📅 Agenda</router-link>
           <formatted-date class="date" v-if="remote" :date="post.date" />
         </div>
         <h2 class="post-title" v-html="post.title.rendered"></h2>
@@ -47,7 +47,7 @@
         </div>
       </div>
       <div v-else>
-          <page-loading />
+          <page-loading :is-post="true" />
       </div>
     </div>
   </div>

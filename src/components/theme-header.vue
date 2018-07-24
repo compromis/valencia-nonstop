@@ -19,7 +19,7 @@
       <top-nav v-if="$route.name == 'frontpage'" :secondary-menu="secondary_menu" />
       <div class="menu">
         <div class="secondary-logo d-lg-none"></div>
-        <primary-menu :primary-menu="primary_menu" v-if="!loading" />
+        <primary-menu :primary-menu="primary_menu" v-if="loaded" />
         <menu-loading v-else />
       </div>
     </nav>
@@ -46,7 +46,7 @@ export default {
   },
   data () {
     return {
-      loading: true,
+      loaded: false,
       primary_menu: [],
       secondary_menu: [],
       site_name: process.env.VUE_APP_NAME,
@@ -63,7 +63,7 @@ export default {
             this.secondary_menu = res.data
           }
 
-          this.loading = false
+          this.loaded = true
         })
         .catch((res) => {
           // console.log(`Something went wrong : ${ res }`);

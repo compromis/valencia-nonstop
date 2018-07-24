@@ -7,8 +7,8 @@
           <span class="filler"></span>
         </div>
         <div class="post-summary-content">
-          <div class="subheading">
-            <span class="filler" style="width: 50px"></span>
+          <div class="subheading" style="margin-bottom: 0">
+            <span class="filler" style="width: 100px"></span>
           </div>
           <div class="heading">
             <span class="filler"></span>

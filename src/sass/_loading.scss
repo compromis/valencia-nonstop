@@ -13,7 +13,8 @@
     position: relative;
   }
 
-  .post-thumbnail {
+  .post-thumbnail,
+  .post-image {
     border-bottom: 0;
 
     .filler {
@@ -36,6 +37,7 @@
         top: 4px;
     }
   }
+
   .subheading {
     margin-bottom: 1rem;
 

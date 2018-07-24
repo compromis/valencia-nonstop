@@ -40,7 +40,6 @@
     flex-direction: column;
 
     .post-meta {
-      color: $gray-600;
       order: -1;
     }
 
@@ -93,6 +92,24 @@
   display: none;
 }
 
+.post-meta {
+  font-family: $font-family-heading;
+  text-transform: uppercase;
+  color: $gray-500;
+  border-bottom: 1px $gray-200 solid;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+
+  a {
+    color: $gray-500;
+
+    &:hover {
+      color: $gray-700;
+      background: $gray-100;
+    }
+  }
+}
+
 .pagination {
   display: flex;
   max-width: 900px;
@@ -115,11 +132,6 @@
   }
 
   .post-meta {
-    border-bottom: 1px $gray-200 solid;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    color: $gray-600;
-
     .date {
       float: right;
     }
@@ -130,7 +142,7 @@
   }
 
   .post-image  {
-    margin: 1rem -2rem;
+    margin: 1.5rem -2rem;
     max-height: 400px;
     overflow: hidden;
 
