@@ -4,6 +4,7 @@ import Frontpage from './components/frontpage.vue'
 import Page from './components/page.vue'
 import Category from './components/category.vue'
 import Tag from './components/tag.vue'
+import Error404 from './components/error.vue'
 
 export default {
   mode: 'history',
@@ -18,7 +19,9 @@ export default {
     { path: '/tag/:name', name: 'tag', component: Tag, props: { remote: true } },
     { path: '/event-category/:name', name: 'event-cat', component: Category, props: { remote: false } },
     { path: '/event-tag/:name', name: 'event-tag', component: Tag, props: { remote: false } },
-    { path: '/', name: 'frontpage', component: Frontpage }
+    { path: '/error', name: 'error', component: Error404 },
+    { path: '/', name: 'frontpage', component: Frontpage },
+    { path: '*', redirect: '/error' }
   ],
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {

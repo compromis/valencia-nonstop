@@ -112,6 +112,10 @@ export default {
       this.$http.get(process.env.VUE_APP_WPJSON + '/wp/v2/pages', {
         params: { slug: this.$route.params.name }
       }).then((res) => {
+        if (!res.data.length) {
+          return this.$router.push('/error')
+        }
+
         this.page = res.data[0]
         this.loaded = true
         this.pageTitle = this.page.title.rendered

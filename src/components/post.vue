@@ -90,6 +90,10 @@ export default {
         params: { slug: this.$route.params.name }
       })
         .then((res) => {
+          if (!res.data.length) {
+            return this.$router.push('/error')
+          }
+
           this.post = res.data[0]
           this.loaded = true
           this.pageTitle = this.post.title.rendered
