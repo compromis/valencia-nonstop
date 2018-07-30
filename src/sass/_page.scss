@@ -1,6 +1,7 @@
 .page-title {
   font-size: 2rem;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 .page-parent {
@@ -43,6 +44,23 @@
   font-size: 1.5rem;
 }
 
+.page-content-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .siblings {
+    order: 1;
+  }
+
+  .page-content {
+    order: 2;
+  }
+
+  .children {
+    order: 3;
+  }
+}
+
 @include media-breakpoint-up(lg) {
   .band {
     margin: -1.5rem -2rem 1.5rem -2rem;
@@ -52,28 +70,8 @@
     margin-top: 75vh;
   }
 
-  .page-content-wrapper {
-    display: flex;
-    flex-direction: column;
-  
-    .siblings {
-      order: 1;
-    }
-  
-    .page-content {
-      order: 2;
-    }
-  
-    .children {
-      order: 3;
-    }
-  }
-
   .subcategories {
-    margin-top: 0.5rem;
     padding: 1rem 0;
-    border-top: 2px $gray-300 solid;
-    border-bottom: 2px $gray-300 solid;
 
     &.children {
       border-top: 0;
