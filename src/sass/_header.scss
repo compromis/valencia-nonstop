@@ -11,7 +11,7 @@
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   z-index: 10;
-  box-shadow: $default-shadow;
+  box-shadow: $big-shadow;
   padding-right: env(safe-area-inset-right);
   padding-bottom: env(safe-area-inset-bottom);
   padding-left: env(safe-area-inset-left);
@@ -184,6 +184,7 @@
     overflow-y: hidden;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    box-shadow: $big-raised-shadow;
 
     .menu {
       scroll-behavior: smooth;
