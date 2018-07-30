@@ -91,7 +91,7 @@ export default {
         const sidebar = document.getElementsByClassName('sidebar')[0]
 
         if (activeLink) {
-          if (activeLink.offsetTop >= menu.offsetHeight) menu.scrollTop = activeLink.offsetTop - 15
+          if ((activeLink.offsetTop + activeLink.offsetHeight) >= menu.offsetHeight) menu.scrollTop = activeLink.offsetTop - 15
           sidebar.scrollLeft = activeLink.offsetLeft - ((window.innerWidth - activeLink.offsetWidth) / 2)
         }
       }, 200)
