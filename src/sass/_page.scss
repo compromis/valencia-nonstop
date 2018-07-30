@@ -10,9 +10,19 @@
   
   a {
     color: $gray-500;
+    padding: 0.25rem 0.5rem;
+    margin: -0.25rem -0.5rem;
+    border-radius: 50px;
 
     &:hover {
       color: $gray-700;
+      background: $gray-200;
+      text-decoration: none;
+    }
+
+    &:active {
+      color: $gray-900;
+      background: $gray-400;
     }
   }
 }
