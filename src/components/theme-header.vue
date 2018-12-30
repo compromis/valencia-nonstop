@@ -55,12 +55,12 @@ export default {
   },
   methods: {
     getMenu (menuLocation) {
-      this.$http.get(process.env.VUE_APP_WPJSON + '/wp-api-menus/v2/menu-locations/' + menuLocation)
+      this.$http.get(process.env.VUE_APP_WPJSON + '/menus/v1/menus/' + menuLocation)
         .then((res) => {
           if (menuLocation === 'primary-menu') {
-            this.primary_menu = res.data
+            this.primary_menu = res.data.items
           } else {
-            this.secondary_menu = res.data
+            this.secondary_menu = res.data.items
           }
 
           this.loaded = true

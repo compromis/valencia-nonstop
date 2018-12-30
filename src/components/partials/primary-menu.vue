@@ -5,7 +5,7 @@
         <span class="category-vlc">VLC</span>
         <span class="category-title" v-html="item.title.replace(/\ i\ /gi, '<br /> i ')"></span>
         <span class="category-icon">
-          <menu-icon :classes="item.classes" />
+          <menu-icon :classes="item.classes.join()" />
         </span>
       </router-link>
     </li>
@@ -14,7 +14,7 @@
         <span class="category-vlc">VLC</span>
         <span class="category-title" v-html="item.title.replace(/\ i\ /gi, '<br /> i ')"></span>
         <span class="category-icon">
-          <menu-icon :classes="item.classes" />
+          <menu-icon :classes="item.classes.join()" />
         </span>
       </router-link>
     </li>
